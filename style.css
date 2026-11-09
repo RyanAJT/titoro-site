@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;800&family=Geist+Mono:wght@500&display=swap');
+:root{--bg:#081619;--card:#0e2328;--line:#1d3a40;--mist:#a9e1ec;--tide:#1d7f92;--ink:#e8f1f4;--dim:#8aa5ab}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.55 Geist,system-ui,sans-serif;background-image:radial-gradient(circle at 80% -10%,#12414a 0,transparent 45%)}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+nav{display:flex;align-items:center;gap:28px;padding:22px 0}
+nav .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;text-decoration:none;margin-right:auto}
+nav .logo svg{width:30px;height:30px;color:var(--mist)}
+nav a{text-decoration:none;color:var(--dim);font-weight:600}
+nav a:hover{color:var(--ink)}
+h1{font-size:clamp(40px,7vw,76px);line-height:1.02;font-weight:800;letter-spacing:-.03em}
+h1 em{font-style:normal;color:var(--mist)}
+h2{font-size:32px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.hero{padding:80px 0 56px}
+.hero p{font-size:20px;color:var(--dim);max-width:560px;margin:22px 0 32px}
+.btn{display:inline-block;padding:14px 22px;border-radius:12px;background:var(--mist);color:#062026;font-weight:800;text-decoration:none;margin-right:10px;border:0;font:inherit;font-weight:800;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.strip{font:500 13px 'Geist Mono',monospace;color:var(--dim);letter-spacing:.04em;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;padding:48px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;text-decoration:none;display:block;transition:border-color .2s}
+a.card:hover{border-color:var(--tide)}
+.card .k{font:500 12px 'Geist Mono',monospace;color:var(--mist);letter-spacing:.08em}
+.card h3{font-size:21px;margin:8px 0 6px}
+.card p{color:var(--dim);font-size:15px}
+.price{font-size:28px;font-weight:800;margin-top:14px}
+.section{padding:56px 0}
+.lead{color:var(--dim);font-size:19px;max-width:640px;margin-bottom:8px}
+.mail{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.mail input{flex:1;min-width:220px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+table{width:100%;border-collapse:collapse;margin-top:24px}
+td,th{text-align:left;padding:14px 10px;border-bottom:1px solid var(--line);font-size:15px}
+th{font:500 12px 'Geist Mono',monospace;color:var(--dim);letter-spacing:.08em}
+.tag{font:500 11px 'Geist Mono',monospace;background:#123139;color:var(--mist);padding:4px 8px;border-radius:6px}
+footer{padding:40px 0 60px;color:var(--dim);font-size:14px;border-top:1px solid var(--line);margin-top:40px}
+footer a{margin-right:16px}
+.small{font-size:14px;color:var(--dim)}
+/* build mode */
+.b-hide{opacity:0;transform:translateY(8px)}
+.b-show{opacity:1;transform:none;transition:opacity .35s,transform .35s}
+.b-box{position:absolute;border:1.5px solid var(--c);pointer-events:none;z-index:50}
+.b-box i{position:absolute;width:7px;height:7px;background:#fff;border:1.5px solid var(--c)}
+.b-box b{position:absolute;top:-22px;left:-1px;font:500 11px 'Geist Mono',monospace;background:var(--c);color:#041014;padding:2px 6px;border-radius:4px;white-space:nowrap}
+.b-guide{position:absolute;left:0;right:0;height:0;border-top:1px dashed var(--c);opacity:.5;pointer-events:none;z-index:49}
+.b-cur{position:absolute;z-index:60;pointer-events:none;transition:left .55s cubic-bezier(.3,.7,.2,1),top .55s cubic-bezier(.3,.7,.2,1)}
+.b-cur svg{width:16px;height:16px;display:block}
+.b-cur span{font:600 11px Geist,sans-serif;background:var(--c);color:#041014;padding:2px 7px;border-radius:9px;margin-left:12px;white-space:nowrap}
+#b-pill{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:70;background:#0e2328ee;border:1px solid var(--line);border-radius:30px;padding:9px 18px;font:500 13px 'Geist Mono',monospace;display:flex;gap:14px;align-items:center}
+#b-pill .dot{width:8px;height:8px;border-radius:50%;background:#5df2a4;box-shadow:0 0 10px #5df2a4}
