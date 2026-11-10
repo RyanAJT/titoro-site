@@ -71,3 +71,47 @@ $('form.mail').forEach(f => f.addEventListener('submit', e => {
 
 // replay button
 $('[data-replay]').forEach(b => b.addEventListener('click', () => { location.href = location.pathname + '?build'; }));
+
+// ambient background: drifting colour fields + a slow agent network, behind everything
+(() => {
+  const c = document.createElement('canvas'), x = c.getContext('2d');
+  c.id = 'amb'; document.body.prepend(c);
+  const dpr = Math.min(devicePixelRatio || 1, 1.5);
+  let W, H, mx = -999, my = -999;
+  const size = () => { W = innerWidth; H = innerHeight; c.width = W * dpr; c.height = H * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  size(); addEventListener('resize', size);
+  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; });
+  const blobs = [['169,225,236', .55, .2, .3], ['246,193,119', .3, .75, .55], ['29,111,127', .18, .3, .85]];
+  const N = innerWidth < 700 ? 18 : 34;
+  const nodes = Array.from({ length: N }, () => ({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25 }));
+  let sy = 0;
+  function draw(t) {
+    sy += ((window.lenis ? lenis.scroll : scrollY) - sy) * .08;
+    x.clearRect(0, 0, W, H);
+    blobs.forEach(([rgb, a, bx, by], i) => {
+      const px = W * (bx + Math.sin(t / 9000 + i * 2) * .12), py = H * (by + Math.cos(t / 11000 + i) * .1 + Math.sin(sy / 1400 + i * 1.7) * .18);
+      const r = Math.max(W, H) * .55, g = x.createRadialGradient(px, py, 0, px, py, r);
+      g.addColorStop(0, `rgba(${rgb},${a * .55})`); g.addColorStop(1, `rgba(${rgb},0)`);
+      x.fillStyle = g; x.fillRect(0, 0, W, H);
+    });
+    const off = (sy * .15) % H;
+    for (const n of nodes) {
+      n.x += n.vx; n.y += n.vy;
+      const dx = n.x - mx, dy = (((n.y - off) % H) + H) % H - my, d = Math.hypot(dx, dy);
+      if (d < 120) { n.x += dx / d * .8; n.y += dy / d * .8; }
+      if (n.x < -20) n.x = W + 20; if (n.x > W + 20) n.x = -20;
+      if (n.y < -20) n.y = H + 20; if (n.y > H + 20) n.y = -20;
+    }
+    nodes.forEach(n => n.sy = (((n.y - off) % H) + H) % H);
+    x.lineWidth = 1;
+    for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+      const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.sy - b.sy);
+      if (d < 170) { x.strokeStyle = `rgba(21,25,27,${(1 - d / 170) * .16})`; x.beginPath(); x.moveTo(a.x, a.sy); x.lineTo(b.x, b.sy); x.stroke(); }
+    }
+    x.fillStyle = 'rgba(29,111,127,.5)';
+    nodes.forEach((n, i) => { x.beginPath(); x.arc(n.x, n.sy, i % 7 ? 1.6 : 3, 0, 7); x.fill(); });
+    if (!reduce && !document.hidden) requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && !reduce) requestAnimationFrame(draw); });
+})();
