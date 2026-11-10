@@ -212,3 +212,13 @@ footer .big{font-size:clamp(60px,11vw,160px);font-weight:800;letter-spacing:-.06
 .frames i{aspect-ratio:9/14;border-radius:8px;background:linear-gradient(110deg,var(--paper2) 30%,#fff 50%,var(--paper2) 70%);background-size:250% 100%;animation:shim 2.4s linear infinite}
 .frames i:nth-child(2){animation-delay:-.6s}.frames i:nth-child(3){animation-delay:-1.2s}.frames i:nth-child(4){animation-delay:-1.8s}
 @keyframes shim{to{background-position:-150% 0}}
+.fsteps{display:grid;gap:18px;max-width:860px}
+.fstep{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:34px;display:grid;gap:14px;justify-items:start}
+.fstep h3{font-size:30px;letter-spacing:-.03em;line-height:1.05}
+.fstep p,.fstep li{color:var(--ink2)}
+.fstep ol{padding-left:20px;display:grid;gap:8px}
+.fstep code{font:500 14px 'Geist Mono',monospace;background:var(--paper2);padding:3px 8px;border-radius:6px;color:var(--ink)}
+.warn{background:#fff6dc;border:1px solid #ecd9a0;border-radius:14px;padding:14px 16px;font-size:15px;color:#5a4a1c}
+.prompt{width:100%;border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:grid;gap:8px;justify-items:start;background:var(--paper)}
+.prompt p{color:var(--ink)}
+.copy{border:1.5px solid var(--ink);background:transparent;border-radius:10px;padding:6px 12px;font:600 13px Geist,sans-serif;cursor:pointer}

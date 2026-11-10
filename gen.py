@@ -34,7 +34,7 @@ TOOLS = [
     ('ManyChat', 'DMs', 'Sends the guide when you comment a keyword.', '/go/manychat/', True),
     ('Buffer', 'Posting', 'Schedules every reel to IG, TikTok and YouTube.', '/go/buffer/', True),
     ('ElevenLabs', 'Voice and sound', 'Every voiceover, music bed and sound effect.', '/go/elevenlabs/', True),
-    ('Higgsfield', 'Video and images', 'AI video and image generation.', '/go/higgsfield/', True),
+    ('Higgsfield', 'Video and images', 'AI video, image and audio models, right inside Claude.', '/go/higgsfield/', True),
     ('Apify', 'Research', 'Pulls reel data for my weekly scouting.', '/go/apify/', True),
 ]
 MAIL = '''<form class="mail" novalidate><label for="em{n}">Your email</label><div class="row"><input id="em{n}" type="email" placeholder="you@yourbusiness.com" required><button class="btn">{cta}</button></div><small>{help}</small></form>'''
@@ -191,8 +191,32 @@ page('disclosure/index.html', 'Disclosure · titoro', 'Affiliate disclosure, ref
 <p><b>Results.</b> Examples in my videos show what worked for me, not a promise.</p></div></section>
 ''')
 
+
+# ---------- fable (launch guide) ----------
+REF = 'https://higgsfield.ai?fpr=jing-45bb72'
+MCP = 'https://higgsfield.ai/mcp?fpr=jing-45bb72'
+PROMPTS = [
+    ('Cinematic trailer', 'Make me a 10-second cinematic trailer shot: a lone rider crossing a salt flat at golden hour, low drone angle, dust trailing behind. Vertical 9:16. Use Higgsfield.'),
+    ('Anime scene', 'Create an anime-style scene: a girl running through red torii gates at night, lanterns glowing, petals in the wind. 9:16, 8 seconds.'),
+    ('Product ad', 'Turn this product photo into a 6-second ad: slow orbit around the product on a marble table, soft morning light, then a clean end card.'),
+    ('Talking explainer', 'Write a 20-second script about my business, then generate a voiceover and a matching video with captions.'),
+    ('3D from video', 'Here is a 360 video of an object. Build a 3D model of it and render a turntable shot.'),
+]
+steps = f'''
+<div class="fstep"><span class="mono">Step 1 · 1 minute</span><h3>Create your Higgsfield account</h3><p>Sign up free with this link. It's the account the trial attaches to.</p><a class="btn" href="{REF}" target="_blank" rel="noopener">Sign up on Higgsfield {ARROW}</a><small class="mono">affiliate link · I may earn a commission at no cost to you</small></div>
+<div class="fstep"><span class="mono">Step 2 · 30 seconds</span><h3>Start the free 3-day trial</h3><p>On the Higgsfield MCP page, start the 72-hour trial. It's $0 today and unlocks unlimited use of the top video, image and audio models inside Claude.</p><a class="btn alt" href="{MCP}" target="_blank" rel="noopener">Open higgsfield.ai/mcp {ARROW}</a><div class="warn"><b>Read this first.</b> A card is needed to start. After 72 hours the trial renews into Higgsfield Ultra (40% off the first month) unless you cancel. Set a reminder for day 3 if you only want the free part. Offer for new users, limited time, Higgsfield's terms apply.</div></div>
+<div class="fstep"><span class="mono">Step 3 · 1 minute</span><h3>Connect it to Claude</h3><ol><li>Open Claude, go to <b>Settings → Connectors</b>.</li><li>Click <b>Add custom connector</b>, name it <b>Higgsfield</b>.</li><li>Paste this URL: <code>https://mcp.higgsfield.ai/mcp</code> <button class="copy" data-copy="https://mcp.higgsfield.ai/mcp">Copy</button></li><li>Click <b>Connect</b> and sign in to Higgsfield.</li></ol></div>
+<div class="fstep"><span class="mono">Step 4</span><h3>Pick Fable 5.2 and ask for anything</h3><p>Choose Claude Fable 5.2 in the model menu (paid Claude plans), start a new chat and paste one of these:</p>
+''' + ''.join(f'<div class="prompt"><span class="mono">{t}</span><p>{p}</p><button class="copy" data-copy="{p}">Copy prompt</button></div>' for t, p in PROMPTS) + '</div>'
+page('fable/index.html', 'Fable 5.2 + Higgsfield: free 3-day setup · titoro', 'Connect Higgsfield to Claude Fable 5.2 and make AI videos free for 3 days. Step-by-step setup.', f'''
+<header class="wrap phead" data-b="header"><p class="mono eyebrow"><b>New</b> Claude Fable 5.2 × Higgsfield</p><h1>Every video model, inside Claude. <span class="serif">Free</span> for 3 days.</h1><p class="lead">Anthropic just released Claude Fable 5.2, and Higgsfield opened a free 72-hour trial of its connector for new users. Here's the full setup. It takes about 3 minutes.</p></header>
+<section class="wrap fsteps" data-b="steps">{steps}</section>
+<section class="wrap" data-b="more" style="padding:80px 0 120px"><div class="replay"><div><h2>Want more like this?</h2><p class="lead">Every reel I post becomes a free playbook.</p></div><div><a class="btn" href="/free/">See the free playbooks {ARROW}</a></div></div></section>
+<script>document.querySelectorAll('.copy').forEach(b=>b.onclick=()=>{{navigator.clipboard.writeText(b.dataset.copy);b.textContent='Copied';setTimeout(()=>b.textContent=b.dataset.copy.startsWith('http')?'Copy':'Copy prompt',1500)}})</script>
+''')
+
 # ---------- short links ----------
-for k, u in {'manychat': 'https://manychat.com', 'buffer': 'https://buffer.com', 'elevenlabs': 'https://elevenlabs.io', 'higgsfield': 'https://higgsfield.ai', 'apify': 'https://apify.com'}.items():
+for k, u in {'manychat': 'https://manychat.com', 'buffer': 'https://buffer.com', 'elevenlabs': 'https://elevenlabs.io', 'higgsfield': 'https://higgsfield.ai?fpr=jing-45bb72', 'apify': 'https://apify.com'}.items():
     os.makedirs(f'go/{k}', exist_ok=True)
     open(f'go/{k}/index.html', 'w').write(f'<!DOCTYPE html><meta charset="utf-8"><title>Redirecting</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={u}"><a href="{u}">Continue to {k}</a>')
 os.makedirs('freeskills', exist_ok=True)
