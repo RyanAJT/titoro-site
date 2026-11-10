@@ -26,11 +26,11 @@ $('.marquee .track').forEach(tr => {
 
 // horizontal library: vertical scroll pans the cards (after the build, if one is playing)
 function initH() {
-  $('.hscroll').forEach(h => {
+  gsap.matchMedia().add('(min-width:861px)', () => $('.hscroll').forEach(h => {
     const tr = h.querySelector('.htrack'), sec = h.closest('section');
     gsap.to(tr, { x: () => -(tr.scrollWidth - innerWidth + 64), ease: 'none',
       scrollTrigger: { trigger: sec, pin: true, start: 'top top', scrub: 1, end: () => '+=' + (tr.scrollWidth - innerWidth), invalidateOnRefresh: true } });
-  });
+  })); // phones swipe the cards natively
   ScrollTrigger.refresh();
 }
 if (window.BUILD) window.afterBuild = initH; else initH();

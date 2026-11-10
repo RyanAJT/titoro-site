@@ -211,7 +211,7 @@ steps = f'''
 page('fable/index.html', 'Fable 5.2 + Higgsfield: free 3-day setup · titoro', 'Connect Higgsfield to Claude Fable 5.2 and make AI videos free for 3 days. Step-by-step setup.', f'''
 <header class="wrap phead" data-b="header"><p class="mono eyebrow"><b>New</b> Claude Fable 5.2 × Higgsfield</p><h1>Every video model, inside Claude. <span class="serif">Free</span> for 3 days.</h1><p class="lead">Anthropic just released Claude Fable 5.2, and Higgsfield opened a free 72-hour trial of its connector for new users. Here's the full setup. It takes about 3 minutes.</p></header>
 <section class="wrap fsteps" data-b="steps">{steps}</section>
-<section class="wrap" data-b="more" style="padding:80px 0 120px"><div class="replay"><div><h2>Want more like this?</h2><p class="lead">Every reel I post becomes a free playbook.</p></div><div><a class="btn" href="/free/">See the free playbooks {ARROW}</a></div></div></section>
+<section class="wrap" data-b="more" style="padding-block:80px 120px"><div class="replay"><div><h2>Want more like this?</h2><p class="lead">Every reel I post becomes a free playbook.</p></div><div><a class="btn" href="/free/">See the free playbooks {ARROW}</a></div></div></section>
 <script>document.querySelectorAll('.copy').forEach(b=>b.onclick=()=>{{navigator.clipboard.writeText(b.dataset.copy);b.textContent='Copied';setTimeout(()=>b.textContent=b.dataset.copy.startsWith('http')?'Copy':'Copy prompt',1500)}})</script>
 ''')
 

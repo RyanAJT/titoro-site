@@ -1,5 +1,5 @@
 // Agent swarm build: plays on a visitor's first home-page visit, or any page with ?build.
-// One frame loop drives everything: agents ease toward targets, the camera glides to the build frontier.
+// Never scrolls the page: agents build what's on screen, the rest builds as the visitor scrolls to it.
 (() => {
   const q = new URLSearchParams(location.search);
   const home = location.pathname === '/' || location.pathname === '/index.html';
@@ -28,6 +28,7 @@
       atoms.push(...list);
     });
     const total = atoms.length, queue = atoms.slice(), working = new Set();
+    const crew = names.slice(0, innerWidth < 700 ? 6 : 12);
     let done = 0, skipped = false, live = true;
 
     const layer = document.createElement('div');
@@ -36,7 +37,7 @@
     const pill = document.createElement('div');
     pill.id = 'pill';
     document.body.appendChild(pill);
-    const setPill = s => pill.innerHTML = `<span class="dot"></span><span>${names.length} agents · ${done}/${total} layers · ${s}</span>` + (s === 'building' ? '<button>Skip</button>' : '');
+    const setPill = s => pill.innerHTML = `<span class="dot"></span><span>${crew.length} agents · ${done}/${total} · ${s}</span>` + (s !== 'deployed ✓' ? '<button>Skip</button>' : '');
     setPill('building');
     pill.addEventListener('click', e => { if (e.target.tagName === 'BUTTON') skipped = true; });
 
@@ -45,7 +46,7 @@
     const reveal = el => { el.classList.remove('bx-hide'); el.classList.add('bx-in'); done++; setPill('building'); };
 
     // agents: smooth spring toward a target; goTo resolves inside the frame loop, not on a timer
-    const ags = names.map((n, i) => {
+    const ags = crew.map((n, i) => {
       const c = cols[i % cols.length];
       const el = add('ag', '', arrow(c) + `<span class="tag" style="background:${c}">${n === 'Claude' ? 'Claude' : 'agent-' + String(i).padStart(2, '0') + ' · ' + n}</span><span class="act"></span>`);
       const x = innerWidth / 2 + rnd(-160, 160), y = scrollY + innerHeight / 2 + rnd(-80, 80);
@@ -53,26 +54,9 @@
     });
     const goTo = (a, x, y) => new Promise(res => { a.tx = x; a.ty = y; a.arrive = res; });
 
-    // camera: glide toward the topmost unfinished element, never jump
-    let cam = scrollY, cv = 0, goal = 0;
-    const frontier = () => {
-      let y = Infinity;
-      working.forEach(el => { y = Math.min(y, rect(el).y); });
-      if (queue[0]) y = Math.min(y, rect(queue[0]).y);
-      return y;
-    };
     let last = performance.now();
     (function tick(now) {
       const dt = Math.min((now - last) / 16.67, 3); last = now;
-      const f = frontier();
-      if (f < Infinity) {
-        const max = document.documentElement.scrollHeight - innerHeight;
-        goal = Math.max(goal, Math.min(max, f - innerHeight * .3)); // only ever moves down
-        cv = (cv + (goal - cam) * .01 * dt) * Math.pow(.86, dt);
-        cv = Math.max(-9, Math.min(9, cv));
-        cam += cv * dt;
-        window.lenis ? lenis.scrollTo(cam, { immediate: true, force: true }) : scrollTo(0, cam);
-      }
       for (const a of ags) {
         const wx = Math.sin(now / 900 + a.ph) * 4, wy = Math.cos(now / 1100 + a.ph) * 4;
         a.vx = (a.vx + (a.tx + wx - a.x) * .028 * dt) * Math.pow(.86, dt);
@@ -102,22 +86,24 @@
       sel.style.opacity = 0; setTimeout(() => sel.remove(), 320);
     }
 
-    // agents pull from one shared queue; anything far below or off to the side waits for the camera
+    // next element on screen; anything the visitor already scrolled past (or off to the side) just appears
+    function next() {
+      for (let i = 0; i < queue.length; i++) {
+        const el = queue[i], r = rect(el);
+        if (r.w === 0 || r.x > innerWidth - 40 || r.y + r.h < scrollY) { queue.splice(i--, 1); reveal(el); continue; }
+        if (r.y < scrollY + innerHeight * .92) { queue.splice(i, 1); return el; }
+        return null; // queue is in page order, so the rest is below the fold
+      }
+      return null;
+    }
     async function agent(a, i) {
       await sleep(i * 90);
       while (!skipped && (queue.length || working.size)) {
-        const el = queue[0];
-        if (!el) { await goTo(a, a.x + rnd(-60, 60), a.y + rnd(-40, 40)); await sleep(rnd(150, 350)); continue; }
-        const r = rect(el);
-        if (r.w === 0 || r.x > innerWidth - 40) { queue.shift(); reveal(el); continue; }
-        const atBottom = scrollY >= document.documentElement.scrollHeight - innerHeight - 4;
-        if (r.y + Math.min(r.h, 120) > scrollY + innerHeight * .95 && !atBottom) {
-          // drift down with the camera instead of standing still
-          await goTo(a, rnd(innerWidth * .15, innerWidth * .85), scrollY + innerHeight * rnd(.55, .8));
-          continue;
-        }
-        queue.shift();
-        await work(a, el);
+        const el = next();
+        if (el) { await work(a, el); continue; }
+        if (!working.size && queue.length) setPill('scroll ↓');
+        await goTo(a, rnd(innerWidth * .1, innerWidth * .85), scrollY + innerHeight * rnd(.25, .8));
+        await sleep(rnd(150, 350));
       }
     }
     await Promise.all(ags.map(agent));
@@ -128,9 +114,12 @@
     try { localStorage.setItem('titoroBuilt', '1'); } catch (e) {}
     queue.length = 0; working.clear();
     ags.forEach(a => { a.tx = a.x + rnd(-800, 800); a.ty = a.y - rnd(600, 1000); a.el.style.transition = 'opacity .9s'; a.el.style.opacity = 0; });
+    // un-wrapping the library changes the page height, so hold the visitor's spot instead of jumping
+    const anchor = [...document.querySelectorAll('[data-b]')].find(b => b.getBoundingClientRect().bottom > 0);
+    const off = anchor && anchor.getBoundingClientRect().top;
     document.documentElement.classList.remove('building');
     window.afterBuild && window.afterBuild();
-    window.lenis ? lenis.scrollTo(0, { duration: 1.6, force: true }) : scrollTo({ top: 0, behavior: 'smooth' });
+    if (anchor) { const y = scrollY + anchor.getBoundingClientRect().top - off; window.lenis ? lenis.scrollTo(y, { immediate: true, force: true }) : scrollTo(0, y); }
     await sleep(1400);
     live = false; layer.remove();
     await sleep(1600);
