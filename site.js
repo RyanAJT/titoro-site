@@ -1,4 +1,4 @@
-// Smooth scroll, parallax and the small looping details.
+// Smooth scroll, parallax, reels, search and the small details.
 gsap.registerPlugin(ScrollTrigger);
 const lenis = new Lenis({ lerp: 0.09 });
 lenis.on('scroll', ScrollTrigger.update);
@@ -6,11 +6,14 @@ gsap.ticker.add(t => lenis.raf(t * 1000));
 gsap.ticker.lagSmoothing(0);
 window.lenis = lenis;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const desk = matchMedia('(min-width:861px)').matches;
 const $ = (s, r = document) => [...r.querySelectorAll(s)];
 
-// reveals (the swarm does its own reveal in build mode)
-if (window.BUILD || reduce) $('.rv').forEach(e => e.classList.remove('rv'));
-else $('.rv').forEach(e => gsap.to(e, { opacity: 1, y: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: e, start: 'top 88%' } }));
+// staggered reveals (the swarm does its own reveal in build mode)
+if (!window.BUILD && !reduce) ScrollTrigger.batch('.offer,.start,.tile,.feat,.g,.three>div,.pk,.sbox', {
+  start: 'top 92%', once: true,
+  onEnter: els => gsap.from(els, { opacity: 0, y: 46, duration: 1, stagger: .08, ease: 'expo.out', clearProps: 'opacity' })
+});
 
 // parallax: anything with data-speed drifts against the scroll
 $('[data-speed]').forEach(e => gsap.to(e, {
@@ -18,49 +21,73 @@ $('[data-speed]').forEach(e => gsap.to(e, {
   scrollTrigger: { trigger: e.closest('section,header') || e, start: 'top bottom', end: 'bottom top', scrub: true }
 }));
 
-// marquee that speeds up with scroll velocity
-$('.marquee .track').forEach(tr => {
-  const loop = gsap.to(tr, { xPercent: -50, duration: 28, ease: 'none', repeat: -1 });
-  ScrollTrigger.create({ onUpdate: s => { gsap.to(loop, { timeScale: 1 + Math.min(Math.abs(s.getVelocity()) / 400, 5), duration: .2, overwrite: true }); gsap.to(loop, { timeScale: 1, duration: 1.2, delay: .2 }); } });
-});
+// how-it-works: the step in the middle of the screen lights up
+if (desk) $('.step').forEach(s => ScrollTrigger.create({ trigger: s, start: 'top 60%', end: 'bottom 40%', onToggle: st => st.isActive && $('.step').forEach(x => x.classList.toggle('on', x === s)) }));
 
-// horizontal library: vertical scroll pans the cards (after the build, if one is playing)
-function initH() {
-  gsap.matchMedia().add('(min-width:861px)', () => $('.hscroll').forEach(h => {
-    const tr = h.querySelector('.htrack'), sec = h.closest('section');
-    gsap.to(tr, { x: () => -(tr.scrollWidth - innerWidth + 64), ease: 'none',
-      scrollTrigger: { trigger: sec, pin: true, start: 'top top', scrub: 1, end: () => '+=' + (tr.scrollWidth - innerWidth), invalidateOnRefresh: true } });
-  })); // phones swipe the cards natively
-  ScrollTrigger.refresh();
-}
-if (window.BUILD) window.afterBuild = initH; else initH();
+// reels: load and play only while on screen
+const io = new IntersectionObserver(es => es.forEach(({ target: v, isIntersecting: on }) => {
+  if (on) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); } else v.pause();
+}), { rootMargin: '200px' });
+$('video[data-src]').forEach(v => io.observe(v));
 
-// how-it-works: each step lights up and switches the phone scene
-$('.step').forEach((s, i) => ScrollTrigger.create({
-  trigger: s, start: 'top 60%', end: 'bottom 40%',
-  onToggle: st => { if (!st.isActive) return; $('.step').forEach(x => x.classList.toggle('on', x === s)); $('.scene').forEach((x, k) => x.classList.toggle('on', k === i)); }
+// "Commented a keyword?" box: straight to the playbook
+$('form.find').forEach(f => f.addEventListener('submit', e => {
+  e.preventDefault();
+  const v = f.querySelector('input').value.trim().toUpperCase(), kws = f.dataset.kw.split(',');
+  if (kws.includes(v)) location.href = `/free/${v.toLowerCase()}/`;
+  else if (v) location.href = `/free/?q=${encodeURIComponent(v)}`;
+  else { f.classList.remove('miss'); void f.offsetWidth; f.classList.add('miss'); }
 }));
 
-// hero console: agents report what they're doing, on a loop
-const jobs = [
-  ['#a9e1ec', 'scout', 'Picking 4 reels worth copying this week'],
-  ['#f6c177', 'scripts', 'Writing the hook for PYRAMID'],
-  ['#9ed99a', 'voice', 'Recording the voiceover'],
-  ['#f2a0b8', 'film', 'Rendering 1080x1920, 30fps'],
-  ['#c4b5fd', 'post', 'Scheduling IG, TikTok, YouTube'],
-  ['#a9e1ec', 'dms', 'Sending the guide to 12 commenters'],
-  ['#f6c177', 'guides', 'Updating the CLEAR playbook'],
-];
-const ul = document.querySelector('.console ul');
-if (ul) {
-  let k = 0;
-  const row = ([c, n, t], live) => `<li class="${live ? 'live' : ''}"><b style="background:${c}">${n}</b><span>${t}</span><em>${live ? 'working' : 'done'}</em></li>`;
-  const draw = () => { const r = []; for (let i = 0; i < 5; i++) r.push(row(jobs[(k + i) % jobs.length], i === 4)); ul.innerHTML = r.join(''); };
-  draw(); setInterval(() => { k++; gsap.to(ul, { opacity: .55, duration: .15, yoyo: true, repeat: 1, onRepeat: draw }); }, 2200);
+// free page: search + category chips filter both the orbit and the grid
+const fs = document.querySelector('.fsearch');
+if (fs) {
+  let cat = 'all';
+  const apply = () => {
+    const q = fs.value.trim().toUpperCase();
+    $('.oc,.g[data-kw]').forEach(c => {
+      const ok = (!q || c.dataset.kw.startsWith(q)) && (cat === 'all' || c.dataset.cat === cat);
+      c.classList.toggle(c.classList.contains('oc') ? 'dim' : 'hide', !ok);
+      c.classList.toggle('hit', ok && !!q);
+    });
+  };
+  fs.value = new URLSearchParams(location.search).get('q') || '';
+  fs.addEventListener('input', apply);
+  fs.addEventListener('keydown', e => { const m = $('.g[data-kw]:not(.hide)'); if (e.key === 'Enter' && m.length === 1) location.href = m[0].href; });
+  $('.chipf').forEach(b => b.addEventListener('click', () => { cat = b.dataset.cat; $('.chipf').forEach(x => x.classList.toggle('on', x === b)); apply(); }));
+  apply();
 }
 
-// phone comment typing
-$('.typed').forEach(t => { const w = t.dataset.text; let i = 0; setInterval(() => { i = (i + 1) % (w.length + 8); t.textContent = w.slice(0, Math.min(i, w.length)); }, 160); });
+// free page orbit: two rings turning opposite ways around the logo, tilting with the mouse
+const orb = document.querySelector('.orbit');
+if (orb && desk && !reduce) {
+  const cards = $('.oc', orb), rings = [[], []];
+  cards.forEach(c => rings[c.dataset.ring].push(c));
+  let mx = 0, my = 0, tx = 0, ty = 0, t = 0, hover = false, last = performance.now();
+  orb.addEventListener('pointermove', e => { const r = orb.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - .5; ty = (e.clientY - r.top) / r.height - .5; });
+  cards.forEach(c => { c.onmouseenter = () => hover = true; c.onmouseleave = () => hover = false; });
+  (function spin(now) {
+    t += hover ? 0 : (now - last) / 1000; last = now;
+    mx += (tx - mx) * .06; my += (ty - my) * .06;
+    const W = orb.clientWidth, H = orb.clientHeight;
+    rings.forEach((ring, k) => ring.forEach((c, i) => {
+      const a = i / ring.length * Math.PI * 2 + (k ? -1 : 1) * t * .07 + k * .4;
+      const rx = W * (k ? .42 : .26), ry = H * (k ? .41 : .27), d = (Math.sin(a) + 1) / 2;
+      const x = W / 2 + Math.cos(a) * rx - 88 + mx * (k ? 60 : 30), y = H / 2 + Math.sin(a) * ry - 50 + my * (k ? 40 : 20);
+      c.style.transform = `translate3d(${x}px,${y}px,0) scale(${.8 + d * .25}) rotateY(${mx * 14}deg) rotateX(${-my * 10}deg)`;
+      c.style.zIndex = Math.round(d * 40) + (d > .5 ? 20 : 0);
+      if (!c.classList.contains('dim')) c.style.opacity = .55 + d * .45; else c.style.opacity = '';
+    }));
+    requestAnimationFrame(spin);
+  })(last);
+}
+
+// copy buttons
+$('.copy').forEach(b => b.addEventListener('click', () => {
+  navigator.clipboard.writeText(b.dataset.copy || b.parentNode.querySelector('pre,p').textContent);
+  const o = b.textContent; b.textContent = 'Copied ✓'; b.classList.add('ok');
+  setTimeout(() => { b.textContent = o; b.classList.remove('ok'); }, 1500);
+}));
 
 // email forms: no backend yet, so be honest about it
 $('form.mail').forEach(f => f.addEventListener('submit', e => {

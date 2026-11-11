@@ -8,8 +8,8 @@
   if (!window.BUILD) return;
   document.documentElement.classList.add('building');
 
-  const ATOM = 'h1,h2,h3,h4,p,.btn,.mono,.g,.pk,.bt,.console,.phone,form,.marquee,li,.bigT,td';
-  const BOX = '.g,.pk,.bt,.console,.phone,form,.marquee';
+  const ATOM = 'h1,h2,h3,h4,p,.btn,.mono,.g,.pk,.offer,.start,.tile,.feat,.ph,.chip,.find,form,li,.bigT,.prompt,.oc,.core,.get,.sbox,.kwcard,.endc';
+  const BOX = '.g,.pk,.offer,.start,.tile,.feat,.ph,.chip,.find,form,.prompt,.oc,.core,.get,.sbox,.kwcard,.endc';
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   const rnd = (a, b) => a + Math.random() * (b - a);
   const cols = ['#7cc7d6', '#f6c177', '#9ed99a', '#f2a0b8', '#c4b5fd', '#8fb8ff', '#f4d35e', '#ff9e7a'];
