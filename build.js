@@ -100,10 +100,14 @@
       await sleep(i * 90);
       while (!skipped && (queue.length || working.size)) {
         const el = next();
-        if (el) { await work(a, el); continue; }
+        if (el) {
+          if (a.parked) { a.parked = false; a.x = rnd(innerWidth * .1, innerWidth * .9); a.y = scrollY + innerHeight + 30; a.vx = a.vy = 0; a.el.style.opacity = 1; } // fly in from below
+          await work(a, el); continue;
+        }
+        // nothing on screen left to build: rest out of sight until the visitor scrolls
+        if (!a.parked) { a.parked = true; a.el.style.opacity = 0; }
         if (!working.size && queue.length) setPill('scroll ↓');
-        await goTo(a, rnd(innerWidth * .1, innerWidth * .85), scrollY + innerHeight * rnd(.25, .8));
-        await sleep(rnd(150, 350));
+        await sleep(250);
       }
     }
     await Promise.all(ags.map(agent));
