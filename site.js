@@ -10,10 +10,10 @@ const desk = matchMedia('(min-width:861px)').matches;
 const $ = (s, r = document) => [...r.querySelectorAll(s)];
 
 // staggered reveals (the swarm does its own reveal in build mode)
-if (!window.BUILD && !reduce) ScrollTrigger.batch('.offer,.start,.tile,.feat,.g,.three>div,.pk,.sbox', {
-  start: 'top 92%', once: true,
-  onEnter: els => gsap.from(els, { opacity: 0, y: 46, duration: 1, stagger: .08, ease: 'expo.out', clearProps: 'opacity' })
-});
+if (!window.BUILD && !reduce) {
+  const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const t = e.target; t.classList.add('in'); ro.unobserve(t); setTimeout(() => t.style.transitionDelay = '', 1300); } }), { rootMargin: '0px 0px -8% 0px' });
+  $('.offer,.start,.tile,.feat,.g,.three>div,.pk,.sbox').forEach((e, i) => { e.classList.add('rv'); e.style.transitionDelay = (i % 4) * 70 + 'ms'; ro.observe(e); });
+}
 
 // parallax: anything with data-speed drifts against the scroll
 $('[data-speed]').forEach(e => gsap.to(e, {
@@ -21,8 +21,6 @@ $('[data-speed]').forEach(e => gsap.to(e, {
   scrollTrigger: { trigger: e.closest('section,header') || e, start: 'top bottom', end: 'bottom top', scrub: true }
 }));
 
-// how-it-works: the step in the middle of the screen lights up
-if (desk) $('.step').forEach(s => ScrollTrigger.create({ trigger: s, start: 'top 60%', end: 'bottom 40%', onToggle: st => st.isActive && $('.step').forEach(x => x.classList.toggle('on', x === s)) }));
 
 // reels: load and play only while on screen
 const io = new IntersectionObserver(es => es.forEach(({ target: v, isIntersecting: on }) => {

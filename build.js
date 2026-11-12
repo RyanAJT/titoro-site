@@ -3,7 +3,7 @@
 (() => {
   const q = new URLSearchParams(location.search);
   const home = location.pathname === '/' || location.pathname === '/index.html';
-  let seen = false; try { seen = localStorage.getItem('titoroBuilt') === '1'; } catch (e) {}
+  let seen = false; try { seen = sessionStorage.getItem('titoroBuilt') === '1'; } catch (e) {}
   window.BUILD = !q.has('nobuild') && q.has('build') || (!q.has('nobuild') && home && !seen && !matchMedia('(prefers-reduced-motion: reduce)').matches);
   if (!window.BUILD) return;
   document.documentElement.classList.add('building');
@@ -115,7 +115,7 @@
     // finish
     document.querySelectorAll('.bx-hide').forEach(e => { e.classList.remove('bx-hide'); e.classList.add('bx-in'); });
     done = total; setPill('deployed ✓');
-    try { localStorage.setItem('titoroBuilt', '1'); } catch (e) {}
+    try { sessionStorage.setItem('titoroBuilt', '1'); } catch (e) {}
     queue.length = 0; working.clear();
     ags.forEach(a => { a.tx = a.x + rnd(-800, 800); a.ty = a.y - rnd(600, 1000); a.el.style.transition = 'opacity .9s'; a.el.style.opacity = 0; });
     // un-wrapping the library changes the page height, so hold the visitor's spot instead of jumping

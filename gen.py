@@ -30,6 +30,7 @@ PACKS = [
     ('Both packs', '$25', 'Everything above, plus every future update.', [], ''),
 ]
 MAIL = '''<form class="mail" novalidate><label for="em{n}">Your email</label><div class="row"><input id="em{n}" type="email" placeholder="you@yourbusiness.com" required><button class="btn">{cta}</button></div><small>{help}</small></form>'''
+IG = f'''<div class="endc"><div><p class="mono" style="color:var(--mist)">Daily</p><h2>One useful AI trick a day.</h2><p class="lead">A new one every day on Instagram. Comment the keyword, get the playbook.</p></div><div class="igc"><a class="btn" href="https://www.instagram.com/titoro.ai" target="_blank" rel="noopener">Follow @titoro.ai on Instagram {ARROW}</a><a class="lnk" href="https://www.tiktok.com/@titoro.ai" target="_blank" rel="noopener" style="color:var(--paper)">Or on TikTok {ARROW}</a></div></div>'''
 KWS = ','.join(P)
 FIND = f'<form class="find" data-kw="{KWS}"><input placeholder="Commented a keyword? Type it here" aria-label="Find a playbook by keyword" autocapitalize="characters"><button class="btn" aria-label="Find">{ARROW}</button></form>'
 
@@ -124,7 +125,7 @@ home = f'''
     <p class="sub">Step-by-step guides from my reels. Copy the prompt, follow the steps, done.</p>
     {FIND}
     <div class="ctas"><a class="btn" href="/free/">Browse free playbooks {ARROW}</a><a class="btn alt" href="/packs/">See Skill Packs</a></div>
-    <p class="mono note">{len(POSTS)} playbooks · new ones every week</p>
+    <p class="mono note">New playbooks every week</p>
   </div>
   <div class="stage">
     {phone(P["PYRAMID"]["reel"], "p1", -.18)}{phone(P["HUMAN"]["reel"], "p2", .1)}{phone(P["PROJECT"]["reel"], "p3", -.06)}
@@ -136,34 +137,21 @@ home = f'''
   <p class="mono eyebrow"><b>01</b> What you get</p>
   <h2>Three ways to get AI <span class="serif">working</span> for you.</h2>
   <div class="offers">
-    <a class="offer" href="/free/" data-speed=".03"><span class="mono">Free</span><div class="num">{len(POSTS)}</div><h3>Free playbooks</h3><p>Step-by-step guides. Copy, paste, done.</p><div class="kws">{"".join(f"<i>{k}</i>" for k in list(P)[:6])}</div><span class="lnk">Browse free {ARROW}</span></a>
+    <a class="offer" href="/free/" data-speed=".03"><span class="mono">Free</span><div class="kws big">{"".join(f"<i>{k}</i>" for k in P)}</div><h3>Free playbooks</h3><p>Step-by-step guides. Copy, paste, done.</p><span class="lnk">Browse free {ARROW}</span></a>
     <a class="offer dark" href="/packs/" data-speed="-.04"><span class="mono">Paid</span><div class="num">$15<small>+</small></div><h3>Skill Packs</h3><p>The playbooks I use most, turned into skills Claude runs for you.</p><div class="kws"><i>Content Engine</i><i>Business Ops</i></div><span class="lnk">See packs {ARROW}</span></a>
     <a class="offer" href="/tools/" data-speed=".05"><span class="mono">Free trials</span><div class="logos">{"".join(f'<span class="lg" style="--c:{TOOLS[k][6]}">{TOOLS[k][7]}</span>' for k in TOOLS)}</div><h3>Tools I use</h3><p>The exact stack behind my reels, with free plans and trials.</p><span class="lnk">See tools {ARROW}</span></a>
   </div>
 </section>
 
-<section class="blk wrap" data-b="how">
-  <p class="mono eyebrow"><b>02</b> How it works</p>
-  <h2>Get any playbook in <span class="serif">3 steps</span>.</h2>
-  <div class="how">
-    <div class="steps">
-      <div class="step on"><span class="n">01</span><h3>Watch a reel.</h3><p>One idea, under a minute.</p></div>
-      <div class="step"><span class="n">02</span><h3>Comment the keyword.</h3><p>It's at the end of every reel, like PYRAMID or CLEAR.</p></div>
-      <div class="step"><span class="n">03</span><h3>Get the guide in your DMs.</h3><p>Or grab it right here, no comment needed.</p><a class="btn" href="/free/" style="margin-top:22px">Browse free playbooks {ARROW}</a></div>
-    </div>
-    <div class="phoneWrap">{phone(ADMIN_REEL, "how")}</div>
-  </div>
-</section>
-
 <section class="blk wrap" data-b="start">
-  <p class="mono eyebrow"><b>03</b> Start here</p>
+  <p class="mono eyebrow"><b>02</b> Start here</p>
   <h2>New here? Start with <span class="serif">these 3</span>.</h2>
   <div class="starts">{start}</div>
-  <p style="margin-top:28px"><a class="btn alt" href="/free/">See all {len(POSTS)} playbooks {ARROW}</a></p>
+  <p style="margin-top:28px"><a class="btn alt" href="/free/">See all playbooks {ARROW}</a></p>
 </section>
 
 <section class="blk wrap" data-b="tools">
-  <p class="mono eyebrow"><b>04</b> Tools I use</p>
+  <p class="mono eyebrow"><b>03</b> Tools I use</p>
   <h2>The tools behind <span class="serif">every</span> reel.</h2>
   {feat()}
   <div class="tiles">{"".join(tile(k) for k in ["claude", "elevenlabs", "manychat", "buffer", "apify"])}</div>
@@ -171,8 +159,7 @@ home = f'''
 </section>
 
 <section class="wrap" data-b="email" style="padding-bottom:120px">
-  <div class="endc"><div><p class="mono" style="color:var(--mist)">Weekly</p><h2>One useful AI trick a week.</h2><p class="lead">Short, practical, free. Unsubscribe any time.</p></div>
-  <div>{MAIL.format(n=1, cta='Send it to me', help='No spam. Just the trick.')}</div></div>
+  {IG}
 </section>
 '''
 page('index.html', 'titoro · Free AI playbooks for people who run a business', 'Free step-by-step AI playbooks from the @titoro.ai reels, ready-made Claude Skill Packs, and the tools I use.', home)
@@ -181,7 +168,7 @@ page('index.html', 'titoro · Free AI playbooks for people who run a business', 
 orbit = ''.join(f'<a class="oc" href="/free/{k.lower()}/" data-kw="{k}" data-cat="{p["cat"]}" data-ring="{i % 2}"><span class="mono">{CATS[p["cat"]]}</span><b>{k}</b><small>{p["title"]}</small></a>' for i, (k, p) in enumerate(P.items()))
 chips = '<button class="chipf on" data-cat="all">All</button>' + ''.join(f'<button class="chipf" data-cat="{c}">{n}</button>' for c, n in CATS.items())
 page('free/index.html', 'Free AI playbooks · titoro', f'{len(POSTS)} free step-by-step AI playbooks from the @titoro.ai reels. Pick one, copy the prompt, done.', f'''
-<header class="wrap phead fhead" data-b="header"><p class="mono eyebrow"><b>Free</b> {len(POSTS)} playbooks</p><h1>{len(POSTS)} free <span class="serif">playbooks</span>.</h1><p class="lead">Pick one, copy the prompt, done.</p>
+<header class="wrap phead fhead" data-b="header"><p class="mono eyebrow"><b>Free</b> New ones every week</p><h1>Free <span class="serif">playbooks</span>.</h1><p class="lead">Pick one, copy the prompt, done.</p>
 <div class="ftools"><input class="fsearch" placeholder="Type a keyword, e.g. PYRAMID" aria-label="Search playbooks"><div class="chips">{chips}</div></div></header>
 <section class="orbit" data-b="orbit"><div class="core">{LOGO}<span class="mono">titoro.ai</span></div>{orbit}</section>
 <section class="wrap" data-b="library"><p class="mono eyebrow" style="margin-top:20px"><b>All</b> The full list</p><div class="grid2">{"".join(gcard(k, i) for i, k in enumerate(P))}</div></section>
@@ -211,7 +198,7 @@ for p in POSTS:
   <p class="small">Some links are affiliate links: I may earn a commission at no cost to you. Not affiliated with Anthropic.</p></article>
   <aside class="side">{side}</aside>
 </section>
-<section class="wrap" data-b="email" style="padding-block:40px 120px"><div class="endc"><div><h2>One useful AI trick a week.</h2><p class="lead">Like this one. Free, short, no spam.</p></div><div>{MAIL.format(n=1, cta='Send it to me', help='Unsubscribe any time.')}</div></div></section>
+<section class="wrap" data-b="email" style="padding-block:40px 120px">{IG}</section>
 ''', 'free')
 
 # ---------- packs ----------
