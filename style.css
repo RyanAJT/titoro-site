@@ -301,6 +301,71 @@ footer .big{font-size:clamp(60px,11vw,160px);font-weight:800;letter-spacing:-.06
   #pill{bottom:12px;font-size:11px;gap:10px;padding:8px 8px 8px 14px;white-space:nowrap;max-width:calc(100vw - 20px)}
   .ag .tag{font-size:10px}
 }
+
+/* hero CTA */
+.btn.xl{padding:20px 30px;font-size:19px;border-radius:18px}
+.hero .find{margin-top:22px;max-width:420px;border-width:1px;box-shadow:none}
+.hero .find input{font-size:15px}
+
+/* Claude alone vs with a playbook */
+.vs{margin-top:56px;border-radius:28px;background:var(--card);border:1px solid var(--line);overflow:hidden}
+.vsh,.vsr{display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:22px 28px;align-items:center}
+.vsh{background:var(--paper2);color:var(--ink2)}
+.vsh span:last-child{color:var(--tide)}
+.vsr+.vsr{border-top:1px solid var(--line)}
+.vsr>b{font-size:18px;letter-spacing:-.01em}
+.vsr .bad{color:#8b9396;text-decoration:line-through;text-decoration-color:#c5604f80;text-decoration-thickness:1.5px}
+.vsr .good{display:grid;gap:8px;background:var(--ink);color:var(--paper);border-radius:16px;padding:16px 18px;transition:transform .4s var(--ease)}
+.vsr .good:hover{transform:translateY(-3px)}
+.vsr .good p{font-weight:600}
+.vsr .good .mono{color:var(--mist);display:flex;gap:6px;align-items:center;font-size:10px}
+.vsr .good svg{width:12px;height:12px}
+.vsend{margin-top:30px;font-size:clamp(24px,2.6vw,34px);font-weight:700;letter-spacing:-.03em;max-width:30ch}
+
+/* sound familiar */
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.pain{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:22px;min-height:190px;transition:transform .4s var(--ease),border-color .3s}
+.pain:hover{transform:translateY(-4px);border-color:var(--ink)}
+.pain p{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.pain .lnk{margin-top:auto;color:var(--tide);font-size:15px}
+
+/* engines + done for you */
+.engs{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;margin-top:44px}
+.eng{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:28px;display:flex;flex-direction:column;gap:10px;transition:transform .4s var(--ease)}
+.eng:hover{transform:translateY(-4px)}
+.eng .price{font-size:52px;font-weight:800;letter-spacing:-.05em;line-height:1}
+.eng p{color:var(--ink2)}
+.eng ul{list-style:none;display:grid;gap:8px;margin:6px 0}
+.eng li{display:flex;gap:10px;align-items:center;font-size:15px}
+.eng li::before{content:"";width:7px;height:7px;background:var(--mist);border-radius:2px;flex:none}
+.eng .lnk{margin-top:auto;padding-top:10px}
+.eng.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.eng.dark p{color:#aab4b7}.eng.dark .mono{color:var(--mist)}
+.orca{margin-top:16px;border-radius:28px;padding:44px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;color:var(--paper);background:radial-gradient(120% 140% at 100% 0%,#1d6f7f 0%,#15191b 60%)}
+.orca .lead{color:#b8c6c9}
+.orca .fa{display:grid;gap:10px;justify-items:start}
+.orca .btn{background:var(--mist);color:var(--ink)}
+.orca .small{color:#8a979b}
+
+/* faq */
+.faq{margin-top:44px;display:grid;gap:10px;max-width:860px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 24px}
+.faq summary{font-weight:700;font-size:19px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:400;font-size:24px;line-height:1;color:var(--tide);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--ink2);margin-top:10px;max-width:64ch}
+
+@media (max-width:860px){
+  .btn.xl{width:100%;justify-content:center;padding:18px}
+  .hero .find{max-width:none}
+  .vsh{display:none}
+  .vsr{grid-template-columns:1fr;gap:10px;padding:20px}
+  .pains,.engs{grid-template-columns:1fr}
+  .pain{min-height:0}
+  .pain p{font-size:19px}
+  .orca{grid-template-columns:1fr;padding:30px 24px}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
 /* ===== build mode (agent swarm) ===== */

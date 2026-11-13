@@ -335,7 +335,7 @@ dict(kw='CLEAR', cat='business', mins=2, plan='Free Claude plan', reel='a1b4e0cf
   title='Write SOPs nobody can misread (the aircraft-manual trick)',
   desc='Aircraft manuals use Simplified Technical English so nobody misreads a step. One prompt rewrites your SOPs the same way.',
   get=['One prompt that rewrites any SOP', 'One action per step, numbered', 'Instructions a new hire can follow on day one'],
-  tools=['claude'], related='TRAIN', pack='Business Ops',
+  tools=['claude'], related='TRAIN', pack='Ops Engine',
   body='''Aircraft maintenance manuals are written in **Simplified Technical English** (the standard is called ASD-STE100): short sentences, one action per step, and words that each have only one meaning. Andrej Karpathy suggested telling AI to write this way.
 
 ## The prompt
@@ -359,7 +359,7 @@ dict(kw='TRAIN', cat='business', mins=4, plan='Free plan to build, paid to share
   title='Turn your staff handbook into a training game',
   desc='Photograph your staff handbook and Claude turns it into a phone game with flashcards, order-building and a checklist quiz.',
   get=['A training game that works on a phone', 'Flashcards, order-building and a checklist quiz', 'A results screen showing what staff miss most'],
-  tools=['claude'], related='CLEAR', pack='Business Ops',
+  tools=['claude'], related='CLEAR', pack='Ops Engine',
   body='''Takes about 10 minutes.
 
 ## 1. Photograph your pages
@@ -384,7 +384,7 @@ dict(kw='PRICE', cat='business', mins=5, plan='Claude Code (paid) or no-code', r
   title='Track competitor prices automatically with Claude',
   desc='Get a weekly message when a competitor changes prices. Two routes: Claude Code with a free tool, or a no-code scraper.',
   get=["Every item and price from a competitor's public page", 'A weekly message showing only what changed', 'A setup you do once and forget'],
-  tools=['claude', 'apify'], related='ASK', pack='Business Ops',
+  tools=['claude', 'apify'], related='ASK', pack='Ops Engine',
   body='''In our demo, the shop next door cut its kopi ais from RM6.50 to RM4.90, and the owner found out 21 days later. A weekly check would have flagged it within a week. *(Demo shop, not a real one.)*
 
 ## Route A: Claude Code (techy, free tool)
@@ -416,7 +416,7 @@ dict(kw='INVOICE', cat='business', mins=5, plan='Paid Claude plan', reel=None,
   title='Let Claude chase your unpaid invoices every morning',
   desc='A scheduled Claude task checks your invoice sheet and drafts polite payment reminders in Gmail. Nothing sends without you.',
   get=['A daily list of overdue invoices', 'Reminder drafts in your tone, ready in Gmail', 'Nothing sent without your OK'],
-  tools=['claude'], related='CLEAR', pack='Business Ops',
+  tools=['claude'], related='CLEAR', pack='Ops Engine',
   body='''Every morning Claude checks your invoice sheet, finds anything overdue and drafts a polite reminder for each customer. You read the drafts and hit send. Setup takes about 10 minutes.
 
 ## What you need

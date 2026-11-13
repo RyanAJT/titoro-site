@@ -26,8 +26,8 @@ TOOLS = {
 }
 PACKS = [
     ('Content Engine', '$19', 'Write a week of content in one sitting, in your own voice.', ['Captions in your voice', 'Hook writer: 10 hooks, under 8 words', 'Reel script writer: hook, 3 steps, flip, CTA'], 'Bonus: the 10 animation prompts'),
-    ('Business Ops', '$15', 'The boring admin, handled.', ['SOP rewriter: one action per step', 'Quote and invoice drafter', 'Staff training game builder'], ''),
-    ('Both packs', '$25', 'Everything above, plus every future update.', [], ''),
+    ('Ops Engine', '$15', 'The boring admin, handled.', ['SOP rewriter: one action per step', 'Quote and invoice drafter', 'Staff training game builder'], ''),
+    ('Both Engines', '$25', 'Everything above, plus every future update.', [], ''),
 ]
 MAIL = '''<form class="mail" novalidate><label for="em{n}">Your email</label><div class="row"><input id="em{n}" type="email" placeholder="you@yourbusiness.com" required><button class="btn">{cta}</button></div><small>{help}</small></form>'''
 IG = f'''<div class="endc"><div><p class="mono" style="color:var(--mist)">Daily</p><h2>One useful AI trick a day.</h2><p class="lead">A new one every day on Instagram. Comment the keyword, get the playbook.</p></div><div class="igc"><a class="btn" href="https://www.instagram.com/titoro.ai" target="_blank" rel="noopener">Follow @titoro.ai on Instagram {ARROW}</a><a class="lnk" href="https://www.tiktok.com/@titoro.ai" target="_blank" rel="noopener" style="color:var(--paper)">Or on TikTok {ARROW}</a></div></div>'''
@@ -36,7 +36,7 @@ FIND = f'<form class="find" data-kw="{KWS}"><input placeholder="Commented a keyw
 
 
 def page(path, title, desc, body, on=''):
-    nav = ''.join(f'<a class="l{" on" if on == k else ""}" href="/{k}/">{v}</a>' for k, v in [('free', 'Free playbooks'), ('packs', 'Skill Packs'), ('tools', 'Tools')])
+    nav = ''.join(f'<a class="l{" on" if on == k else ""}" href="/{k}/">{v}</a>' for k, v in [('free', 'Free playbooks'), ('engines', 'Engines'), ('tools', 'Tools')])
     out = f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}">
@@ -44,12 +44,12 @@ def page(path, title, desc, body, on=''):
 <link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
 <script src="/build.js"></script></head>
 <body>
-<nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/free/">Get the free stuff</a></nav>
+<nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/free/">Get the free playbooks</a></nav>
 {body}
 <div class="wrap"><footer data-b="footer">
-<div><b style="color:var(--ink)">titoro</b><br>Free AI playbooks for people who run a business.<br><br><span class="small">Not affiliated with Anthropic. Claude is a trademark of Anthropic, PBC. Some links are affiliate links: I may earn a commission at no cost to you.</span>
+<div><b style="color:var(--ink)">titoro</b><br>Give Claude the boring half of your business.<br><br><span class="small">Not affiliated with Anthropic. Claude is a trademark of Anthropic, PBC. Some links are affiliate links: I may earn a commission at no cost to you.</span>
 <p class="built"><span class="mono">This site was built by 12 AI agents.</span> <button class="lnk" data-replay>Watch them build it {ARROW}</button></p></div>
-<div class="fl"><span class="mono">Site</span><a href="/free/">Free playbooks</a><a href="/packs/">Skill Packs</a><a href="/tools/">Tools</a><a href="/disclosure/">Disclosure</a></div>
+<div class="fl"><span class="mono">Site</span><a href="/free/">Free playbooks</a><a href="/engines/">Engines</a><a href="https://orcaagentics.xyz" target="_blank" rel="noopener">Done for you</a><a href="/tools/">Tools</a><a href="/disclosure/">Disclosure</a></div>
 <div class="fl"><span class="mono">Follow</span>{FOLLOW}<span>created by orca.agentics</span></div>
 <div class="big">titoro.</div>
 </footer></div>
@@ -115,17 +115,31 @@ def md(src):
 
 
 # ---------- home ----------
-start = ''.join(f'''<a class="start" href="/free/{k.lower()}/" data-speed="{s}">{phone(P[k]["reel"], "mini")}<div><span class="mono">Comment {k}</span><h3>{P[k]["title"]}</h3><p>{P[k]["desc"]}</p><span class="lnk">Read the playbook {ARROW}</span></div></a>''' for k, s in [('PYRAMID', .04), ('PROJECT', -.04), ('HUMAN', .04)])
-home = f'''
+ORCA = f"""<div class="orca"><div><span class="mono" style="color:var(--mist)">Done for you · orca.agentics</span><h2>Want it built and run for you?</h2><p class="lead">My agency, orca.agentics, sets up the whole system for your business: content, DMs and admin, running on AI. Packages from $1,200 USD.</p></div><div class="fa"><a class="btn" href="https://orcaagentics.xyz" target="_blank" rel="noopener">Talk to orca.agentics {ARROW}</a><span class="mono small">orcaagentics.xyz</span></div></div>"""
+VS = [('A caption', 'In today\'s fast-paced world, coffee is more than just a drink. Elevate your mornings!', 'Kopi Ais. RM4.90. Eyes open in one sip.', 'HUMAN'),
+      ('This week\'s promo', 'Asks for your prices again, or makes a promo up.', 'Morning Rush: buy 2 Kopi Ais, the 2nd one is RM2.90. Mon to Fri, 7am to 10am.', 'PROJECT'),
+      ('Your SOP', 'Long paragraphs. Staff skim them and miss steps.', 'One action per step, numbered. Warnings before the step they apply to.', 'CLEAR'),
+      ('Why a reel flopped', '"Post consistently and use trending audio."', 'Reads your own Insights and fixes the first 3 seconds of your worst 3 reels.', 'FLOP')]
+PAINS = [('My captions sound like AI wrote them.', 'HUMAN'), ('Claude forgets my business every chat.', 'PROJECT'), ('My reels die in 3 seconds.', 'FLOP'),
+         ('Staff keep misreading my SOPs.', 'CLEAR'), ('Customers pay me late.', 'INVOICE'), ('I find out about competitor prices weeks late.', 'PRICE')]
+FAQ = [('Are the playbooks really free?', 'Yes. No sign-up, no email. Open one and copy the prompt.'),
+       ('Do I need a paid Claude plan?', 'Most playbooks work on the free plan. Each one says exactly what it needs at the top.'),
+       ('Do I need to code?', 'No for most of them. The few that use Claude Code (like PRICE, PDF and LOGO) say so up front.'),
+       ('What are the Engines?', 'My most-used playbooks turned into skills you install in Claude once. Then you just ask, and Claude runs them your way.'),
+       ('Can someone just set it all up for me?', 'Yes. My agency, orca.agentics, builds and runs it for your business. Packages from $1,200 USD.'),
+       ('Is this official Anthropic stuff?', 'No. These are my own playbooks. Not affiliated with or endorsed by Anthropic.')]
+start = ''.join(f"""<a class="start" href="/free/{k.lower()}/" data-speed="{s}">{phone(P[k]["reel"], "mini")}<div><span class="mono">Comment {k}</span><h3>{P[k]["title"]}</h3><p>{P[k]["desc"]}</p><span class="lnk">Read the playbook {ARROW}</span></div></a>""" for k, s in [('PYRAMID', .04), ('PROJECT', -.04), ('HUMAN', .04)])
+ENG = ''.join(f"""<a class="eng{' dark' if i == 0 else ''}" href="/engines/"><span class="mono">{n}</span><div class="price">{pr}</div><p>{d}</p>""" + (f"<ul>{''.join(f'<li>{x}</li>' for x in items)}</ul>" if items else '') + f"""<span class="lnk">See the Engine {ARROW}</span></a>""" for i, (n, pr, d, items, b) in enumerate(PACKS))
+home = f"""
 <header class="wrap hero" data-b="hero">
   <svg class="bigT" data-speed="-.3" viewBox="0 0 120 120"><g fill="currentColor"><path d="M12 50A32 32 0 0 1 44 18H59V50Z"/><path d="M61 18H108V50H92A32 32 0 0 0 61 18Z"/><path d="M44 58H76V106H60A16 16 0 0 1 44 90Z"/><circle cx="94" cy="98" r="9"/></g></svg>
   <div>
-    <p class="mono eyebrow"><b>titoro.xyz</b> From the @titoro.ai reels</p>
-    <h1>Free AI playbooks for people who <span class="serif">run a business</span>.</h1>
-    <p class="sub">Step-by-step guides from my reels. Copy the prompt, follow the steps, done.</p>
+    <p class="mono eyebrow"><b>titoro.xyz</b> Free AI playbooks from @titoro.ai</p>
+    <h1>Give Claude the <span class="serif">boring half</span> of your business.</h1>
+    <p class="sub">Free step-by-step playbooks for captions, SOPs, invoices and more. Copy the prompt, follow the steps, done.</p>
+    <div class="ctas"><a class="btn xl" href="/free/">Get the free playbooks {ARROW}</a></div>
+    <p class="mono note">Free · no sign-up · works with the free Claude plan</p>
     {FIND}
-    <div class="ctas"><a class="btn" href="/free/">Browse free playbooks {ARROW}</a><a class="btn alt" href="/packs/">See Skill Packs</a></div>
-    <p class="mono note">New playbooks every week</p>
   </div>
   <div class="stage">
     {phone(P["PYRAMID"]["reel"], "p1", -.18)}{phone(P["HUMAN"]["reel"], "p2", .1)}{phone(P["PROJECT"]["reel"], "p3", -.06)}
@@ -133,36 +147,56 @@ home = f'''
   </div>
 </header>
 
-<section class="blk wrap" data-b="offers">
-  <p class="mono eyebrow"><b>01</b> What you get</p>
-  <h2>Three ways to get AI <span class="serif">working</span> for you.</h2>
-  <div class="offers">
-    <a class="offer" href="/free/" data-speed=".03"><span class="mono">Free</span><div class="kws big">{"".join(f"<i>{k}</i>" for k in P)}</div><h3>Free playbooks</h3><p>Step-by-step guides. Copy, paste, done.</p><span class="lnk">Browse free {ARROW}</span></a>
-    <a class="offer dark" href="/packs/" data-speed="-.04"><span class="mono">Paid</span><div class="num">$15<small>+</small></div><h3>Skill Packs</h3><p>The playbooks I use most, turned into skills Claude runs for you.</p><div class="kws"><i>Content Engine</i><i>Business Ops</i></div><span class="lnk">See packs {ARROW}</span></a>
-    <a class="offer" href="/tools/" data-speed=".05"><span class="mono">Free trials</span><div class="logos">{"".join(f'<span class="lg" style="--c:{TOOLS[k][6]}">{TOOLS[k][7]}</span>' for k in TOOLS)}</div><h3>Tools I use</h3><p>The exact stack behind my reels, with free plans and trials.</p><span class="lnk">See tools {ARROW}</span></a>
+<section class="blk wrap" data-b="vs">
+  <p class="mono eyebrow"><b>01</b> Same Claude, different answer</p>
+  <h2>Claude alone vs. Claude with a <span class="serif">playbook</span>.</h2>
+  <div class="vs">
+    <div class="vsh"><span></span><span class="mono">Claude alone</span><span class="mono">With a playbook</span></div>
+    {''.join(f'<div class="vsr"><b>{t}</b><p class="bad">{a}</p><a class="good" href="/free/{k.lower()}/"><p>{g}</p><span class="mono">{k} playbook {ARROW}</span></a></div>' for t, a, g, k in VS)}
   </div>
+  <p class="vsend">Claude does the thinking. <span class="serif">The playbook gives it your business.</span></p>
+</section>
+
+<section class="blk wrap" data-b="pains">
+  <p class="mono eyebrow"><b>02</b> Sound familiar?</p>
+  <h2>Pick your problem. <span class="serif">Grab the fix.</span></h2>
+  <div class="pains">{''.join(f'<a class="pain" href="/free/{k.lower()}/"><p>"{q}"</p><span class="lnk">Fix it with {k} {ARROW}</span></a>' for q, k in PAINS)}</div>
 </section>
 
 <section class="blk wrap" data-b="start">
-  <p class="mono eyebrow"><b>02</b> Start here</p>
+  <p class="mono eyebrow"><b>03</b> Start here</p>
   <h2>New here? Start with <span class="serif">these 3</span>.</h2>
   <div class="starts">{start}</div>
   <p style="margin-top:28px"><a class="btn alt" href="/free/">See all playbooks {ARROW}</a></p>
 </section>
 
+<section class="blk wrap" data-b="engines">
+  <p class="mono eyebrow"><b>04</b> Engines</p>
+  <h2>Want it running <span class="serif">for you</span>?</h2>
+  <p class="lead">The playbooks teach you how. The Engines are those same playbooks installed in Claude as skills, so you just ask and it runs them your way.</p>
+  <div class="engs">{ENG}</div>
+  {ORCA}
+</section>
+
 <section class="blk wrap" data-b="tools">
-  <p class="mono eyebrow"><b>03</b> Tools I use</p>
+  <p class="mono eyebrow"><b>05</b> Tools I use</p>
   <h2>The tools behind <span class="serif">every</span> reel.</h2>
   {feat()}
   <div class="tiles">{"".join(tile(k) for k in ["claude", "elevenlabs", "manychat", "buffer", "apify"])}</div>
   <p class="small" style="margin-top:18px">Some links are affiliate links. I only list what I use.</p>
 </section>
 
+<section class="blk wrap" data-b="faq">
+  <p class="mono eyebrow"><b>06</b> FAQ</p>
+  <h2>Questions you're <span class="serif">probably</span> asking.</h2>
+  <div class="faq">{''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ)}</div>
+</section>
+
 <section class="wrap" data-b="email" style="padding-bottom:120px">
   {IG}
 </section>
-'''
-page('index.html', 'titoro · Free AI playbooks for people who run a business', 'Free step-by-step AI playbooks from the @titoro.ai reels, ready-made Claude Skill Packs, and the tools I use.', home)
+"""
+page('index.html', 'titoro · Give Claude the boring half of your business', 'Free step-by-step AI playbooks for captions, SOPs, invoices and more. Copy the prompt, follow the steps, done.', home)
 
 # ---------- free: orbit dashboard ----------
 orbit = ''.join(f'<a class="oc" href="/free/{k.lower()}/" data-kw="{k}" data-cat="{p["cat"]}" data-ring="{i % 2}"><span class="mono">{CATS[p["cat"]]}</span><b>{k}</b><small>{p["title"]}</small></a>' for i, (k, p) in enumerate(P.items()))
@@ -172,7 +206,7 @@ page('free/index.html', 'Free AI playbooks · titoro', f'{len(POSTS)} free step-
 <div class="ftools"><input class="fsearch" placeholder="Type a keyword, e.g. PYRAMID" aria-label="Search playbooks"><div class="chips">{chips}</div></div></header>
 <section class="orbit" data-b="orbit"><div class="core">{LOGO}<span class="mono">titoro.ai</span></div>{orbit}</section>
 <section class="wrap" data-b="library"><p class="mono eyebrow" style="margin-top:20px"><b>All</b> The full list</p><div class="grid2">{"".join(gcard(k, i) for i, k in enumerate(P))}</div></section>
-<section class="wrap" data-b="nudge" style="padding-bottom:120px"><div class="endc"><div><h2>Want them done for you?</h2><p class="lead">Skill Packs turn my most-used playbooks into skills Claude runs for you.</p></div><div><a class="btn" href="/packs/">See Skill Packs {ARROW}</a></div></div></section>
+<section class="wrap" data-b="nudge" style="padding-bottom:120px"><div class="endc"><div><h2>Want them running for you?</h2><p class="lead">The Engines install my most-used playbooks in Claude as skills.</p></div><div><a class="btn" href="/engines/">See the Engines {ARROW}</a></div></div></section>
 ''', 'free')
 
 # ---------- playbook posts ----------
@@ -183,7 +217,7 @@ for p in POSTS:
     rel = P[p['related']]
     side = f'''<div class="sbox"><span class="mono">Tools in this playbook</span>{"".join(tile(t, True) for t in p["tools"])}</div>
 <a class="sbox rel" href="/free/{rel["kw"].lower()}/"><span class="mono">Next playbook</span><b>{rel["kw"]}</b><p>{rel["title"]}</p></a>''' + (f'''
-<a class="sbox packbox" href="/packs/"><span class="mono">Done for you</span><b>{pack[0]} Pack</b><p>{pack[2]} {pack[1]}.</p><span class="lnk">See the pack {ARROW}</span></a>''' if pack else '')
+<a class="sbox packbox" href="/engines/"><span class="mono">Let Claude run it</span><b>{pack[0]}</b><p>{pack[2]} {pack[1]}.</p><span class="lnk">See the Engine {ARROW}</span></a>''' if pack else '')
     page(f'free/{k.lower()}/index.html', f'{p["title"]} · titoro', p['desc'], f'''
 <header class="wrap posthd" data-b="header">
   <div><p class="mono crumbs"><a href="/free/">Free playbooks</a> / {k}</p>
@@ -203,20 +237,22 @@ for p in POSTS:
 
 # ---------- packs ----------
 pcs = ''.join(f'''<div class="pk{" main" if i == 0 else ""}"><span class="mono soon">Coming soon</span><h3>{n}</h3><p>{d}</p>''' + (f'<ul>{"".join(f"<li>{x}</li>" for x in items)}</ul>' if items else '') + (f'<p class="bonus">{b}</p>' if b else '') + f'<div class="price">{pr}</div></div>' for i, (n, pr, d, items, b) in enumerate(PACKS))
-page('packs/index.html', 'Skill Packs · titoro', 'Ready-made Claude skills, tested, with a short setup video.', f'''
-<header class="wrap phead" data-b="header"><p class="mono eyebrow"><b>Packs</b> Works with Claude</p><h1>Guides teach you how. Packs <span class="serif">do it for you</span>.</h1><p class="lead">My most-used playbooks, turned into skills Claude runs for you. Every skill is one I use myself, tested before it goes on sale.</p></header>
+page('engines/index.html', 'Engines · titoro', 'My most-used AI playbooks, installed in Claude as skills. Content Engine and Ops Engine.', f'''
+<header class="wrap phead" data-b="header"><p class="mono eyebrow"><b>Engines</b> Works with Claude</p><h1>Playbooks teach you how. Engines <span class="serif">run it for you</span>.</h1><p class="lead">My most-used playbooks, installed in Claude as skills, so you just ask and it runs them your way. Every skill is one I use myself, tested before it goes on sale.</p></header>
 <section class="wrap" data-b="packs"><div class="packs" style="margin-top:20px">{pcs}</div></section>
 <section class="wrap blk" data-b="howp"><h2>How it works</h2><div class="three">
 <div><span class="n mono">01</span><h3>Download</h3><p>Get the skill files and a 2-minute setup video.</p></div>
 <div><span class="n mono">02</span><h3>Upload once</h3><p>In Claude, go to Customize → Skills and add the files.</p></div>
 <div><span class="n mono">03</span><h3>Just ask</h3><p>"Write this week's captions." Claude uses the skill automatically.</p></div></div></section>
-<section class="wrap" data-b="waitlist"><h2>Get first access.</h2><p class="lead">Packs launch one at a time. Join the list and you hear first.</p>{MAIL.format(n=2, cta='Join the waitlist', help='One email when a pack launches. Nothing else.')}</section>
+<section class="wrap" data-b="waitlist"><h2>Get first access.</h2><p class="lead">Engines launch one at a time. Join the list and you hear first.</p>{MAIL.format(n=2, cta='Join the waitlist', help='One email when an Engine launches. Nothing else.')}</section>
+<section class="wrap" data-b="orca" style="padding-top:80px">{ORCA}</section>
 <section class="wrap" data-b="faq" style="padding-block:80px 120px"><div class="prose" style="margin:0">
 <p><b>Do I need to code?</b><br>No. You upload the files in Claude once.</p>
-<p><b>Which Claude plan?</b><br>Each pack says exactly what it needs before you buy.</p>
+<p><b>Which Claude plan?</b><br>Each Engine says exactly what it needs before you buy.</p>
 <p><b>Is this official?</b><br>No. These are my own skills, not affiliated with or endorsed by Anthropic.</p>
-<p><b>Refunds?</b><br>If a pack doesn't work for you within 14 days, email me and I'll refund you.</p></div></section>
-''', 'packs')
+<p><b>Refunds?</b><br>If an Engine doesn't work for you within 14 days, email me and I'll refund you.</p></div></section>
+''', 'engines')
+open('packs/index.html', 'w').write('<!DOCTYPE html><meta http-equiv="refresh" content="0;url=/engines/"><link rel="canonical" href="/engines/">')
 
 # ---------- tools ----------
 page('tools/index.html', 'Tools I use · titoro', 'The exact AI tools behind the @titoro.ai reels, with free plans and trials.', f'''
@@ -230,7 +266,7 @@ page('disclosure/index.html', 'Disclosure · titoro', 'Affiliate disclosure, ref
 <header class="wrap phead" data-b="header"><h1>The small <span class="serif">print</span>.</h1></header>
 <section class="wrap" data-b="text"><div class="prose">
 <p><b>Affiliate links.</b> Some links on this site and in my posts and DMs earn me a commission at no cost to you. They are marked "affiliate".</p>
-<p><b>Not affiliated with Anthropic.</b> Claude is a trademark of Anthropic, PBC. Skill Packs are my own work.</p>
+<p><b>Not affiliated with Anthropic.</b> Claude is a trademark of Anthropic, PBC. The Engines are my own work.</p>
 <p><b>Refunds.</b> If a pack doesn't work for you within 14 days, email me and I'll refund you.</p>
 <p><b>Privacy.</b> Your email is only used for what you signed up for. Unsubscribe any time.</p>
 <p><b>Results.</b> Examples in my videos show what worked for me, not a promise.</p></div></section>
@@ -267,6 +303,6 @@ os.makedirs('freeskills', exist_ok=True)
 open('freeskills/index.html', 'w').write('<!DOCTYPE html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/free/"><a href="/free/">Free playbooks</a>')
 open('favicon.svg', 'w').write(LOGO.replace('currentColor', '#15191b').replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" '))
 open('404.html', 'w').write(open('index.html').read())
-urls = ['', 'free/', 'packs/', 'tools/', 'fable/', 'disclosure/'] + [f'free/{k.lower()}/' for k in P]
+urls = ['', 'free/', 'engines/', 'tools/', 'fable/', 'disclosure/'] + [f'free/{k.lower()}/' for k in P]
 open('sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join(f'<url><loc>https://titoro.xyz/{u}</loc></url>' for u in urls) + '</urlset>')
 open('robots.txt', 'w').write('User-agent: *\nAllow: /\nSitemap: https://titoro.xyz/sitemap.xml\n')

@@ -12,7 +12,7 @@ const $ = (s, r = document) => [...r.querySelectorAll(s)];
 // staggered reveals (the swarm does its own reveal in build mode)
 if (!window.BUILD && !reduce) {
   const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const t = e.target; t.classList.add('in'); ro.unobserve(t); setTimeout(() => t.style.transitionDelay = '', 1300); } }), { rootMargin: '0px 0px -8% 0px' });
-  $('.offer,.start,.tile,.feat,.g,.three>div,.pk,.sbox').forEach((e, i) => { e.classList.add('rv'); e.style.transitionDelay = (i % 4) * 70 + 'ms'; ro.observe(e); });
+  $('.start,.tile,.feat,.g,.three>div,.pk,.sbox,.pain,.eng,.vsr,.orca,.faq details').forEach((e, i) => { e.classList.add('rv'); e.style.transitionDelay = (i % 4) * 70 + 'ms'; ro.observe(e); });
 }
 
 // parallax: anything with data-speed drifts against the scroll
