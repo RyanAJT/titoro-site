@@ -228,7 +228,7 @@ for p in POSTS:
 </header>
 <section class="wrap postwrap" data-b="post">
   <article class="pbody">{md(p["body"])}
-  <p class="docl"><a class="btn alt" href="https://docs.google.com/document/d/{DOCS[k]}/view" target="_blank" rel="noopener">Open the Google Doc version {ARROW}</a></p>
+  {f'<p class="docl"><a class="btn alt" href="https://docs.google.com/document/d/{DOCS[k]}/view" target="_blank" rel="noopener">Open the Google Doc version {ARROW}</a></p>' if k in DOCS else ''}
   <p class="small">Some links are affiliate links: I may earn a commission at no cost to you. Not affiliated with Anthropic.</p></article>
   <aside class="side">{side}</aside>
 </section>

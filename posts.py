@@ -2,6 +2,130 @@
 # Facts come from the matching Google Doc guide. Tools only appear where they do a real step.
 
 POSTS = [
+dict(kw='BUILD', cat='content', mins=6, plan='Claude Pro (Fable 5.2 until 16 Nov)', reel=None,
+  title='3 things to build with Claude Fable 5.2 before Monday',
+  desc='A brand mini-game, a rebuilt website and a month of content. Nine copy-paste Claude prompts, three for each build.',
+  get=['A playable mini-game that collects emails', 'A rebuilt homepage you can publish', '30 days of content and a week of scripts'],
+  tools=['claude'], related='PROMPTS', pack='Content Engine',
+  body='''Claude Fable 5.2 is on the Pro plan until Monday 16 November. Don't waste it on random chats. Here are three things worth building this weekend, with three copy-paste prompts each. Run each build in its own chat so Claude remembers your details.
+
+## Build 1: A mini-game for your brand
+A game people actually play keeps them on your page way longer than any post.
+```
+My business: [what you sell, who it's for, your vibe].
+Suggest 5 simple browser mini-games that fit my brand and that someone could finish in under 60 seconds. For each: the name, how it plays in one line, how it shows off my product, and why people would share it. Then pick the best one and explain why.
+```
+```
+Build the game you picked as one single HTML file I can open in a browser. Rules:
+- Works on phone and desktop (tap and click)
+- Uses my brand colours: [hex codes] and my logo text: [name]
+- Start screen, game, end screen with the score
+- No external libraries or images, draw everything with code
+Give me the full file in one code block.
+```
+```
+Update the game:
+- On the end screen, show the score and a box: "Enter your email to get [your offer, e.g. 10% off]"
+- Save the email and score to the browser's local storage and show a thank-you message
+- Add a "Play again" and a "Share my score" button that copies a text like "I scored [X] on [game name], beat me at [your link]"
+Give me the full updated file.
+```
+
+## Build 2: Rebuild your website
+Most small business sites are a logo and a phone number. Audit, rewrite, build.
+```
+Here's the text from my current homepage: [paste it, or paste the URL if Claude can browse].
+My customer: [who]. What I want visitors to do: [book / buy / message].
+Act like a conversion copywriter. List the 10 biggest problems losing me customers, worst first. For each: what's wrong, why it costs me, and the fix in one line.
+```
+```
+Rewrite my homepage using your fixes. Sections:
+1. Hero: headline under 10 words, a one-line subhead, the button text
+2. The problem my customer has
+3. How I solve it: 3 benefits
+4. Proof: [paste reviews or results]
+5. FAQ: the 5 objections people have before buying
+6. Final call to action
+Keep it in plain words a 12-year-old would understand.
+```
+```
+Turn that copy into one single HTML page I can publish. Modern, clean, mobile-first, brand colours [hex codes], font [name or "clean sans-serif"]. Add smooth scroll, a sticky button, and leave image placeholders labelled with what photo to put there. Give me the full file in one code block.
+```
+
+## Build 3: A month of content in your voice
+Paste five posts, get thirty days planned and a week of scripts ready to film.
+```
+Here are 5 of my best posts or captions: [paste them].
+Study how I write: tone, sentence length, words I use, words I'd never use, how I open and how I end. Write it up as a "brand voice guide" with 10 rules and 3 example sentences. Use this guide for everything else we write in this chat.
+```
+```
+Using my voice guide, plan 30 days of short-form video for [business]. Mix: 40% tips, 30% behind the scenes, 20% customer stories, 10% offers.
+Make it a table: day | format (talking head / B-roll / carousel) | hook (first line) | the one point | CTA.
+```
+```
+Write full scripts for days 1 to 7. Each one:
+- A hook in the first 2 seconds
+- 30 to 45 seconds when spoken
+- On-screen text suggestions in [brackets]
+- A caption with 3 hashtags
+All in my brand voice. Make them ready to film.
+```
+
+## Tips
+- Fill in every [bracket]. The more specific you are, the better the result.
+- After Monday these prompts still work on other Claude models, just with simpler results.'''),
+
+dict(kw='PROMPTS', cat='content', mins=5, plan='Free Claude plan', reel=None,
+  title='5 Claude prompts that replace a marketing agency',
+  desc='Hooks, competitor research, a 30-day plan, welcome emails and a landing page. Five copy-paste prompts for small businesses.',
+  get=['10 hooks in your brand voice', "Your competitors' weak spots", 'A 30-day plan, emails and a landing page'],
+  tools=['claude'], related='PYRAMID', pack='Content Engine',
+  body='''Agencies charge thousands a month for the work these five prompts do in one chat. Fill in the [brackets] and run them in one chat so Claude remembers your brand.
+
+## 1. Hooks that sound like you, not an ad
+```
+You're my social media manager.
+My brand: [name], [what you sell], [who it's for], [your tone, e.g. small-batch, slightly cheeky].
+Write 10 Instagram hooks that sound like us, not like an ad.
+Each under 12 words. No hashtags, no emojis.
+```
+
+## 2. Spy on your competitors
+```
+Here are reviews of 3 competitors: [paste Google / Shopee / Amazon reviews].
+1. Group the complaints by theme and count how often each comes up.
+2. For each of the top 5, tell me how my business could win on it.
+Put it in a table: complaint | count | how I win.
+My business: [what you sell].
+```
+
+## 3. A month of content in 30 seconds
+```
+Plan 30 days of Instagram posts for [business].
+Mix: 40% tips, 30% behind-the-scenes, 20% social proof, 10% offers.
+One line per day, grouped by week, with the format (reel / carousel / story).
+```
+
+## 4. Emails that actually sell
+```
+Write a 3-email welcome sequence for new subscribers of [business].
+Goal: first order within 7 days.
+Email 1 (day 0): welcome + small hook. Email 2 (day 3): our story / why we're different. Email 3 (day 6): offer with a deadline.
+Give subject lines, preview text and the full body. Keep each under 120 words.
+```
+
+## 5. A landing page that converts
+```
+Write the hero section for my product page.
+Product: [what it is]. Customer: [who]. Biggest objection: [e.g. price, freshness, trust].
+Give me: a headline under 10 words, a one-line subhead, 3 benefit bullets that answer the objection, and the button text.
+Then give 2 alternative headlines to A/B test.
+```
+
+## Tips
+- The more specific your [brackets], the less generic the output.
+- Works on the free Claude plan.'''),
+
 dict(kw='PYRAMID', cat='content', mins=3, plan='Free Claude plan', reel='e69212b2-e741-4092-b689-9d2bd4772c1e',
   title='The 4-line prompt that beats a 300-word prompt',
   desc='Stop writing long prompts. The 4-line prompt pyramid gets better results from Claude. Free copy-paste template.',
