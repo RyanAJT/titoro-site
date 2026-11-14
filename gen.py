@@ -25,7 +25,7 @@ TOOLS = {
     'apify': ('Apify', 'Research', 'Ready-made scrapers for comments, prices and more.', 'Free plan', '/go/apify/', False, '#1d6f7f', '<b>A</b>'),
 }
 PACKS = [
-    ('Content Engine', '$19', 'Write a week of content in one sitting, in your own voice.', ['Captions in your voice', 'Hook writer: 10 hooks, under 8 words', 'Reel script writer: hook, 3 steps, flip, CTA'], 'Bonus: the 10 animation prompts'),
+    ('Content Engine', '$19', 'Claude makes your reels, start to finish.', ['Weekly scout: winning reels in your niche', 'Hooks and scripts in your voice', 'Motion-graphic reel styles', 'Voiceover, captions and a comment-to-DM guide'], 'Bonus: the 10 animation prompts'),
     ('Ops Engine', '$15', 'The boring admin, handled.', ['SOP rewriter: one action per step', 'Quote and invoice drafter', 'Staff training game builder'], ''),
     ('Both Engines', '$25', 'Everything above, plus every future update.', [], ''),
 ]
@@ -36,7 +36,7 @@ FIND = f'<form class="find" data-kw="{KWS}"><input placeholder="Commented a keyw
 
 
 def page(path, title, desc, body, on=''):
-    nav = ''.join(f'<a class="l{" on" if on == k else ""}" href="{u}"{" target=_blank rel=noopener" if u[0] == "h" else ""}>{v}</a>' for k, u, v in [('how', '/#how', 'How it works'), ('free', '/free/', 'Playbooks'), ('engines', '/#pricing', 'Pricing'), ('dfy', 'https://orcaagentics.xyz', 'Done-For-You'), ('faq', '/#faq', 'FAQ')])
+    nav = ''.join(f'<a class="l{" on" if on == k else ""}" href="{u}"{" target=_blank rel=noopener" if u[0] == "h" else ""}>{v}</a>' for k, u, v in [('how', '/#how', 'How it works'), ('free', '/free/', 'Free playbooks'), ('styles', '/#styles', 'Styles'), ('engines', '/#pricing', 'Pricing'), ('dfy', 'https://orcaagentics.xyz', 'Done-For-You'), ('faq', '/#faq', 'FAQ')])
     out = f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}">
@@ -44,8 +44,8 @@ def page(path, title, desc, body, on=''):
 <meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
 <script src="/build.js"></script></head>
 <body>
-<a class="ann" href="https://www.instagram.com/titoro.ai" target="_blank" rel="noopener">New AI trick every day on Instagram · <b>@titoro.ai</b> →</a>
-<nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/free/">Get the free playbooks</a></nav>
+<a class="ann" href="/engines/#waitlist">Content Engine waitlist is open · <b>get first access</b> →</a>
+<nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/engines/#waitlist">Join the waitlist</a></nav>
 {body}
 <div class="wrap"><footer data-b="footer">
 <div><b style="color:var(--ink)">titoro</b><br>Give Claude the boring half of your business.<br><br><span class="small">Not affiliated with Anthropic. Claude is a trademark of Anthropic, PBC. Some links are affiliate links: I may earn a commission at no cost to you.</span>
@@ -119,101 +119,132 @@ def md(src):
 def scr(title, body): return f'<div class="scr"><div class="scrbar"><i></i><i></i><i></i><span class="mono">{title}</span></div><div class="scrb">{body}</div></div>'
 def row(a, b, cls=''): return f'<div class="srow {cls}"><span>{a}</span><span>{b}</span></div>'
 STAGES = [
-  ('Teach Claude your business', 'Upload your prices, brand guide and best posts once. Every chat starts already knowing them.', 'PROJECT',
-   scr('Project · Your shop', row('price-list.md', '✓ added') + row('brand-guide.md', '✓ added') + row('best-posts.md', '✓ added') + row('Instructions', 'Saved ✓', 'hl') + '<p class="snote">Every new chat in this project uses these files.</p>')),
-  ('Write the week\'s posts', 'Three captions in your voice, price in the first line, no AI words.', 'HUMAN',
-   scr('Claude · New chat', '<div class="bub me">Write this week\'s promo post.</div><div class="bub ai"><b>Funny</b> Lunch set, $8.90. Faster than your 1pm meeting, and nicer to you.</div><div class="bub ai"><b>Straight</b> Lunch set, $8.90. Rice, two sides and an iced tea. Ready in 5 minutes.</div><div class="bub ai"><b>Short</b> Lunch set. $8.90. Back at your desk by 12:15.</div>')),
-  ('Turn SOPs into steps', 'Messy paragraphs become one action per step, so new staff stop guessing.', 'CLEAR',
-   scr('Opening checklist · rewritten', '<p class="old">When you come in, unlock up and get the machines going, check the milk is ok and be careful with the steamer because it gets hot…</p><ol class="steps2"><li>Unlock the front door.</li><li>Switch on the grinder.</li><li>Check the date on the milk.</li><li class="w">⚠ The steam wand gets hot.</li><li>Turn on the steamer.</li></ol>')),
-  ('Chase unpaid invoices', 'Every morning Claude drafts polite reminders in Gmail. Nothing sends until you hit send.', 'INVOICE',
-   scr('Gmail · Drafts', row('Reminder: Invoice #1042', '3 days late · friendly') + row('Reminder: Invoice #1038', '9 days late · clear') + row('Reminder: Invoice #1031', '16 days late · firm') + row('Outstanding', '$4,350 · 3 drafts ready', 'hl'))),
-  ('Watch competitor prices', 'A weekly check tells you which prices changed next door, with the % change.', 'PRICE',
-   scr('Monday 9:00 · price check', '<div class="srow th"><span>Item</span><span>Last week → now</span></div>' + row('Lunch set', '$9.50 → $7.90 <b class="dn">−16.8%</b>', 'hl') + row('Iced tea', '$2.00 → $2.00 <b>—</b>') + row('Dessert', '$4.50 → $4.90 <b class="up">+8.9%</b>'))),
-  ('Learn from your own numbers', 'Screenshot your Insights. Claude tells you why your worst reels flopped and what to change.', 'FLOP',
-   scr('Claude · reel review', '<div class="bub me">Here are my 3 best and 3 worst reels.</div><div class="bub ai"><b>Why the worst 3 flopped</b> Your logo shows before the point, and the result only appears at the end.</div><div class="bub ai"><b>Fix</b> Show the result in the first 3 seconds. Here are 5 new hooks, each under 8 words…</div>')),
+  ('Scout', 'Find what\'s working', 'Every week, Claude pulls the reels that beat their account\'s usual views by the most.', scr('Scout · this week\'s winners', '<div class="srow th"><span>Reel</span><span>vs. usual views</span></div>' + row('Track competitor prices', '<b class="up">90×</b>', 'hl') + row('Stop writing long prompts', '<b class="up">76×</b>') + row('Your logo, animated', '<b class="up">48.8×</b>') + '<p class="snote">Outliers from other accounts in the niche.</p>')),
+  ('Script', 'Hooks and scripts in your voice', 'Three hook options, then the full script: hook, 3 steps, flip, call to action.', scr('Claude · script', '<div class="bub me">Write the PYRAMID reel.</div><div class="bub ai"><b>Hook A ★</b> Stop writing long prompts. Four lines get you a better answer.</div><div class="bub ai"><b>Hook B</b> Same AI, same task. The four-line prompt wins.</div><div class="bub ai"><b>Script</b> Goal → research → interview → one example. Comment PYRAMID.</div>')),
+  ('Style', 'Pick a style', 'Data story, cartoon, pixel, paper-craft or clean UI. Same script, a different look.', scr('Content Engine · style', '<div class="chips2"><i class="on">Data story</i><i>Flat cartoon</i><i>Pixel on red</i><i>Paper-craft</i><i>Clean UI</i><i>Editorial</i></div>' + row('Palette', 'Cream grid paper') + row('Captions', 'Word by word, key word highlighted') + row('Ending', 'Comment KEYWORD card', 'hl'))),
+  ('Produce', 'Claude makes the reel', 'Voiceover, motion graphics, music and sound effects, mixed and rendered.', scr('Production', row('Voiceover', '✓ done') + row('Motion graphics', '<span class="bar"><i style="width:72%"></i></span>72%', 'hl') + row('Music + pop SFX', 'queued') + row('Mix', '-14 LUFS · 1080×1920'))),
+  ('Post', 'Schedule everywhere', 'Captions for Instagram, TikTok and YouTube, each starting with the keyword.', scr('Schedule', row('Instagram', 'Mon 12:47pm') + row('TikTok', 'Tue 12:47pm') + row('YouTube Shorts', 'Tue 7:31pm') + row('Caption line 1', 'Comment the word "PYRAMID"…', 'hl'))),
+  ('DM', 'Turn comments into followers', 'Everyone who comments gets the guide in their DMs, after a follow.', scr('Instagram · DMs', '<div class="bub me">PYRAMID</div><div class="bub ai">Hey! Thanks for your comment 😊 Drop a follow and I\'ll send it over.</div><div class="bub ai"><b>Guide</b> Here\'s your guide 👇 [Open the guide]</div>')),
 ]
 SIMPLE = '<div class="stages"><ol class="snav">' + ''.join(f'<li data-i="{i}"><span class="mono">0{i+1}</span>{t}</li>' for i, (t, *_ ) in enumerate(STAGES)) + '</ol><div class="slist">' + ''.join(
-  f'<div class="stg" data-i="{i}"><div class="stxt"><span class="mono">Stage {i+1} of {len(STAGES)}</span><h3>{t}</h3><p>{d}</p><a class="lnk" href="/free/{k.lower()}/">Playbook: {k} {ARROW}</a>'
-  + (f'<span class="mono nxt">Next: {STAGES[i+1][0]}</span>' if i + 1 < len(STAGES) else '') + f'</div>{m}</div>' for i, (t, d, k, m) in enumerate(STAGES)) + '</div></div>'
-
+  f'<div class="stg" data-i="{i}"><div class="stxt"><span class="mono">Stage {i+1} of {len(STAGES)} · {t}</span><h3>{h}</h3><p>{d}</p>'
+  + (f'<span class="mono nxt">Next: {STAGES[i+1][0]}</span>' if i + 1 < len(STAGES) else '') + f'</div>{m}</div>' for i, (t, h, d, m) in enumerate(STAGES)) + '</div></div>'
 ORCA = f"""<div class="orca"><div><span class="mono" style="color:var(--mist)">Done for you · orca.agentics</span><h2>Want it built and run for you?</h2><p class="lead">My agency, orca.agentics, sets up the whole system for your business: content, DMs and admin, running on AI. Packages from $1,200 USD.</p></div><div class="fa"><a class="btn" href="https://orcaagentics.xyz" target="_blank" rel="noopener">Talk to orca.agentics {ARROW}</a><span class="mono small">orcaagentics.xyz</span></div></div>"""
-VS = [('Captions', 'Generic, full of "elevate" and "unlock"', 'Sounds like you, price in the first line', 'HUMAN'),
-      ('Your business', 'Forgets it every new chat', 'Knows your prices, tone and best posts', 'PROJECT'),
-      ('Prompts', '300-word prompts, average answers', '4 lines, better answers', 'PYRAMID'),
-      ('SOPs', 'Long paragraphs staff skim', 'One action per step, numbered', 'CLEAR'),
-      ('Invoices', 'You chase every one by hand', 'Polite reminder drafts every morning', 'INVOICE'),
-      ('Competitors', 'You find out about price cuts weeks late', 'A weekly alert with the % change', 'PRICE'),
-      ('Reels', '"Post consistently and use trending audio"', 'Fixes your worst 3 using your own Insights', 'FLOP'),
-      ('Staff training', 'A handbook nobody reads', 'A phone game they actually finish', 'TRAIN')]
-PAINS = ['You answer the same customer questions every single day.', 'Your captions take an hour and still sound like AI.', 'New staff keep getting the same steps wrong.',
-         'You chase unpaid invoices instead of doing real work.', 'You hear about a competitor\'s price cut weeks later.', 'Your marketing happens at 11pm, after everything else.']
-FAQ = [('Who is this for?', 'Business owners and small teams who want Claude doing the repetitive work: captions, SOPs, invoices, research. No tech background needed.'),
-       ('Can\'t I just use Claude on its own?', 'You can. The playbooks are the difference between "write me a caption" and a caption in your voice with your real prices. They give Claude the context it needs.'),
-       ('Do I need a paid Claude plan?', 'Most playbooks work on the free plan. Each one says exactly what it needs at the top. A few use Claude Code, and they say so up front.'),
-       ('What are the Engines?', 'My most-used playbooks installed in Claude as skills. You just ask, and Claude runs them your way.'),
-       ('Can someone set it all up for me?', 'Yes. My agency, orca.agentics, builds and runs the whole system for your business. Packages from $1,200 USD.'),
-       ('Is this official Anthropic stuff?', 'No. These are my own playbooks. Not affiliated with or endorsed by Anthropic.')]
-REELS = [k for k in P if P[k]['reel']]
-CAROUSEL = ''.join(f"""<a class="rc" href="/free/{k.lower()}/">{phone(P[k]["reel"])}<span class="mono">Comment {k}</span><b>{P[k]["title"]}</b><span class="lnk">Get the playbook {ARROW}</span></a>""" for k in REELS)
-TIERS = [('Free playbooks', '$0', 'Do it yourself', ['Every playbook from my reels', 'Copy-paste prompts and steps', 'New ones every week', 'Works with the free Claude plan'], 'Get the free playbooks', '/free/', ''),
-         ('Engines', 'from $15', 'Let Claude run it', ['Content Engine $19: captions, hooks, reel scripts', 'Ops Engine $15: SOPs, quotes and invoices, staff training', 'Both Engines $25', 'Installed in Claude once, then just ask'], 'See the Engines', '/engines/', 'Coming soon · join the waitlist'),
-         ('Done-For-You', 'from $1,200', 'For established businesses', ['The whole system built for your business', 'Content, DMs and admin running on AI', 'Set up and run by orca.agentics', 'Priced in USD'], 'Apply at orca.agentics', 'https://orcaagentics.xyz', 'orcaagentics.xyz')]
+VS = [('Find winners', 'You guess what to post', 'Scouts the reels beating their usual views each week'),
+      ('Hooks', '"Here are 5 tips for…"', '10 hooks under 8 words, built on proven patterns'),
+      ('Script', 'Long and AI-sounding', 'Hook, 3 steps, flip, CTA, in your voice'),
+      ('Visuals', 'Text on a stock clip', 'Motion-graphic styles: data story, cartoon, pixel, paper-craft'),
+      ('Voice + sound', 'Silent, or a robot voice', 'Voiceover, music bed and pop SFX, mixed to -14 LUFS'),
+      ('Captions', 'One line and 30 hashtags', 'IG, TikTok and YouTube captions that open with the keyword'),
+      ('Comments', 'You reply to every one by hand', 'A comment-to-DM guide, ready for ManyChat'),
+      ('Repurpose', 'Each reel posted once', 'One script, every platform, every format')]
+B = lambda i: f'https://d2ol7oe51mr4n9.cloudfront.net/user_3KjFE77zHvs65uDD9jyLqGF0S7v/{i}.mp4'
+STYLES = [('Data Story', 'Cream grid paper, 3D bars and stat cards', 'ad4a1e74-3115-40ed-b687-482ff7449c2a', 'PRICE'),
+          ('Flat Cartoon', 'Shark-tank style flat 2D world', '03fab29e-a5ca-4a55-b61e-6a7e23004a06', None),
+          ('Pixel on Red', 'Pixel avatar with floating app windows', 'eec78740-72a4-4ac0-9a58-c6a056ff6013', None),
+          ('Paper-craft', 'Paper 3D world with counter cards', '3fddc3ee-c551-4d05-904d-f3ec3b82f4a1', None),
+          ('Clean UI', 'Lockscreens, DM threads and receipts', '166b5c3a-b664-4404-8b71-04e2e2bd9c23', None),
+          ('Data Story · Pyramid', 'Layers stack up as the script builds', 'e69212b2-e741-4092-b689-9d2bd4772c1e', 'PYRAMID'),
+          ('Before / After', 'A wall of text flips into clean steps', 'a1b4e0cf-c9ea-4935-9a47-da1d97116402', 'CLEAR'),
+          ('Editorial', 'Serif headlines, browser windows, paper cards', '2f01177a-605d-4b5c-9717-ab5a354720dd', None),
+          ('Checklist', 'Red rings snap onto every mistake', '959fa53e-5b74-40cb-b62c-9a342b87468f', 'TELLS'),
+          ('Hook & List', 'Fast list with a hook every few seconds', '8bb31b77-9632-44da-a05a-b2612f45b22b', 'ASK'),
+          ('Cartoon · Explainer', 'Cartoon characters walk through a tool', 'a3ee623d-bf96-45e7-b8f5-e8248fac1849', None),
+          ('Pixel · Showcase', 'Real screens in floating Mac windows', '6e8db33d-e523-4cbe-b923-b9b9528718ca', None)]
+def sphone(i, cls=''): return f'<div class="ph {cls}"><video muted loop playsinline preload="none" data-src="{B(i)}"></video><span class="phlogo">{LOGO}</span></div>'
+GALLERY = ''.join(f'<div class="rc">{sphone(r)}<span class="mono">Style {n+1:02d}</span><b>{t}</b><p>{d}</p></div>' for n, (t, d, r, k) in enumerate(STYLES))
+PAINS = ['You know you should post every day. You post twice a month.', 'One reel eats your whole weekend.', 'Your hooks get scrolled past in under a second.',
+         'Your reels look like everyone else\'s template.', 'Comments sit unanswered, so leads go cold.', 'Your marketing happens at 11pm, after everything else.']
+FAQ = [('Who is this for?', 'Business owners and creators who want to post reels consistently without filming, editing or hiring an editor.'),
+       ('Can\'t I just use Claude on its own?', 'Claude can write a script. The Content Engine gives it the whole system: what\'s working this week, proven hook patterns, ready-made motion styles, sound and captions, so you get a finished reel, not a paragraph.'),
+       ('Do I need to be on camera or know editing?', 'No. Every style is motion graphics. You pick a style and approve the script.'),
+       ('Which Claude plan do I need?', 'The Engine lists exactly what it needs before you buy. The free playbooks mostly work on the free plan.'),
+       ('Can someone just run it for me?', 'Yes. My agency, orca.agentics, builds and runs the whole system for your business. Packages from $1,200 USD.'),
+       ('Is this official Anthropic stuff?', 'No. This is my own system. Not affiliated with or endorsed by Anthropic.')]
+TIERS = [('Free playbooks', '$0', 'Learn the system piece by piece', ['Every playbook from my reels', 'Copy-paste prompts and steps', 'New ones every week'], 'Get the free playbooks', '/free/', ''),
+         ('Content Engine', '$19', 'Claude makes your reels', ['Weekly scout of winning reels', 'Hooks and scripts in your voice', f'{len(STYLES)} motion-graphic styles', 'Voiceover, music and SFX setup', 'Captions for IG, TikTok and YouTube', 'Comment-to-DM guide writer'], 'Join the waitlist', '/engines/#waitlist', 'Launching soon · first access for the waitlist'),
+         ('Done-For-You', 'from $1,200', 'For established businesses', ['Your content system built for you', 'Reels, DMs and admin running on AI', 'Set up and run by orca.agentics', 'Priced in USD'], 'Apply at orca.agentics', 'https://orcaagentics.xyz', 'orcaagentics.xyz')]
 PRICING = ''.join(f"""<div class="tier{' main' if i == 1 else ''}"><span class="mono">{n}</span><div class="price">{pr}</div><p class="tsub">{sub}</p><ul>{''.join(f'<li>{x}</li>' for x in items)}</ul><a class="btn{'' if i == 1 else ' alt'}" href="{u}"{' target="_blank" rel="noopener"' if u.startswith('http') else ''}>{cta} {ARROW}</a>""" + (f'<span class="mono small">{note}</span>' if note else '') + '</div>' for i, (n, pr, sub, items, cta, u, note) in enumerate(TIERS))
+BUILDER = f"""<div class="builder"><div class="bcol">
+<div class="bsec"><span class="mono">01 · References</span><div class="binput">Paste a reel link you love…</div><div class="binput dim">or upload a frame</div></div>
+<div class="bsec"><span class="mono">02 · Elements</span><div class="chips2"><i class="on">Kinetic captions</i><i class="on">Count-up stats</i><i>3D bars</i><i class="on">Pop SFX</i><i>Avatar</i><i>Real screenshots</i></div></div>
+<div class="bsec"><span class="mono">03 · Theme</span><div class="chips2"><i>Data story</i><i class="on">Neon</i><i>Cartoon</i><i>Pixel</i><i>Paper-craft</i><i>Editorial</i></div></div>
+<div class="bsec"><span class="mono">04 · Feel</span><div class="slid"><span>Pace</span><span class="bar"><i style="width:75%"></i></span><b>75</b></div><div class="slid"><span>Text</span><span class="bar"><i style="width:40%"></i></span><b>40</b></div><div class="slid"><span>Voice</span><span class="pill">Mike · narrator</span></div></div>
+</div><div class="bprev"><div class="ph mini">{'<video muted loop playsinline preload="none" data-src="' + B('2f01177a-605d-4b5c-9717-ab5a354720dd') + '"></video>'}<span class="phlogo">{LOGO}</span></div><div class="bstat"><span class="mono">Your style</span><b>Neon Nights</b><span class="ok">● Ready</span><a class="btn" href="/engines/#waitlist">Make reel {ARROW}</a></div></div></div>"""
+MOTION = """<div class="motion">
+<div class="mk"><div class="mkv kin"><span>Stop</span> <span>writing</span> <span class="hi">long</span> <span>prompts.</span></div><b>Kinetic captions</b><p>Words land with the voice, key word on a slab.</p></div>
+<div class="mk"><div class="mkv cnt"><span class="num" data-to="90">0</span><small>× usual views</small></div><b>Count-up stats</b><p>Every reel gets one number that climbs.</p></div>
+<div class="mk"><div class="mkv bars"><i></i><i></i><i></i><i></i><i></i></div><b>Data bars</b><p>Charts that build and race on beat.</p></div>
+<div class="mk"><div class="mkv dm"><span class="cmt">Add a comment… <b>PYRAMID</b></span><span class="toast">📩 Guide sent</span></div><b>Comment-to-DM ending</b><p>The keyword types itself, then the DM lands.</p></div>
+</div>"""
 home = f"""
 <header class="wrap hero ctr" data-b="hero">
   <svg class="bigT" data-speed="-.3" viewBox="0 0 120 120"><g fill="currentColor"><path d="M12 50A32 32 0 0 1 44 18H59V50Z"/><path d="M61 18H108V50H92A32 32 0 0 0 61 18Z"/><path d="M44 58H76V106H60A16 16 0 0 1 44 90Z"/><circle cx="94" cy="98" r="9"/></g></svg>
-  <h1>Give Claude the <span class="serif">boring half</span> of your business.</h1>
-  <p class="sub">Free step-by-step playbooks that get Claude writing your captions, fixing your SOPs, chasing invoices and more.</p>
-  <a class="btn xl" href="/free/">Get the free playbooks {ARROW}</a>
-  <p class="mono note">Works with the free Claude plan · no sign-up</p>
-  {FIND}
-  <div class="fan">{phone(P["PYRAMID"]["reel"], "f1", -.12)}{phone(P["HUMAN"]["reel"], "f2", .06)}{phone(P["PROJECT"]["reel"], "f3", -.08)}</div>
+  <h1>Turn Claude into your <span class="serif">content team</span>.</h1>
+  <p class="sub">The Content Engine gives Claude my exact reel system: winning topics, hooks, scripts, motion-graphic styles, voiceover and captions. Pick a style. Claude makes the reel.</p>
+  <div class="ctarow" style="justify-content:center;margin-top:0"><a class="btn xl" href="/engines/#waitlist">Join the Content Engine waitlist {ARROW}</a><a class="btn alt" href="/free/">Get the free playbooks</a></div>
+  <p class="mono note">Runs on your own Claude · launching soon</p>
+  <div class="fan">{sphone(STYLES[1][2], "f1")}{sphone(STYLES[0][2], "f2")}{sphone(STYLES[2][2], "f3")}</div>
 </header>
 
 <section class="blk wrap" id="how" data-b="how">
   <p class="mono eyebrow"><b>How it works</b></p>
   <h2>Three steps. <span class="serif">That's it.</span></h2>
   <div class="how3">
-    <div><span class="mono">01</span><h3>Pick a playbook</h3><p>From a reel you watched, or the free library.</p></div>
-    <div><span class="mono">02</span><span class="lg" style="--c:#D97757">{TOOLS["claude"][7]}</span><h3>Copy the prompt into Claude</h3><p>The free plan works for most of them.</p></div>
-    <div><span class="mono">03</span><h3>Claude does the boring part</h3><p>Your way, with your prices, tone and rules.</p></div>
+    <div><span class="mono">01</span><h3>Install the Engine</h3><p>Add the Content Engine to your Claude once.</p></div>
+    <div><span class="mono">02</span><span class="lg" style="--c:#D97757">{TOOLS["claude"][7]}</span><h3>Tell Claude your business</h3><p>Your niche, your voice, your offer. One time.</p></div>
+    <div><span class="mono">03</span><h3>Pick a style, get reels</h3><p>Claude scripts, voices and builds every reel.</p></div>
   </div>
 </section>
 
 <section class="blk wrap" data-b="vs">
   <p class="mono eyebrow"><b>Same AI, different result</b></p>
-  <h2>Claude vs. Claude + <span class="serif">titoro</span>.</h2>
+  <h2>Claude vs. Claude + <span class="serif">Content Engine</span>.</h2>
   <div class="vs2">
-    <div class="col"><span class="mono">Claude alone</span>{''.join(f'<div class="vrow"><b>{t}</b><p>{a}</p></div>' for t, a, g, k in VS)}</div>
-    <div class="col good"><span class="mono">Claude + a titoro playbook</span>{''.join(f'<a class="vrow" href="/free/{k.lower()}/"><b>{t}</b><p>{g}</p><span class="mono">{k} {ARROW}</span></a>' for t, a, g, k in VS)}</div>
+    <div class="col"><span class="mono">Claude alone</span>{''.join(f'<div class="vrow"><b>{t}</b><p>{a}</p></div>' for t, a, g in VS)}</div>
+    <div class="col good"><span class="mono">Claude + Content Engine</span>{''.join(f'<div class="vrow"><b>{t}</b><p>{g}</p></div>' for t, a, g in VS)}</div>
   </div>
-  <div class="vsend2"><p>Claude alone is smart, but it doesn't know your business.</p><p><b>Claude + a playbook does the boring half, your way.</b></p></div>
+  <div class="vsend2"><p>Claude alone writes you a paragraph.</p><p><b>Claude + the Content Engine hands you a finished reel.</b></p></div>
 </section>
 
 <section class="blk wrap" data-b="simple">
   <p class="mono eyebrow"><b>The workflow</b></p>
-  <h2>Giving Claude the boring half is <span class="serif">simple</span>.</h2>
-  <p class="lead">Six jobs most owners do by hand every week. Each one has a free playbook. <span class="small">(Demo shop, not a real one.)</span></p>
+  <h2>Posting every day is <span class="serif">simple</span>.</h2>
+  <p class="lead">The exact six stages behind every @titoro.ai reel.</p>
   {SIMPLE}
 </section>
 
-<section class="blk" data-b="reels">
-  <div class="wrap"><p class="mono eyebrow"><b>From the reels</b></p>
-  <div class="rchead"><h2>Pick a reel <span class="serif">→</span> get the playbook.</h2><div class="rcnav"><button class="rcb" data-d="-1" aria-label="Previous">←</button><span class="mono rcc">1 / {len(REELS)}</span><button class="rcb" data-d="1" aria-label="Next">→</button></div></div></div>
-  <div class="rctrack">{CAROUSEL}</div>
+<section class="blk" id="styles" data-b="styles">
+  <div class="wrap"><p class="mono eyebrow"><b>Styles</b></p>
+  <div class="rchead"><h2>Pick a style <span class="serif">→</span> Claude makes the reel.</h2><div class="rcnav"><button class="rcb" data-d="-1" aria-label="Previous">←</button><span class="mono rcc">1 / {len(STYLES)}</span><button class="rcb" data-d="1" aria-label="Next">→</button></div></div>
+  <p class="lead">Every reel below was made with this system and posted on @titoro.ai.</p></div>
+  <div class="rctrack">{GALLERY}</div>
+</section>
+
+<section class="blk wrap" data-b="builder">
+  <p class="mono eyebrow"><b>Make it yours</b></p>
+  <h2>Create your <span class="serif">own</span> style.</h2>
+  <p class="lead">Paste a reel you love, pick the elements and the feel. Claude saves it as your style and uses it every time.</p>
+  {BUILDER}
+</section>
+
+<section class="blk wrap" data-b="motion">
+  <p class="mono eyebrow"><b>Motion kit</b></p>
+  <h2>The motion that keeps people <span class="serif">watching</span>.</h2>
+  {MOTION}
 </section>
 
 <section class="blk wrap" id="pricing" data-b="pricing">
   <p class="mono eyebrow"><b>Pricing</b></p>
-  <h2>Start free. <span class="serif">Go further</span> when you're ready.</h2>
+  <h2>Everything you need to <span class="serif">start posting</span>.</h2>
   <div class="tiers">{PRICING}</div>
 </section>
 
 <section class="blk wrap" data-b="pains">
   <p class="mono eyebrow"><b>Sound familiar?</b></p>
-  <h2>A good business still runs on <span class="serif">boring work</span>.</h2>
+  <h2>A good business still needs <span class="serif">to be seen</span>.</h2>
   <ol class="pains2">{''.join(f'<li><span class="mono">0{i+1}</span><p>{q}</p></li>' for i, q in enumerate(PAINS))}</ol>
-  <div class="ctarow"><a class="btn xl" href="/free/">Get the free playbooks {ARROW}</a><a class="btn alt" href="#how">See how it works</a></div>
+  <div class="ctarow"><a class="btn xl" href="/engines/#waitlist">Join the waitlist {ARROW}</a><a class="btn alt" href="#styles">See the styles</a></div>
 </section>
 
 <section class="blk wrap" data-b="tools">
@@ -231,12 +262,12 @@ home = f"""
 </section>
 
 <section class="wrap" data-b="close" style="padding-bottom:120px">
-  <div class="closer"><h2>You started a business, <span class="serif">not a paperwork job</span>.</h2><p class="lead">Hand Claude the boring half today. It's free.</p>
-  <div class="ctarow"><a class="btn xl" href="/free/">Get the free playbooks {ARROW}</a><a class="btn alt" href="https://www.instagram.com/titoro.ai" target="_blank" rel="noopener">Follow @titoro.ai for a daily trick</a></div></div>
+  <div class="closer"><h2>You built something <span class="serif">worth posting about</span>.</h2><p class="lead">Let Claude make the reels. You run the business.</p>
+  <div class="ctarow"><a class="btn xl" href="/engines/#waitlist">Join the Content Engine waitlist {ARROW}</a><a class="btn alt" href="/free/">Start with the free playbooks</a></div></div>
 </section>
 """
 page('build/index.html', 'titoro · watch the agents build it', 'Recording mode.', home)
-page('index.html', 'titoro · Give Claude the boring half of your business', 'Free step-by-step AI playbooks for captions, SOPs, invoices and more. Copy the prompt, follow the steps, done.', home)
+page('index.html', 'titoro · Turn Claude into your content team', 'The Content Engine gives Claude my exact reel system: winning topics, hooks, scripts, motion-graphic styles, voiceover and captions. Pick a style, Claude makes the reel.', home)
 
 # ---------- free: orbit dashboard ----------
 orbit = ''.join(f'<a class="oc" href="/free/{k.lower()}/" data-kw="{k}" data-cat="{p["cat"]}" data-ring="{i % 2}"><span class="mono">{CATS[p["cat"]]}</span><b>{k}</b><small>{p["title"]}</small></a>' for i, (k, p) in enumerate(P.items()))
@@ -284,7 +315,7 @@ page('engines/index.html', 'Engines · titoro', 'My most-used AI playbooks, inst
 <div><span class="n mono">01</span><h3>Download</h3><p>Get the skill files and a 2-minute setup video.</p></div>
 <div><span class="n mono">02</span><h3>Upload once</h3><p>In Claude, go to Customize → Skills and add the files.</p></div>
 <div><span class="n mono">03</span><h3>Just ask</h3><p>"Write this week's captions." Claude uses the skill automatically.</p></div></div></section>
-<section class="wrap" data-b="waitlist"><h2>Get first access.</h2><p class="lead">Engines launch one at a time. Join the list and you hear first.</p>{MAIL.format(n=2, cta='Join the waitlist', help='One email when an Engine launches. Nothing else.')}</section>
+<section class="wrap" id="waitlist" data-b="waitlist"><h2>Get first access.</h2><p class="lead">Engines launch one at a time. Join the list and you hear first.</p>{MAIL.format(n=2, cta='Join the waitlist', help='One email when an Engine launches. Nothing else.')}<p style="margin-top:18px"><a class="btn alt" href="https://ig.me/m/titoro.ai" target="_blank" rel="noopener">Or DM me "ENGINE" on Instagram {ARROW}</a></p></section>
 <section class="wrap" data-b="orca" style="padding-top:80px">{ORCA}</section>
 <section class="wrap" data-b="faq" style="padding-block:80px 120px"><div class="prose" style="margin:0">
 <p><b>Do I need to code?</b><br>No. You upload the files in Claude once.</p>

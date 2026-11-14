@@ -12,7 +12,7 @@ const $ = (s, r = document) => [...r.querySelectorAll(s)];
 // staggered reveals (the swarm does its own reveal in build mode)
 if (!window.BUILD && !reduce) {
   const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const t = e.target; t.classList.add('in'); ro.unobserve(t); setTimeout(() => t.style.transitionDelay = '', 1300); } }), { rootMargin: '0px 0px -8% 0px' });
-  $('.start,.tile,.feat,.g,.three>div,.pk,.sbox,.pain,.eng,.vsr,.orca,.faq details,.stg,.tier,.how3>div,.pains2 li').forEach((e, i) => { e.classList.add('rv'); e.style.transitionDelay = (i % 4) * 70 + 'ms'; ro.observe(e); });
+  $('.start,.tile,.feat,.g,.three>div,.pk,.sbox,.pain,.eng,.vsr,.orca,.faq details,.stg,.tier,.how3>div,.pains2 li,.mk,.builder').forEach((e, i) => { e.classList.add('rv'); e.style.transitionDelay = (i % 4) * 70 + 'ms'; ro.observe(e); });
 }
 
 // parallax: anything with data-speed drifts against the scroll
@@ -83,6 +83,13 @@ if (orb && desk && !reduce) {
 // how it works: highlight the stage on screen in the side list
 const snav = $('.snav li');
 if (snav.length) { const so = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && snav.forEach(l => l.classList.toggle('on', l.dataset.i === e.target.dataset.i))), { rootMargin: '-45% 0px -45% 0px' }); $('.stg').forEach(s => so.observe(s)); snav[0].classList.add('on'); }
+
+// motion kit: count-up when on screen
+$('.num[data-to]').forEach(n => new IntersectionObserver(([e], o) => {
+  if (!e.isIntersecting) return; o.disconnect();
+  const to = +n.dataset.to, t0 = performance.now();
+  (function tick(t) { const p = Math.min(1, (t - t0) / 1600); n.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); })(t0);
+}).observe(n));
 
 // reel carousel: arrows + "1 / N" counter
 const rt = document.querySelector('.rctrack');

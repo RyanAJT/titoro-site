@@ -503,6 +503,58 @@ nav.top{top:46px}
   .rc{flex-basis:62vw}
   .closer{padding:56px 22px}
 }
+
+/* ===== content engine: styles, builder, motion ===== */
+.rc p{color:var(--ink2);font-size:14px;line-height:1.4}
+.chips2{display:flex;flex-wrap:wrap;gap:6px}
+.chips2 i{font:500 11px 'Geist Mono',monospace;font-style:normal;padding:6px 10px;border-radius:8px;background:#ffffff0a;border:1px solid #ffffff14;color:#aeb8bb}
+.chips2 i.on{background:#a9e1ec1f;border-color:#a9e1ec66;color:var(--mist)}
+.bar{display:inline-block;width:90px;height:6px;border-radius:9px;background:#ffffff14;margin-right:8px;vertical-align:middle;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--mist);border-radius:9px}
+.builder{margin-top:48px;display:grid;grid-template-columns:1.2fr .8fr;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:20px}
+.bcol{display:grid;gap:12px}
+.bsec{background:#0d1012;border:1px solid #22282b;border-radius:18px;padding:18px;display:grid;gap:10px}
+.bsec>.mono{color:var(--tide);font-size:10px}
+.binput{padding:12px 14px;border-radius:12px;border:1px dashed #33403f;color:#aeb8bb;font-size:14px}
+.binput.dim{color:#6c777a}
+.slid{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;font-size:14px;color:#aeb8bb}
+.slid .bar{width:100%}
+.slid .pill{grid-column:2/4;justify-self:start;padding:5px 10px;border-radius:999px;background:#ffffff0d;font-size:13px}
+.bprev{display:grid;gap:14px;align-content:start;justify-items:center;background:var(--hi);border:1px solid #234047;border-radius:20px;padding:22px}
+.bprev .ph{width:min(220px,70%)}
+.bstat{display:grid;gap:6px;justify-items:center;text-align:center}
+.bstat b{font-size:22px;letter-spacing:-.02em}
+.bstat .ok{color:#7fe0a4;font-size:13px}
+.bstat .btn{margin-top:8px}
+.motion{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.mk{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px;display:grid;gap:8px;align-content:start}
+.mk>b{font-size:18px;letter-spacing:-.02em;margin-top:6px}
+.mk p{color:var(--ink2);font-size:14px;line-height:1.4}
+.mkv{height:190px;border-radius:16px;background:#0d1012;border:1px solid #22282b;display:grid;place-items:center;overflow:hidden;position:relative}
+.kin{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-content:center;padding:18px;font-weight:800;font-size:24px;letter-spacing:-.03em}
+.kin span{opacity:0;animation:kin 4s infinite}
+.kin span:nth-child(2){animation-delay:.25s}.kin span:nth-child(3){animation-delay:.5s}.kin span:nth-child(4){animation-delay:.75s}
+.kin .hi{background:var(--mist);color:#0a0c0d;padding:0 8px;border-radius:6px}
+@keyframes kin{0%{opacity:0;transform:translateY(14px) scale(.9)}8%,80%{opacity:1;transform:none}92%,100%{opacity:0}}
+.cnt{align-content:center;justify-items:center;gap:4px}
+.cnt .num{font-size:64px;font-weight:800;letter-spacing:-.05em;color:var(--mist);line-height:1}
+.cnt small{color:#8d989b;font-size:12px}
+.bars{display:flex;align-items:flex-end;justify-content:center;gap:10px;padding:26px}
+.bars i{width:22px;border-radius:6px 6px 2px 2px;background:linear-gradient(#a9e1ec,#1d6f7f);animation:bar 3s infinite ease-in-out;transform-origin:bottom}
+.bars i:nth-child(1){height:40%}.bars i:nth-child(2){height:62%;animation-delay:.15s}.bars i:nth-child(3){height:48%;animation-delay:.3s}.bars i:nth-child(4){height:80%;animation-delay:.45s}.bars i:nth-child(5){height:96%;animation-delay:.6s}
+@keyframes bar{0%{transform:scaleY(.05)}40%,85%{transform:scaleY(1)}100%{transform:scaleY(.05)}}
+.dm{align-content:center;gap:16px;padding:16px}
+.dm .cmt{font-size:13px;color:#8d989b;padding:10px 14px;border-radius:999px;border:1px solid #2a3134;background:#121618;white-space:nowrap}
+.dm .cmt b{color:var(--ink);display:inline-block;overflow:hidden;vertical-align:bottom;white-space:nowrap;animation:type 4s steps(7) infinite;width:7ch}
+@keyframes type{0%{width:0}35%,100%{width:7ch}}
+.dm .toast{justify-self:center;font-size:13px;font-weight:600;background:var(--mist);color:#0a0c0d;padding:8px 14px;border-radius:12px;animation:toast 4s infinite}
+@keyframes toast{0%,40%{opacity:0;transform:translateY(-12px)}50%,90%{opacity:1;transform:none}100%{opacity:0}}
+@media (max-width:860px){
+  .builder{grid-template-columns:1fr;padding:12px}
+  .motion{grid-template-columns:1fr 1fr}
+  .mkv{height:150px}
+  .kin{font-size:18px}.cnt .num{font-size:48px}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
 /* ===== build mode (agent swarm) ===== */
