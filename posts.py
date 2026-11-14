@@ -226,9 +226,9 @@ elevate, unlock, unleash, delve, embark, journey, realm, tapestry, landscape, ga
 Add your own: any word Claude uses three times in a row is a candidate.
 
 ## Before and after (demo shop)
-**Before:** "In today's fast-paced world, coffee is more than just a drink. Elevate your mornings!"
+**Before:** "In today's fast-paced world, lunch is more than just a meal. Elevate your break!"
 
-**After, with the 3 exhibits:** "Kopi Ais. RM4.90. Eyes open in one sip."
+**After, with the 3 exhibits:** "Lunch set. $8.90. Back at your desk by 12:15."
 
 ## Make it permanent
 - Put the exhibits in a Claude Project so every chat starts with them. See the **PROJECT** playbook.
@@ -252,7 +252,7 @@ Paste 3 of your own best posts first and say: *"This is how I write. Match this 
 ## Before and after (demo bakery)
 **Before:** New cake available. Order now.
 
-**After:** Pandan gula melaka cake, baked fresh this morning. Soft, not too sweet. 12 slices left today. WhatsApp us to keep one 🍰
+**After:** Pandan cake, baked fresh this morning. Soft, not too sweet. 12 slices left today. WhatsApp us to keep one 🍰
 
 ## Why these work
 Anthropic's prompting guide boils down to: be clear and direct, give context (who it's for, where it's posted), and show examples (your own posts).
@@ -333,7 +333,7 @@ dict(kw='ANIMATE', cat='content', mins=5, plan='Free Claude plan', reel=None,
 
 ## 3 prompts to start with
 ```
-Build a dark dashboard card animation: the label '[Monthly revenue]', a big number counting up from 0 to [RM 48,200], a green '▲ [312]%' badge, and a glowing line chart drawing left to right with a soft gradient fill and a white dot at the tip.
+Build a dark dashboard card animation: the label '[Monthly revenue]', a big number counting up from 0 to [$48,200], a green '▲ [312]%' badge, and a glowing line chart drawing left to right with a soft gradient fill and a white dot at the tip.
 ```
 ```
 Build an isometric flow diagram: 4 blocks rise up in sequence, labelled [Comment → DM → Follow → Guide]. Glowing particles flow from block to block in a loop. Ice-blue and teal blocks, last block white, dark background.
@@ -509,7 +509,7 @@ dict(kw='PRICE', cat='business', mins=5, plan='Claude Code (paid) or no-code', r
   desc='Get a weekly message when a competitor changes prices. Two routes: Claude Code with a free tool, or a no-code scraper.',
   get=["Every item and price from a competitor's public page", 'A weekly message showing only what changed', 'A setup you do once and forget'],
   tools=['claude', 'apify'], related='ASK', pack='Ops Engine',
-  body='''In our demo, the shop next door cut its kopi ais from RM6.50 to RM4.90, and the owner found out 21 days later. A weekly check would have flagged it within a week. *(Demo shop, not a real one.)*
+  body='''In our demo, the shop next door cut its lunch set from $9.50 to $7.90, and the owner found out 21 days later. A weekly check would have flagged it within a week. *(Demo shop, not a real one.)*
 
 ## Route A: Claude Code (techy, free tool)
 You need Claude Code (paid Claude plan) and **Reverse API Engineer**, free and open source (MIT licence) on GitHub: kalil0321/reverse-api-engineer.

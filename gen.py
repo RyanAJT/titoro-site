@@ -121,13 +121,13 @@ STAGES = [
   ('Teach Claude your business', 'Upload your prices, brand guide and best posts once. Every chat starts already knowing them.', 'PROJECT',
    scr('Project · Your shop', row('price-list.md', '✓ added') + row('brand-guide.md', '✓ added') + row('best-posts.md', '✓ added') + row('Instructions', 'Saved ✓', 'hl') + '<p class="snote">Every new chat in this project uses these files.</p>')),
   ('Write the week\'s posts', 'Three captions in your voice, price in the first line, no AI words.', 'HUMAN',
-   scr('Claude · New chat', '<div class="bub me">Write this week\'s promo post.</div><div class="bub ai"><b>Funny</b> Kopi Ais, RM4.90. Takes us less time than your lift does.</div><div class="bub ai"><b>Straight</b> Kopi Ais, RM4.90. Strong kopi, gula melaka, lots of ice.</div><div class="bub ai"><b>Short</b> Kopi Ais. RM4.90. Eyes open in one sip.</div>')),
+   scr('Claude · New chat', '<div class="bub me">Write this week\'s promo post.</div><div class="bub ai"><b>Funny</b> Lunch set, $8.90. Faster than your 1pm meeting, and nicer to you.</div><div class="bub ai"><b>Straight</b> Lunch set, $8.90. Rice, two sides and an iced tea. Ready in 5 minutes.</div><div class="bub ai"><b>Short</b> Lunch set. $8.90. Back at your desk by 12:15.</div>')),
   ('Turn SOPs into steps', 'Messy paragraphs become one action per step, so new staff stop guessing.', 'CLEAR',
    scr('Opening checklist · rewritten', '<p class="old">When you come in, unlock up and get the machines going, check the milk is ok and be careful with the steamer because it gets hot…</p><ol class="steps2"><li>Unlock the front door.</li><li>Switch on the grinder.</li><li>Check the date on the milk.</li><li class="w">⚠ The steam wand gets hot.</li><li>Turn on the steamer.</li></ol>')),
   ('Chase unpaid invoices', 'Every morning Claude drafts polite reminders in Gmail. Nothing sends until you hit send.', 'INVOICE',
-   scr('Gmail · Drafts', row('Reminder: Invoice #1042', '3 days late · friendly') + row('Reminder: Invoice #1038', '9 days late · clear') + row('Reminder: Invoice #1031', '16 days late · firm') + row('Outstanding', 'RM 4,350 · 3 drafts ready', 'hl'))),
+   scr('Gmail · Drafts', row('Reminder: Invoice #1042', '3 days late · friendly') + row('Reminder: Invoice #1038', '9 days late · clear') + row('Reminder: Invoice #1031', '16 days late · firm') + row('Outstanding', '$4,350 · 3 drafts ready', 'hl'))),
   ('Watch competitor prices', 'A weekly check tells you which prices changed next door, with the % change.', 'PRICE',
-   scr('Monday 9:00 · price check', '<div class="srow th"><span>Item</span><span>Last week → now</span></div>' + row('Kopi Ais', 'RM6.50 → RM4.90 <b class="dn">−24.6%</b>', 'hl') + row('Teh Tarik', 'RM4.00 → RM4.00 <b>—</b>') + row('Roti Bakar', 'RM5.50 → RM5.90 <b class="up">+7.3%</b>'))),
+   scr('Monday 9:00 · price check', '<div class="srow th"><span>Item</span><span>Last week → now</span></div>' + row('Lunch set', '$9.50 → $7.90 <b class="dn">−16.8%</b>', 'hl') + row('Iced tea', '$2.00 → $2.00 <b>—</b>') + row('Dessert', '$4.50 → $4.90 <b class="up">+8.9%</b>'))),
   ('Learn from your own numbers', 'Screenshot your Insights. Claude tells you why your worst reels flopped and what to change.', 'FLOP',
    scr('Claude · reel review', '<div class="bub me">Here are my 3 best and 3 worst reels.</div><div class="bub ai"><b>Why the worst 3 flopped</b> Your logo shows before the point, and the result only appears at the end.</div><div class="bub ai"><b>Fix</b> Show the result in the first 3 seconds. Here are 5 new hooks, each under 8 words…</div>')),
 ]
@@ -136,8 +136,8 @@ SIMPLE = '<div class="stages"><ol class="snav">' + ''.join(f'<li data-i="{i}"><s
   + (f'<span class="mono nxt">Next: {STAGES[i+1][0]}</span>' if i + 1 < len(STAGES) else '') + f'</div>{m}</div>' for i, (t, d, k, m) in enumerate(STAGES)) + '</div></div>'
 
 ORCA = f"""<div class="orca"><div><span class="mono" style="color:var(--mist)">Done for you · orca.agentics</span><h2>Want it built and run for you?</h2><p class="lead">My agency, orca.agentics, sets up the whole system for your business: content, DMs and admin, running on AI. Packages from $1,200 USD.</p></div><div class="fa"><a class="btn" href="https://orcaagentics.xyz" target="_blank" rel="noopener">Talk to orca.agentics {ARROW}</a><span class="mono small">orcaagentics.xyz</span></div></div>"""
-VS = [('A caption', 'In today\'s fast-paced world, coffee is more than just a drink. Elevate your mornings!', 'Kopi Ais. RM4.90. Eyes open in one sip.', 'HUMAN'),
-      ('This week\'s promo', 'Asks for your prices again, or makes a promo up.', 'Morning Rush: buy 2 Kopi Ais, the 2nd one is RM2.90. Mon to Fri, 7am to 10am.', 'PROJECT'),
+VS = [('A caption', 'In today\'s fast-paced world, lunch is more than just a meal. Elevate your break!', 'Lunch set. $8.90. Back at your desk by 12:15.', 'HUMAN'),
+      ('This week\'s promo', 'Asks for your prices again, or makes a promo up.', 'Lunch Rush: buy 2 lunch sets, the 2nd one is $5.90. Mon to Fri, 11am to 2pm.', 'PROJECT'),
       ('Your SOP', 'Long paragraphs. Staff skim them and miss steps.', 'One action per step, numbered. Warnings before the step they apply to.', 'CLEAR'),
       ('Why a reel flopped', '"Post consistently and use trending audio."', 'Reads your own Insights and fixes the first 3 seconds of your worst 3 reels.', 'FLOP')]
 PAINS = [('My captions sound like AI wrote them.', 'HUMAN'), ('Claude forgets my business every chat.', 'PROJECT'), ('My reels die in 3 seconds.', 'FLOP'),
