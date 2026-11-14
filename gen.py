@@ -30,7 +30,7 @@ PACKS = [
     ('Both Engines', '$25', 'Everything above, plus every future update.', [], ''),
 ]
 MAIL = '''<form class="mail" novalidate><label for="em{n}">Your email</label><div class="row"><input id="em{n}" type="email" placeholder="you@yourbusiness.com" required><button class="btn">{cta}</button></div><small>{help}</small></form>'''
-IG = f'''<div class="endc"><div><p class="mono" style="color:var(--mist)">Daily</p><h2>One useful AI trick a day.</h2><p class="lead">A new one every day on Instagram. Comment the keyword, get the playbook.</p></div><div class="igc"><a class="btn" href="https://www.instagram.com/titoro.ai" target="_blank" rel="noopener">Follow @titoro.ai on Instagram {ARROW}</a><a class="lnk" href="https://www.tiktok.com/@titoro.ai" target="_blank" rel="noopener" style="color:var(--paper)">Or on TikTok {ARROW}</a></div></div>'''
+IG = f'''<div class="endc"><div><p class="mono" style="color:var(--mist)">Daily</p><h2>One useful AI trick a day.</h2><p class="lead">A new one every day on Instagram. Comment the keyword, get the playbook.</p></div><div class="igc"><a class="btn" href="https://www.instagram.com/titoro.ai" target="_blank" rel="noopener">Follow @titoro.ai on Instagram {ARROW}</a><a class="lnk" href="https://www.tiktok.com/@titoro.ai" target="_blank" rel="noopener">Or on TikTok {ARROW}</a></div></div>'''
 KWS = ','.join(P)
 FIND = f'<form class="find" data-kw="{KWS}"><input placeholder="Commented a keyword? Type it here" aria-label="Find a playbook by keyword" autocapitalize="characters"><button class="btn" aria-label="Find">{ARROW}</button></form>'
 
@@ -41,7 +41,7 @@ def page(path, title, desc, body, on=''):
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}">
 <meta property="og:title" content="{title}"><meta property="og:description" content="{desc}">
-<link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
+<meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
 <script src="/build.js"></script></head>
 <body>
 <nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/free/">Get the free playbooks</a></nav>
@@ -115,6 +115,26 @@ def md(src):
 
 
 # ---------- home ----------
+def scr(title, body): return f'<div class="scr"><div class="scrbar"><i></i><i></i><i></i><span class="mono">{title}</span></div><div class="scrb">{body}</div></div>'
+def row(a, b, cls=''): return f'<div class="srow {cls}"><span>{a}</span><span>{b}</span></div>'
+STAGES = [
+  ('Teach Claude your business', 'Upload your prices, brand guide and best posts once. Every chat starts already knowing them.', 'PROJECT',
+   scr('Project · Your shop', row('price-list.md', '✓ added') + row('brand-guide.md', '✓ added') + row('best-posts.md', '✓ added') + row('Instructions', 'Saved ✓', 'hl') + '<p class="snote">Every new chat in this project uses these files.</p>')),
+  ('Write the week\'s posts', 'Three captions in your voice, price in the first line, no AI words.', 'HUMAN',
+   scr('Claude · New chat', '<div class="bub me">Write this week\'s promo post.</div><div class="bub ai"><b>Funny</b> Kopi Ais, RM4.90. Takes us less time than your lift does.</div><div class="bub ai"><b>Straight</b> Kopi Ais, RM4.90. Strong kopi, gula melaka, lots of ice.</div><div class="bub ai"><b>Short</b> Kopi Ais. RM4.90. Eyes open in one sip.</div>')),
+  ('Turn SOPs into steps', 'Messy paragraphs become one action per step, so new staff stop guessing.', 'CLEAR',
+   scr('Opening checklist · rewritten', '<p class="old">When you come in, unlock up and get the machines going, check the milk is ok and be careful with the steamer because it gets hot…</p><ol class="steps2"><li>Unlock the front door.</li><li>Switch on the grinder.</li><li>Check the date on the milk.</li><li class="w">⚠ The steam wand gets hot.</li><li>Turn on the steamer.</li></ol>')),
+  ('Chase unpaid invoices', 'Every morning Claude drafts polite reminders in Gmail. Nothing sends until you hit send.', 'INVOICE',
+   scr('Gmail · Drafts', row('Reminder: Invoice #1042', '3 days late · friendly') + row('Reminder: Invoice #1038', '9 days late · clear') + row('Reminder: Invoice #1031', '16 days late · firm') + row('Outstanding', 'RM 4,350 · 3 drafts ready', 'hl'))),
+  ('Watch competitor prices', 'A weekly check tells you which prices changed next door, with the % change.', 'PRICE',
+   scr('Monday 9:00 · price check', '<div class="srow th"><span>Item</span><span>Last week → now</span></div>' + row('Kopi Ais', 'RM6.50 → RM4.90 <b class="dn">−24.6%</b>', 'hl') + row('Teh Tarik', 'RM4.00 → RM4.00 <b>—</b>') + row('Roti Bakar', 'RM5.50 → RM5.90 <b class="up">+7.3%</b>'))),
+  ('Learn from your own numbers', 'Screenshot your Insights. Claude tells you why your worst reels flopped and what to change.', 'FLOP',
+   scr('Claude · reel review', '<div class="bub me">Here are my 3 best and 3 worst reels.</div><div class="bub ai"><b>Why the worst 3 flopped</b> Your logo shows before the point, and the result only appears at the end.</div><div class="bub ai"><b>Fix</b> Show the result in the first 3 seconds. Here are 5 new hooks, each under 8 words…</div>')),
+]
+SIMPLE = '<div class="stages"><ol class="snav">' + ''.join(f'<li data-i="{i}"><span class="mono">0{i+1}</span>{t}</li>' for i, (t, *_ ) in enumerate(STAGES)) + '</ol><div class="slist">' + ''.join(
+  f'<div class="stg" data-i="{i}"><div class="stxt"><span class="mono">Stage {i+1} of {len(STAGES)}</span><h3>{t}</h3><p>{d}</p><a class="lnk" href="/free/{k.lower()}/">Playbook: {k} {ARROW}</a>'
+  + (f'<span class="mono nxt">Next: {STAGES[i+1][0]}</span>' if i + 1 < len(STAGES) else '') + f'</div>{m}</div>' for i, (t, d, k, m) in enumerate(STAGES)) + '</div></div>'
+
 ORCA = f"""<div class="orca"><div><span class="mono" style="color:var(--mist)">Done for you · orca.agentics</span><h2>Want it built and run for you?</h2><p class="lead">My agency, orca.agentics, sets up the whole system for your business: content, DMs and admin, running on AI. Packages from $1,200 USD.</p></div><div class="fa"><a class="btn" href="https://orcaagentics.xyz" target="_blank" rel="noopener">Talk to orca.agentics {ARROW}</a><span class="mono small">orcaagentics.xyz</span></div></div>"""
 VS = [('A caption', 'In today\'s fast-paced world, coffee is more than just a drink. Elevate your mornings!', 'Kopi Ais. RM4.90. Eyes open in one sip.', 'HUMAN'),
       ('This week\'s promo', 'Asks for your prices again, or makes a promo up.', 'Morning Rush: buy 2 Kopi Ais, the 2nd one is RM2.90. Mon to Fri, 7am to 10am.', 'PROJECT'),
@@ -157,21 +177,29 @@ home = f"""
   <p class="vsend">Claude does the thinking. <span class="serif">The playbook gives it your business.</span></p>
 </section>
 
+<section class="blk wrap" data-b="simple">
+  <p class="mono eyebrow"><b>02</b> How it works</p>
+  <h2>Giving Claude the boring half is <span class="serif">simple</span>.</h2>
+  <p class="lead">Six jobs most owners do by hand every week. Each one has a free playbook. <span class="small">(Demo shop, not a real one.)</span></p>
+  {SIMPLE}
+  <div class="ctarow"><a class="btn xl" href="/free/">Get the free playbooks {ARROW}</a><span class="mono small">Free · no sign-up</span></div>
+</section>
+
 <section class="blk wrap" data-b="pains">
-  <p class="mono eyebrow"><b>02</b> Sound familiar?</p>
+  <p class="mono eyebrow"><b>03</b> Sound familiar?</p>
   <h2>Pick your problem. <span class="serif">Grab the fix.</span></h2>
   <div class="pains">{''.join(f'<a class="pain" href="/free/{k.lower()}/"><p>"{q}"</p><span class="lnk">Fix it with {k} {ARROW}</span></a>' for q, k in PAINS)}</div>
 </section>
 
 <section class="blk wrap" data-b="start">
-  <p class="mono eyebrow"><b>03</b> Start here</p>
+  <p class="mono eyebrow"><b>04</b> Start here</p>
   <h2>New here? Start with <span class="serif">these 3</span>.</h2>
   <div class="starts">{start}</div>
   <p style="margin-top:28px"><a class="btn alt" href="/free/">See all playbooks {ARROW}</a></p>
 </section>
 
 <section class="blk wrap" data-b="engines">
-  <p class="mono eyebrow"><b>04</b> Engines</p>
+  <p class="mono eyebrow"><b>05</b> Engines</p>
   <h2>Want it running <span class="serif">for you</span>?</h2>
   <p class="lead">The playbooks teach you how. The Engines are those same playbooks installed in Claude as skills, so you just ask and it runs them your way.</p>
   <div class="engs">{ENG}</div>
@@ -179,7 +207,7 @@ home = f"""
 </section>
 
 <section class="blk wrap" data-b="tools">
-  <p class="mono eyebrow"><b>05</b> Tools I use</p>
+  <p class="mono eyebrow"><b>06</b> Tools I use</p>
   <h2>The tools behind <span class="serif">every</span> reel.</h2>
   {feat()}
   <div class="tiles">{"".join(tile(k) for k in ["claude", "elevenlabs", "manychat", "buffer", "apify"])}</div>
@@ -187,7 +215,7 @@ home = f"""
 </section>
 
 <section class="blk wrap" data-b="faq">
-  <p class="mono eyebrow"><b>06</b> FAQ</p>
+  <p class="mono eyebrow"><b>07</b> FAQ</p>
   <h2>Questions you're <span class="serif">probably</span> asking.</h2>
   <div class="faq">{''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ)}</div>
 </section>

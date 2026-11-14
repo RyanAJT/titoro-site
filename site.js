@@ -12,7 +12,7 @@ const $ = (s, r = document) => [...r.querySelectorAll(s)];
 // staggered reveals (the swarm does its own reveal in build mode)
 if (!window.BUILD && !reduce) {
   const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const t = e.target; t.classList.add('in'); ro.unobserve(t); setTimeout(() => t.style.transitionDelay = '', 1300); } }), { rootMargin: '0px 0px -8% 0px' });
-  $('.start,.tile,.feat,.g,.three>div,.pk,.sbox,.pain,.eng,.vsr,.orca,.faq details').forEach((e, i) => { e.classList.add('rv'); e.style.transitionDelay = (i % 4) * 70 + 'ms'; ro.observe(e); });
+  $('.start,.tile,.feat,.g,.three>div,.pk,.sbox,.pain,.eng,.vsr,.orca,.faq details,.stg').forEach((e, i) => { e.classList.add('rv'); e.style.transitionDelay = (i % 4) * 70 + 'ms'; ro.observe(e); });
 }
 
 // parallax: anything with data-speed drifts against the scroll
@@ -80,6 +80,10 @@ if (orb && desk && !reduce) {
   })(last);
 }
 
+// how it works: highlight the stage on screen in the side list
+const snav = $('.snav li');
+if (snav.length) { const so = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && snav.forEach(l => l.classList.toggle('on', l.dataset.i === e.target.dataset.i))), { rootMargin: '-45% 0px -45% 0px' }); $('.stg').forEach(s => so.observe(s)); snav[0].classList.add('on'); }
+
 // copy buttons
 $('.copy').forEach(b => b.addEventListener('click', () => {
   navigator.clipboard.writeText(b.dataset.copy || b.parentNode.querySelector('pre,p').textContent);
@@ -106,7 +110,7 @@ $('[data-replay]').forEach(b => b.addEventListener('click', () => { location.hre
   const size = () => { W = innerWidth; H = innerHeight; c.width = W * dpr; c.height = H * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0); };
   size(); addEventListener('resize', size);
   addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; });
-  const blobs = [['169,225,236', .55, .2, .3], ['246,193,119', .3, .75, .55], ['29,111,127', .18, .3, .85]];
+  const blobs = [['169,225,236', .16, .2, .3], ['29,111,127', .3, .75, .55], ['246,193,119', .06, .3, .85]];
   const N = innerWidth < 700 ? 18 : 34;
   const nodes = Array.from({ length: N }, () => ({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25 }));
   let sy = 0;
@@ -131,9 +135,9 @@ $('[data-replay]').forEach(b => b.addEventListener('click', () => { location.hre
     x.lineWidth = 1;
     for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
       const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.sy - b.sy);
-      if (d < 170) { x.strokeStyle = `rgba(21,25,27,${(1 - d / 170) * .16})`; x.beginPath(); x.moveTo(a.x, a.sy); x.lineTo(b.x, b.sy); x.stroke(); }
+      if (d < 170) { x.strokeStyle = `rgba(169,225,236,${(1 - d / 170) * .12})`; x.beginPath(); x.moveTo(a.x, a.sy); x.lineTo(b.x, b.sy); x.stroke(); }
     }
-    x.fillStyle = 'rgba(29,111,127,.5)';
+    x.fillStyle = 'rgba(169,225,236,.35)';
     nodes.forEach((n, i) => { x.beginPath(); x.arc(n.x, n.sy, i % 7 ? 1.6 : 3, 0, 7); x.fill(); });
     if (!reduce && !document.hidden) requestAnimationFrame(draw);
   }
