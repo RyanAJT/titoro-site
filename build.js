@@ -4,7 +4,8 @@
   const q = new URLSearchParams(location.search);
   const home = location.pathname === '/' || location.pathname === '/index.html';
   let seen = false; try { seen = sessionStorage.getItem('titoroBuilt') === '1'; } catch (e) {}
-  window.BUILD = !q.has('nobuild') && q.has('build') || (!q.has('nobuild') && home && !seen && !matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const AUTO = location.pathname.startsWith('/build'); // recording mode: always plays and scrolls itself
+  window.BUILD = AUTO || !q.has('nobuild') && q.has('build') || (!q.has('nobuild') && home && !seen && !matchMedia('(prefers-reduced-motion: reduce)').matches);
   if (!window.BUILD) return;
   document.documentElement.classList.add('building');
 
@@ -104,12 +105,22 @@
           if (a.parked) { a.parked = false; a.x = rnd(innerWidth * .1, innerWidth * .9); a.y = scrollY + innerHeight + 30; a.vx = a.vy = 0; a.el.style.opacity = 1; } // fly in from below
           await work(a, el); continue;
         }
+        if (AUTO) { await goTo(a, rnd(innerWidth * .15, innerWidth * .85), scrollY + innerHeight * rnd(.55, .85)); continue; } // stay on screen while the camera moves
         // nothing on screen left to build: rest out of sight until the visitor scrolls
         if (!a.parked) { a.parked = true; a.el.style.opacity = 0; }
         if (!working.size && queue.length) setPill('scroll ↓');
         await sleep(250);
       }
     }
+    // recording mode camera: once the screen is built, glide down to the next part
+    if (AUTO) (async () => {
+      await sleep(1500);
+      while (!skipped && queue.length) {
+        const r = rect(queue[0]);
+        if (!working.size && r.y > scrollY + innerHeight * .92) { lenis.scrollTo(Math.min(r.y - innerHeight * .25, document.documentElement.scrollHeight), { duration: 1.6, force: true }); await sleep(1900); }
+        else await sleep(200);
+      }
+    })();
     await Promise.all(ags.map(agent));
 
     // finish

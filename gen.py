@@ -224,6 +224,7 @@ home = f"""
   {IG}
 </section>
 """
+page('build/index.html', 'titoro · watch the agents build it', 'Recording mode.', home)
 page('index.html', 'titoro · Give Claude the boring half of your business', 'Free step-by-step AI playbooks for captions, SOPs, invoices and more. Copy the prompt, follow the steps, done.', home)
 
 # ---------- free: orbit dashboard ----------
