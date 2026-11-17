@@ -91,6 +91,14 @@ $('.num[data-to]').forEach(n => new IntersectionObserver(([e], o) => {
   (function tick(t) { const p = Math.min(1, (t - t0) / 1600); n.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); })(t0);
 }).observe(n));
 
+// hero laptop: the live /build swarm, scaled to fit the screen
+const lf = document.querySelector('.lscreen iframe');
+if (lf && window.top === window) {
+  const fit = () => lf.style.transform = `scale(${lf.parentNode.clientWidth / 1440})`;
+  fit(); addEventListener('resize', fit);
+  setTimeout(() => lf.src = lf.dataset.src, window.BUILD ? 4000 : 600); // let the page's own swarm start first
+}
+
 // reel carousel: arrows + "1 / N" counter
 const rt = document.querySelector('.rctrack');
 if (rt) {

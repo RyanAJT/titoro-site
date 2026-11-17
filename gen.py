@@ -179,12 +179,15 @@ MOTION = """<div class="motion">
 </div>"""
 home = f"""
 <header class="wrap hero ctr" data-b="hero">
-  <svg class="bigT" data-speed="-.3" viewBox="0 0 120 120"><g fill="currentColor"><path d="M12 50A32 32 0 0 1 44 18H59V50Z"/><path d="M61 18H108V50H92A32 32 0 0 0 61 18Z"/><path d="M44 58H76V106H60A16 16 0 0 1 44 90Z"/><circle cx="94" cy="98" r="9"/></g></svg>
+  <p class="mono pill2"><span class="dot"></span>Content Engine · waitlist open</p>
   <h1>Turn Claude into your <span class="serif">content team</span>.</h1>
   <p class="sub">The Content Engine gives Claude my exact reel system: winning topics, hooks, scripts, motion-graphic styles, voiceover and captions. Pick a style. Claude makes the reel.</p>
   <div class="ctarow" style="justify-content:center;margin-top:0"><a class="btn xl" href="/engines/#waitlist">Join the Content Engine waitlist {ARROW}</a><a class="btn alt" href="/free/">Get the free playbooks</a></div>
   <p class="mono note">Runs on your own Claude · launching soon</p>
-  <div class="fan">{sphone(STYLES[1][2], "f1")}{sphone(STYLES[0][2], "f2")}{sphone(STYLES[2][2], "f3")}</div>
+  <div class="show">
+    <div class="laptop"><div class="lscreen"><iframe data-src="/build/?embed" title="12 AI agents building titoro.xyz" loading="lazy" tabindex="-1"></iframe><span class="lcap mono">● Live · 12 agents building this site</span></div><div class="lbase"></div></div>
+    {sphone(STYLES[1][2], "sp1")}{sphone(STYLES[2][2], "sp2")}
+  </div>
 </header>
 
 <section class="blk wrap" id="how" data-b="how">

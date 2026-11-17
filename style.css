@@ -555,6 +555,27 @@ nav.top{top:46px}
   .mkv{height:150px}
   .kin{font-size:18px}.cnt .num{font-size:48px}
 }
+
+/* hero showcase: laptop with the live swarm + phones */
+.pill2{display:inline-flex;gap:10px;align-items:center;padding:8px 14px;border-radius:999px;border:1px solid #2b4247;background:#a9e1ec10;color:var(--mist);margin-bottom:26px;font-size:11px}
+.pill2 .dot{width:7px;height:7px;border-radius:50%;background:#7fe0a4;animation:breathe 1.4s infinite}
+.hero.ctr{padding-top:150px}
+.show{position:relative;width:min(1080px,100%);margin-top:70px;padding:0 6%}
+.laptop{position:relative;z-index:1}
+.lscreen{position:relative;aspect-ratio:16/10;border-radius:20px 20px 6px 6px;background:#000;border:10px solid #1a1e20;box-shadow:0 0 0 1px #2c3335,0 60px 120px -40px #000,0 0 120px -30px #a9e1ec33;overflow:hidden}
+.lscreen iframe{position:absolute;left:0;top:0;width:1440px;height:900px;border:0;transform-origin:0 0;pointer-events:none}
+.lcap{position:absolute;left:14px;bottom:12px;z-index:2;font-size:10px;color:#7fe0a4;background:#0a0c0dcc;padding:5px 10px;border-radius:999px}
+.lbase{height:18px;margin:0 -7%;border-radius:2px 2px 22px 22px;background:linear-gradient(#2a3033,#121517);box-shadow:0 20px 40px -20px #000}
+.show .ph{position:absolute;z-index:2;width:min(14vw,165px);bottom:-46px}
+.show .sp1{left:-1%;rotate:-7deg}
+.show .sp2{right:-1%;rotate:7deg}
+@media (max-width:860px){
+  .hero.ctr{padding-top:120px}
+  .show{margin-top:44px;padding:0 0 40px}
+  .lscreen{border-width:6px;border-radius:12px 12px 4px 4px}
+  .show .ph{width:28vw;bottom:-10px}
+  .show .sp1{left:-3%}.show .sp2{right:-3%}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
 /* ===== build mode (agent swarm) ===== */

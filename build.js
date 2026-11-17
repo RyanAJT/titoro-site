@@ -134,6 +134,7 @@
     const off = anchor && anchor.getBoundingClientRect().top;
     document.documentElement.classList.remove('building');
     window.afterBuild && window.afterBuild();
+    if (AUTO && q.has('embed')) setTimeout(() => location.reload(), 2500); // loop inside the home page laptop
     if (anchor) { const y = scrollY + anchor.getBoundingClientRect().top - off; window.lenis ? lenis.scrollTo(y, { immediate: true, force: true }) : scrollTo(0, y); }
     await sleep(1400);
     live = false; layer.remove();
