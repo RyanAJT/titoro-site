@@ -138,9 +138,11 @@ VS = [('Find winners', 'You guess what to post', 'Scouts the reels beating their
       ('Captions', 'One line and 30 hashtags', 'IG, TikTok and YouTube captions that open with the keyword'),
       ('Comments', 'You reply to every one by hand', 'A comment-to-DM guide, ready for ManyChat'),
       ('Repurpose', 'Each reel posted once', 'One script, every platform, every format')]
-B = lambda i: f'https://d2ol7oe51mr4n9.cloudfront.net/user_3KjFE77zHvs65uDD9jyLqGF0S7v/{i}.mp4'
+B = lambda i: i if i.startswith('/') else f'https://d2ol7oe51mr4n9.cloudfront.net/user_3KjFE77zHvs65uDD9jyLqGF0S7v/{i}.mp4'
 STYLES = [('Agent Map · Clinic', 'A live dashboard with every agent on one page', '4f447edc-54ac-4dad-a967-c470f2b731c9', 'orca.agentics'),
+          ('Character Story', 'An anime host, a big stat and a market backdrop', '/media/animas-32k.mp4', 'animas'),
           ('Agent Map · Restaurant', 'Orders, no-shows and reviews animated as one system', 'a3f1ea96-0572-4c20-bb7d-3520f823f568', 'orca.agentics'),
+          ('News Desk', 'Real headlines stacked as proof, neon keyword', '/media/animas-rules.mp4', 'animas'),
           ('Data Story', 'Cream grid paper, 3D bars and stat cards', 'ad4a1e74-3115-40ed-b687-482ff7449c2a', 'PRICE'),
           ('Flat Cartoon', 'Shark-tank style flat 2D world', '03fab29e-a5ca-4a55-b61e-6a7e23004a06', None),
           ('Pixel on Red', 'Pixel avatar with floating app windows', 'eec78740-72a4-4ac0-9a58-c6a056ff6013', None),
@@ -154,7 +156,7 @@ STYLES = [('Agent Map · Clinic', 'A live dashboard with every agent on one page
           ('Cartoon · Explainer', 'Cartoon characters walk through a tool', 'a3ee623d-bf96-45e7-b8f5-e8248fac1849', None),
           ('Pixel · Showcase', 'Real screens in floating Mac windows', '6e8db33d-e523-4cbe-b923-b9b9528718ca', None)]
 def sphone(i, cls=''): return f'<div class="ph {cls}"><video muted loop playsinline preload="none" data-src="{B(i)}"></video><span class="phlogo">{LOGO}</span></div>'
-BRAND = lambda k: 'orca.agentics' if k == 'orca.agentics' else '@titoro.ai'
+BRAND = lambda k: {'orca.agentics': 'orca.agentics', 'animas': 'Animas'}.get(k, '@titoro.ai')
 GALLERY = ''.join(f'<div class="rc">{sphone(r)}<span class="mono">Style {n+1:02d} · <i class="brand">{BRAND(k)}</i></span><b>{t}</b><p>{d}</p></div>' for n, (t, d, r, k) in enumerate(STYLES))
 PAINS = ['You know you should post every day. You post twice a month.', 'One reel eats your whole weekend.', 'Your hooks get scrolled past in under a second.',
          'Your reels look like everyone else\'s template.', 'Comments sit unanswered, so leads go cold.', 'Your marketing happens at 11pm, after everything else.']
@@ -189,7 +191,7 @@ home = f"""
   <p class="mono note">Runs on your own Claude · launching soon</p>
   <div class="show">
     <div class="laptop"><div class="lscreen"><iframe data-src="/build/?embed" title="12 AI agents building titoro.xyz" loading="lazy" tabindex="-1"></iframe><span class="lcap mono">● Live · 12 agents building this site</span></div><div class="lbase"></div></div>
-    <div class="sw sp1">{sphone(STYLES[0][2])}<span class="bt mono">orca.agentics</span></div><div class="sw sp2">{sphone(STYLES[1][2])}<span class="bt mono">orca.agentics</span></div>
+    <div class="sw sp1">{sphone(STYLES[0][2])}<span class="bt mono">orca.agentics</span></div><div class="sw sp2">{sphone(STYLES[1][2])}<span class="bt mono">Animas</span></div>
   </div>
 </header>
 
@@ -223,7 +225,7 @@ home = f"""
 <section class="blk" id="styles" data-b="styles">
   <div class="wrap"><p class="mono eyebrow"><b>Styles</b></p>
   <div class="rchead"><h2>Pick a style <span class="serif">→</span> Claude makes the reel.</h2><div class="rcnav"><button class="rcb" data-d="-1" aria-label="Previous">←</button><span class="mono rcc">1 / {len(STYLES)}</span><button class="rcb" data-d="1" aria-label="Next">→</button></div></div>
-  <p class="lead">Every reel below was made with this system and posted on @titoro.ai or orca.agentics.</p></div>
+  <p class="lead">Every reel below was made with this system and posted on @titoro.ai, orca.agentics or Animas.</p></div>
   <div class="rctrack">{GALLERY}</div>
 </section>
 
