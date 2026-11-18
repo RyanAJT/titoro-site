@@ -220,6 +220,7 @@ footer .big{font-size:clamp(60px,11vw,160px);font-weight:800;letter-spacing:-.06
 .pbody{max-width:68ch;font-size:18px;color:#c4cbcd}
 .pbody>*+*{margin-top:18px}
 .pbody h2{font-size:clamp(26px,2.6vw,34px);letter-spacing:-.03em;margin-top:44px;color:var(--ink)}
+.pbody h3{font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:26px 0 4px;color:#9fb4b8}
 .pbody ol,.pbody ul{padding-left:24px;display:grid;gap:10px}
 .pbody b{color:var(--ink)}
 .pbody code{font:500 15px 'Geist Mono',monospace;background:var(--paper2);padding:2px 7px;border-radius:6px}

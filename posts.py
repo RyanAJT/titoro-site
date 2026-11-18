@@ -2,12 +2,12 @@
 # Facts come from the matching Google Doc guide. Tools only appear where they do a real step.
 
 POSTS = [
-dict(kw='BUILD', cat='content', mins=6, plan='Claude Pro (Fable 5.2 until 16 Nov)', reel=None,
-  title='3 things to build with Claude Fable 5.2 before Monday',
+dict(kw='BUILD', cat='content', mins=6, plan='Claude Pro (Fable 5.2 on usage credits)', reel=None,
+  title='3 things to build with Claude Fable 5.2',
   desc='A brand mini-game, a rebuilt website and a month of content. Nine copy-paste Claude prompts, three for each build.',
   get=['A playable mini-game that collects emails', 'A rebuilt homepage you can publish', '30 days of content and a week of scripts'],
   tools=['claude'], related='PROMPTS', pack='Content Engine',
-  body='''Claude Fable 5.2 is on the Pro plan until Monday 16 November. Don't waste it on random chats. Here are three things worth building this weekend, with three copy-paste prompts each. Run each build in its own chat so Claude remembers your details.
+  body='''Claude Fable 5.2 was included on the $20 Pro plan for launch week (until 16 November). Pro users can still run it with usage credits, and every prompt here also works on Opus 5.5. Don't waste it on random chats. Here are three things worth building, with three copy-paste prompts each. Run each build in its own chat so Claude remembers your details.
 
 ## Build 1: A mini-game for your brand
 A game people actually play keeps them on your page way longer than any post.
@@ -73,7 +73,7 @@ All in my brand voice. Make them ready to film.
 
 ## Tips
 - Fill in every [bracket]. The more specific you are, the better the result.
-- After Monday these prompts still work on other Claude models, just with simpler results.'''),
+- No usage credits? These prompts still work on Opus 5.5 and other Claude models, just with simpler results.'''),
 
 dict(kw='PROMPTS', cat='content', mins=5, plan='Free Claude plan', reel=None,
   title='5 Claude prompts that replace a marketing agency',
@@ -361,32 +361,59 @@ All 10 full prompts are in the Google Doc guide (button below).
 - **Sound:** add a music bed and whooshes with ElevenLabs. Sound is what makes motion graphics feel finished.
 - **Real footage:** need actual video clips around the animation? Higgsfield's connector lets Claude generate them in the same chat.'''),
 
-dict(kw='TELLS', cat='basics', mins=3, plan='Free Claude plan', reel='959fa53e-5b74-40cb-b62c-9a342b87468f',
-  title='8 signs customers can tell AI made your website',
-  desc='The 8 giveaways that make a website look AI-made, and one prompt that finds and fixes them.',
-  get=['An 8-point checklist to run on your site', 'One prompt that finds every giveaway', 'A rewritten homepage in plain words'],
+dict(kw='TELLS', cat='basics', mins=4, plan='Free Claude plan', reel='959fa53e-5b74-40cb-b62c-9a342b87468f',
+  title='15 signs customers can tell AI made your contractor website',
+  desc='For aircon, reno and plumbing businesses: the 15 giveaways that make a website look AI-made, and two prompts that find and fix them.',
+  get=['A 15-point checklist to run on your site', 'One prompt that finds every giveaway', 'One prompt that rewrites your homepage'],
   tools=['claude'], related='ANIMATE', pack=None,
-  body='''## The checklist
-1. A purple or pink gradient everywhere
-2. A stock photo of people laughing at a laptop
-3. Emojis in every button (🚀 ✨ 💡)
-4. Words like unlock, elevate, seamless, next-level, cutting-edge
-5. Every card the same size with the same icon
-6. The price buried three clicks deep
-7. No WhatsApp or "message us" button
-8. It breaks on a phone (text cut off, sideways scrolling)
+  body='''Built for aircon, renovation and plumbing businesses. Customers decide in a few seconds whether you look real. Run this list on your own site, on your phone, and tick off every one you find.
 
-## The fix prompt
+## The checklist
+### How it looks
+1. A purple or pink gradient everywhere
+2. A stock photo of a smiling guy who isn't you, or a crew that isn't yours
+3. Emojis in every heading and button (🚀 ✨ 🔧)
+4. Every service card the same size with the same icon
+5. No photos of real jobs: no before/after, no vans, no finished bathrooms
+
+### What it says
+6. A headline that could be any business ("Transforming spaces, elevating lives")
+7. Words like unlock, elevate, seamless, cutting-edge, your trusted partner
+8. A "Get started" button. Get started on what?
+9. Reviews with no names or no source ("John D., very happy!")
+10. Placeholder text left in: lorem ipsum, [Your City], an old year in the footer
+
+### What's missing
+11. No WhatsApp button
+12. No phone number, only a contact form
+13. The price is three clicks deep, or nowhere at all
+14. No service area: customers can't tell if you cover their place
+15. It breaks on a phone: text cut off, buttons too small, sideways scrolling
+
+## Prompt 1: find every giveaway
 ```
-Here is my website: [link or paste the text].
-Find every sign it was made by AI (generic gradients, stock-photo feel, emoji buttons, buzzwords like unlock/elevate/seamless, identical cards, hidden prices, no WhatsApp button, mobile problems).
-List each one with the exact place it appears.
-Then rewrite the homepage for a real local business: plain words a customer would actually say, the price visible, one clear WhatsApp button, and real photos suggested instead of stock.
+Here is my website: [link, or paste the text of each page].
+My business: [aircon / renovation / plumbing], serving [areas].
+Check it against these 15 signs that a site was made by AI: purple/pink gradients, stock photos of people who aren't us, emojis in headings and buttons, identical service cards, no real job photos, a headline that could be any business, buzzwords (unlock, elevate, seamless, cutting-edge, trusted partner), a vague "Get started" button, reviews with no names or source, leftover placeholder text, no WhatsApp button, no phone number, hidden prices, no service area, and anything that would break on a phone.
+For each sign you find, tell me exactly where it appears and what to change it to. Put them in order of what costs me the most enquiries.
+```
+
+## Prompt 2: rewrite the homepage
+```
+Now rewrite my homepage in plain words a customer would actually say. Include:
+- A headline that says what I do and where, e.g. "Aircon servicing in [area], same-week slots"
+- A "from" price for my 3 most common jobs: [job + price, job + price, job + price]
+- One WhatsApp button ("WhatsApp us for a quote") and my phone number, both at the top
+- The areas I cover
+- 3 spots for real job photos, with a note on which photo goes where
+- Space for 3 real reviews with the customer's first name and where the review is from
+No gradients, no emojis, no buzzwords. Give me the full text, section by section.
 ```
 
 ## Tips
-- Open your site on your own phone before and after. Most customers will see it there.
-- Replace stock photos with real ones of your counter, your team or your product, even phone photos.'''),
+- Open your site on your own phone before and after. Most of your customers will see it there.
+- Take real photos on your next 5 jobs: before, after, and your van or team. Phone photos are fine and beat any stock photo.
+- Copy your reviews from Google with the customer's first name, and link to your Google profile.'''),
 
 dict(kw='SETUP', cat='basics', mins=4, plan='Some steps need a paid plan', reel=None,
   title='5 Claude settings to switch on today',

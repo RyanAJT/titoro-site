@@ -7,7 +7,7 @@ ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width
 FOLLOW = '<a href="https://www.instagram.com/titoro.ai">Instagram</a><a href="https://www.tiktok.com/@titoro.ai">TikTok</a><a href="https://www.youtube.com/@TitoroAI">YouTube</a>'
 VID = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3KjFE77zHvs65uDD9jyLqGF0S7v/{}.mp4'
 ADMIN_REEL = '166b5c3a-b664-4404-8b71-04e2e2bd9c23'
-DOCS = {'PYRAMID': '1Ef6QVbcd9yatMF_L4QlqW9CkMAPY-QMJZa483AOyd68', 'PROJECT': '1fuW3_CexjyF42ZBLJTiBQeVFnOzJBLG_ssgaLPe7Ess', 'CLEAR': '194k4NZoPvErjl1bbSCPuCfDJNiRU0LmYSSW9XoZ0XK0', 'ASK': '1eRWCl4XQu_QbrN7VNoJBdYyM5JNXV7dBpS6UhDkUEYU', 'FLOP': '1rL3jQfQ5uYmiHyzRJet0zYNUlmZJyRoCR7ejE20JD_8', 'SETUP': '1Ko7Cnvcm3W9cbLWmEAf9tMKcU7l6NTrwKnHvk_opPhM', 'TELLS': '1ie4LhuN9KSDW1VlDtwNfLh7zzcwp9s9KGUuuzFFM1-I', 'ANIMATE': '14HjSeDhqpLTv6KUW1SCVtcequyP9VpTxrb0TzAEtSPw', 'PRICE': '1Fawi7-r5kSOz3kIQJuQ3DSdKNBxY5G38SlMxD6xOhHs', 'TRAIN': '11qCIFBkS-aRZOr_TPkLXHdxWsmcaidNcIte8FK-50oY', 'HUMAN': '1t_tbTvN4Q7QZ5YC_9DAZTF3z0RP5IjRr6TFdey7gOVA', 'COPY': '1Ng5MPJZx4gVDac2WVVBs74DVkFhztwN51bjoMzzz5RQ', 'LOGO': '1A8Zj2r0KPvhaoYEfxDWq21Y_7AZspCrU1KjTwVAfOdQ', 'PDF': '1SoEhEAl149MN39YKei-Y-PjFO9PXdHYwAlhL9NieHPU', 'INVOICE': '1wt6CL9ud7qbnwoxtHVh5ErSargrx1904fZ1Toc8-QrI', 'PRIVACY': '1Z3BaWTaVaISgxJpHBtdvW3v7wyatJ9tCqYuMoKby1L4'}
+DOCS = {'PYRAMID': '1Ef6QVbcd9yatMF_L4QlqW9CkMAPY-QMJZa483AOyd68', 'PROJECT': '1fuW3_CexjyF42ZBLJTiBQeVFnOzJBLG_ssgaLPe7Ess', 'CLEAR': '194k4NZoPvErjl1bbSCPuCfDJNiRU0LmYSSW9XoZ0XK0', 'ASK': '1eRWCl4XQu_QbrN7VNoJBdYyM5JNXV7dBpS6UhDkUEYU', 'FLOP': '1rL3jQfQ5uYmiHyzRJet0zYNUlmZJyRoCR7ejE20JD_8', 'SETUP': '1Ko7Cnvcm3W9cbLWmEAf9tMKcU7l6NTrwKnHvk_opPhM', 'ANIMATE': '14HjSeDhqpLTv6KUW1SCVtcequyP9VpTxrb0TzAEtSPw', 'PRICE': '1Fawi7-r5kSOz3kIQJuQ3DSdKNBxY5G38SlMxD6xOhHs', 'TRAIN': '11qCIFBkS-aRZOr_TPkLXHdxWsmcaidNcIte8FK-50oY', 'HUMAN': '1t_tbTvN4Q7QZ5YC_9DAZTF3z0RP5IjRr6TFdey7gOVA', 'COPY': '1Ng5MPJZx4gVDac2WVVBs74DVkFhztwN51bjoMzzz5RQ', 'LOGO': '1A8Zj2r0KPvhaoYEfxDWq21Y_7AZspCrU1KjTwVAfOdQ', 'PDF': '1SoEhEAl149MN39YKei-Y-PjFO9PXdHYwAlhL9NieHPU', 'INVOICE': '1wt6CL9ud7qbnwoxtHVh5ErSargrx1904fZ1Toc8-QrI', 'PRIVACY': '1Z3BaWTaVaISgxJpHBtdvW3v7wyatJ9tCqYuMoKby1L4'}
 P = {p['kw']: p for p in POSTS}
 CATS = {'content': 'Content', 'business': 'Business', 'basics': 'Claude basics'}
 
@@ -106,9 +106,10 @@ def md(src):
         kind = ('ol' if m.group(1) != '-' else 'ul') if m else None
         if lst and kind != lst: out.append(f'</{lst}>'); lst = None
         if ln.strip() == '```': code = []
+        elif ln.startswith('### '): out.append(f'<h3>{inline(ln[4:])}</h3>')
         elif ln.startswith('## '): out.append(f'<h2>{inline(ln[3:])}</h2>')
         elif m:
-            if not lst: out.append(f'<{kind}>'); lst = kind
+            if not lst: out.append(f'<{kind} start="{m.group(1)}">' if kind == 'ol' and m.group(1) != '1' else f'<{kind}>'); lst = kind
             out.append(f'<li>{inline(m.group(2))}</li>')
         elif ln.strip(): out.append(f'<p>{inline(ln)}</p>')
     if lst: out.append(f'</{lst}>')
