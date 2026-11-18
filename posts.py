@@ -2,6 +2,107 @@
 # Facts come from the matching Google Doc guide. Tools only appear where they do a real step.
 
 POSTS = [
+dict(kw='GTA', cat='content', mins=8, plan='Free to start', reel=None,
+  title='How to make money clipping GTA 6 with AI (step by step)',
+  desc='GTA 6 launches 19 November 2026. How to get paid clipping it: the 3 ways clips pay, the rules that get videos taken down, and the exact AI tool steps.',
+  get=['The 3 ways GTA 6 clips actually pay', 'Step-by-step setup with the AI tools', 'The rules that get clips removed or demonetised'],
+  tools=['opus', 'higgsfield', 'invideo', 'buffer', 'elev8or'], related='TELLS', pack='Content Engine',
+  body='''GTA 6 comes out on **19 November 2026** on PS5 and Xbox Series X|S. Launch week is the biggest clipping window of the year: streamers will be live for hours, and almost none of it gets cut into short clips. A clipper turns those long streams into 30-to-60-second vertical clips and gets paid for the views.
+
+This guide is the whole setup, step by step. You don't need followers, a camera or editing skills to start.
+
+## The 3 ways clipping pays
+1. **Clipping campaigns.** A streamer or brand pays a set rate for every 1,000 views your clips get. On Content Rewards (Whop's clipping marketplace), the median rate on 10 November 2026 was about **$1.09 per 1,000 views**, and it takes 10% of each payout. So 100,000 views at $1 is $100, minus the fee.
+2. **Your own channel.** Build a GTA 6 clips channel on YouTube Shorts, TikTok and Reels, then turn on YouTube ad revenue once you qualify (Step 9).
+3. **Clip for a streamer directly.** Once you can show results, offer to clip for a streamer for a monthly fee.
+
+Most beginners start with 1, and grow 2 at the same time, because the views on campaign clips also build your own accounts.
+
+## Before you start: the rules (read this)
+- **Rockstar takes down:** leaked or pre-release footage, endings and big story spoilers, cutscene-only videos, edited compilations of cutscenes or plot dialogue, and in-game TV shows posted on their own.
+- **Rockstar's fan policy covers non-commercial use.** It says Take-Two generally doesn't object to fans posting gameplay, but "non-commercial" means you don't make money from it, and Take-Two can remove material at any time. Earning from GTA footage is at your own risk. The safest money is campaigns, where the streamer gives you permission to clip their stream.
+- **YouTube ads:** graphic violence in the **first 7 seconds** of a video can't earn ad revenue. Open on the reaction, the funny moment or the chaos, not the gore.
+- **In-game radio music** can trigger copyright claims, which send the ad money to the music owner. Turn the radio down or cut those parts.
+- **Only clip streams you're allowed to clip:** campaign streams, or streamers who openly invite clippers.
+
+![Rockstar's policy on posting game footage (support.rockstargames.com)](/media/gta/rockstar.jpg)
+
+## Step 1: Set up your posting accounts
+1. Create a fresh account on **TikTok**, **Instagram** and **YouTube** just for GTA 6 clips. Name it so people know what it is, like "GTA 6 Clips Daily".
+2. Use the same name and profile picture on all three.
+3. Post on all three. Most campaigns count views on TikTok, Reels and Shorts.
+
+## Step 2: Join a clipping marketplace
+1. Create an account on [Whop Content Rewards](https://whop.com/discover/) and search "GTA". The biggest marketplace, with hundreds of live campaigns.
+2. Create an account on [Vyro](https://vyro.com) (MrBeast's clipping marketplace). Pays per 1,000 views up to $1,000 per post, from 1,000 views. Listed campaigns have mostly paid $1 to $2 per 1,000.
+3. Create an account on [Elev8or Bounties](https://www.elev8or.io/bounty/clipping). Rates run $0.50 to $1.00 per 1,000 views and you can withdraw from $5.
+4. On each one, open a campaign and read the brief: which streams you can clip, where to post, and what the caption must say. Follow it exactly or the clip won't be approved.
+
+![Vyro: get paid to post clips for creators and brands](/media/gta/vyro.jpg)
+![Elev8or Bounties: rates per 1,000 views](/media/gta/elev8or.jpg)
+
+## Step 3: Find the stream to clip
+1. Open the campaign's stream links (Twitch, Kick or YouTube).
+2. Go for long launch-week streams: the best moments are often hours in.
+3. Move fast. Twitch keeps past broadcasts for 7 days by default (14 for Affiliates), so launch-week streams have to be clipped that week.
+
+## Step 4: Cut the clips with AI (OpusClip)
+1. Create a free account on [OpusClip](/go/opus/).
+2. Paste the stream link into the box and click **Get free clips**.
+3. Pick **9:16** (vertical), turn on captions, and let it find the moments.
+4. Review the clips. Keep the ones with a strong first second: a reaction, a crash, a shout. Delete anything that shows a big story spoiler.
+5. Download the clips.
+
+The free plan gives 60 processing minutes a month, adds a watermark, and only clips by what people say. For gameplay, the paid plans (from $15 a month) also detect visual moments, which suits a game better. Start free, upgrade when campaigns are paying.
+
+![OpusClip: paste a link, get clips](/media/gta/opus.jpg)
+![OpusClip plans](/media/gta/pricing.jpg)
+
+## Step 5: Make the first second stop the scroll (Higgsfield)
+1. Create an account on [Higgsfield](/go/higgsfield/).
+2. Use it to make a bold cover image or a short hook visual for the start of the clip, for example a big text card with the moment ("He crashed into the Vice City police station").
+3. Keep it original. Don't recreate Rockstar's logo or artwork.
+
+![Higgsfield](/media/gta/higgsfield.jpg)
+
+## Step 6: Add your own voice (invideo)
+1. Create an account on [invideo](/go/invideo/).
+2. Add a short voiceover or text reaction on top of the clip: one line of setup at the start, one line of payoff at the end.
+3. Your own commentary makes the clip yours, and channels that add something get further than straight re-uploads.
+
+## Step 7: Post everywhere at once (Buffer)
+1. Create a free account on [Buffer](/go/buffer/) and connect your TikTok, Instagram and YouTube.
+2. Upload the clip once and schedule it to all three.
+3. Copy the caption and hashtags the campaign brief asks for.
+4. Post several clips a day in launch week. Volume wins.
+
+![Buffer: one place to post to every platform](/media/gta/buffer.jpg)
+
+## Step 8: Submit and get paid
+1. Copy the link of each live post.
+2. Paste it into the campaign on Whop, Vyro or Elev8or.
+3. The brand approves the clip, then you're paid for its views until the campaign budget runs out.
+4. Never buy views or use bots. Fake views break every marketplace's rules and get you banned.
+
+**The maths:** a clip with 50,000 views on a $1 campaign earns $50. Ten of those a week is $500. Most clips get a few thousand views; a few break out and make most of the money.
+
+## Step 9: Turn on YouTube earnings
+Your own channel earns from YouTube once it joins the YouTube Partner Program:
+1. **Fan funding and Shopping:** 500 subscribers, 3 public uploads in 90 days, and either 3,000 watch hours in 12 months or 3 million Shorts views in 90 days.
+2. **Ad revenue (including Shorts ads):** 1,000 subscribers, plus 4,000 watch hours in 12 months or 10 million Shorts views in 90 days.
+3. **Heads-up:** from **1 February 2027**, new applicants need 8,000 watch hours or 20 million Shorts views for ad revenue. Hitting the bar before then is easier.
+4. Check your progress in YouTube Studio → **Earn**, then apply. Review takes about a month.
+
+![YouTube Partner Program overview and eligibility](/media/gta/ypp.jpg)
+
+## Step 10: Get DMs from your comments (Elev8or)
+Once a clip blows up, people comment asking for more. Set up [Elev8or](/go/elev8or/) to auto-send a DM when someone comments a keyword, so you can point them to your channel, your Discord or your clipping services.
+
+## Realistic expectations
+- Week 1: most clips get a few hundred to a few thousand views. Keep posting.
+- The clippers who win launch week aren't the best editors. They're the fastest: stream in, clips out, posted within the hour.
+- Read every campaign brief, and stay away from story spoilers.'''),
+
 dict(kw='BUILD', cat='content', mins=6, plan='Claude Pro (Fable 5.2 on usage credits)', reel=None,
   title='3 things to build with Claude Fable 5.2',
   desc='A brand mini-game, a rebuilt website and a month of content. Nine copy-paste Claude prompts, three for each build.',

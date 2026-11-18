@@ -223,6 +223,8 @@ footer .big{font-size:clamp(60px,11vw,160px);font-weight:800;letter-spacing:-.06
 .pbody h3{font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:26px 0 4px;color:#9fb4b8}
 .pbody ol,.pbody ul{padding-left:24px;display:grid;gap:10px}
 .pbody b{color:var(--ink)}
+.pbody a{color:var(--ink);text-decoration:underline;text-decoration-color:#ff8a3d;text-underline-offset:3px}
+.pbody figure{margin-top:20px}.pbody figure img{width:100%;display:block;border-radius:14px;border:1px solid rgba(255,255,255,.1)}.pbody figcaption{font:500 14px 'Geist Mono',monospace;color:#8b9496;margin-top:8px}
 .pbody code{font:500 15px 'Geist Mono',monospace;background:var(--paper2);padding:2px 7px;border-radius:6px}
 .pbody .docl{margin-top:44px}
 .prompt{width:100%;border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:grid;gap:10px;justify-items:start;background:var(--card)}
