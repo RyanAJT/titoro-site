@@ -24,7 +24,6 @@ TOOLS = {
                svg('0 0 24 24', 'M1.371 5.476L11.943 0l10.686 5.476-10.686 5.495zm3.36 4.81l7.212 3.547 7.288-3.547 3.398 1.655-10.686 5.202L1.371 11.94zm0 6.171l7.212 3.911 7.288-3.91 3.398 1.815L11.943 24 1.371 18.273z')),
     'apify': ('Apify', 'Research', 'Ready-made scrapers for comments, prices and more.', 'Free plan', '/go/apify/', True, '#1d6f7f', '<b>A</b>'),
     'opus': ('OpusClip', 'Clipping', 'Turns long streams into captioned vertical clips.', 'Free plan', '/go/opus/', True, '#000000', '<b>O</b>'),
-    'invideo': ('invideo', 'Editing', 'AI editor and voiceovers for your clips.', 'Free plan', '/go/invideo/', False, '#1d1b4b', '<b>i</b>'),
     'elev8or': ('Elev8or', 'DMs', 'Comment-to-DM automation for Instagram.', 'Free plan', '/go/elev8or/', True, '#e8244f', '<b>E</b>'),
 }
 PACKS = [
@@ -47,8 +46,8 @@ def page(path, title, desc, body, on=''):
 <meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
 <script src="/build.js"></script></head>
 <body>
-<a class="ann" href="/engines/#waitlist">Content Engine waitlist is open · <b>get first access</b> →</a>
-<nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/engines/#waitlist">Join the waitlist</a></nav>
+<a class="ann" href="/content-engine/">The Content Engine is here · <b>$19, 7-day guarantee</b> →</a>
+<nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/content-engine/">Get the Content Engine</a></nav>
 {body}
 <div class="wrap"><footer data-b="footer">
 <div><b style="color:var(--ink)">titoro</b><br>Give Claude the boring half of your business.<br><br><span class="small">Not affiliated with Anthropic. Claude is a trademark of Anthropic, PBC. Some links are affiliate links: I may earn a commission at no cost to you.</span>
@@ -173,7 +172,7 @@ FAQ = [('Who is this for?', 'Business owners and creators who want to post reels
        ('Can someone just run it for me?', 'Yes. My agency, orca.agentics, builds and runs the whole system for your business. Packages from $1,200 USD.'),
        ('Is this official Anthropic stuff?', 'No. This is my own system. Not affiliated with or endorsed by Anthropic.')]
 TIERS = [('Free playbooks', '$0', 'Learn the system piece by piece', ['Every playbook from my reels', 'Copy-paste prompts and steps', 'New ones every week'], 'Get the free playbooks', '/free/', ''),
-         ('Content Engine', '$19', 'Claude makes your reels', ['Weekly scout of winning reels', 'Hooks and scripts in your voice', f'{len(STYLES)} motion-graphic styles', 'Voiceover, music and SFX setup', 'Captions for IG, TikTok and YouTube', 'Comment-to-DM guide writer'], 'Join the waitlist', '/engines/#waitlist', 'Launching soon · first access for the waitlist'),
+         ('Content Engine', '$19', 'Claude makes your reels', ['Weekly scout of winning reels', 'Hooks and scripts in your voice', f'{len(STYLES)} motion-graphic styles', 'Voiceover, music and SFX setup', 'Captions for IG, TikTok and YouTube', 'Comment-to-DM guide writer'], 'Get the Content Engine', '/content-engine/', 'One-time $19 · 7-day money-back guarantee'),
          ('Done-For-You', 'from $1,200', 'For established businesses', ['Your content system built for you', 'Reels, DMs and admin running on AI', 'Set up and run by orca.agentics', 'Priced in USD'], 'Apply at orca.agentics', 'https://orcaagentics.xyz', 'orcaagentics.xyz')]
 PRICING = ''.join(f"""<div class="tier{' main' if i == 1 else ''}"><span class="mono">{n}</span><div class="price">{pr}</div><p class="tsub">{sub}</p><ul>{''.join(f'<li>{x}</li>' for x in items)}</ul><a class="btn{'' if i == 1 else ' alt'}" href="{u}"{' target="_blank" rel="noopener"' if u.startswith('http') else ''}>{cta} {ARROW}</a>""" + (f'<span class="mono small">{note}</span>' if note else '') + '</div>' for i, (n, pr, sub, items, cta, u, note) in enumerate(TIERS))
 BUILDER = f"""<div class="builder"><div class="bcol">
@@ -181,7 +180,7 @@ BUILDER = f"""<div class="builder"><div class="bcol">
 <div class="bsec"><span class="mono">02 · Elements</span><div class="chips2"><i class="on">Kinetic captions</i><i class="on">Count-up stats</i><i>3D bars</i><i class="on">Pop SFX</i><i>Avatar</i><i>Real screenshots</i></div></div>
 <div class="bsec"><span class="mono">03 · Theme</span><div class="chips2"><i>Data story</i><i class="on">Neon</i><i>Cartoon</i><i>Pixel</i><i>Paper-craft</i><i>Editorial</i></div></div>
 <div class="bsec"><span class="mono">04 · Feel</span><div class="slid"><span>Pace</span><span class="bar"><i style="width:75%"></i></span><b>75</b></div><div class="slid"><span>Text</span><span class="bar"><i style="width:40%"></i></span><b>40</b></div><div class="slid"><span>Voice</span><span class="pill">Mike · narrator</span></div></div>
-</div><div class="bprev"><div class="ph mini">{'<video muted loop playsinline preload="none" data-src="' + B('2f01177a-605d-4b5c-9717-ab5a354720dd') + '"></video>'}<span class="phlogo">{LOGO}</span></div><div class="bstat"><span class="mono">Your style</span><b>Neon Nights</b><span class="ok">● Ready</span><a class="btn" href="/engines/#waitlist">Make reel {ARROW}</a></div></div></div>"""
+</div><div class="bprev"><div class="ph mini">{'<video muted loop playsinline preload="none" data-src="' + B('2f01177a-605d-4b5c-9717-ab5a354720dd') + '"></video>'}<span class="phlogo">{LOGO}</span></div><div class="bstat"><span class="mono">Your style</span><b>Neon Nights</b><span class="ok">● Ready</span><a class="btn" href="/content-engine/">Make reel {ARROW}</a></div></div></div>"""
 MOTION = """<div class="motion">
 <div class="mk"><div class="mkv kin"><span>Stop</span> <span>writing</span> <span class="hi">long</span> <span>prompts.</span></div><b>Kinetic captions</b><p>Words land with the voice, key word on a slab.</p></div>
 <div class="mk"><div class="mkv cnt"><span class="num" data-to="90">0</span><small>× usual views</small></div><b>Count-up stats</b><p>Every reel gets one number that climbs.</p></div>
@@ -193,7 +192,7 @@ home = f"""
   <p class="mono pill2"><span class="dot"></span>Content Engine · waitlist open</p>
   <h1>Turn Claude into your <span class="serif">content team</span>.</h1>
   <p class="sub">The Content Engine gives Claude my exact reel system: winning topics, hooks, scripts, motion-graphic styles, voiceover and captions. Pick a style. Claude makes the reel.</p>
-  <div class="ctarow" style="justify-content:center;margin-top:0"><a class="btn xl" href="/engines/#waitlist">Join the Content Engine waitlist {ARROW}</a><a class="btn alt" href="/free/">Get the free playbooks</a></div>
+  <div class="ctarow" style="justify-content:center;margin-top:0"><a class="btn xl" href="/content-engine/">Get the Content Engine {ARROW}</a><a class="btn alt" href="/free/">Get the free playbooks</a></div>
   <p class="mono note">Runs on your own Claude · launching soon</p>
   <div class="show">
     <div class="laptop"><div class="lscreen"><iframe data-src="/build/?embed" title="12 AI agents building titoro.xyz" loading="lazy" tabindex="-1"></iframe><span class="lcap mono">● Live · 12 agents building this site</span></div><div class="lbase"></div></div>
@@ -258,7 +257,7 @@ home = f"""
   <p class="mono eyebrow"><b>Sound familiar?</b></p>
   <h2>A good business still needs <span class="serif">to be seen</span>.</h2>
   <ol class="pains2">{''.join(f'<li><span class="mono">0{i+1}</span><p>{q}</p></li>' for i, q in enumerate(PAINS))}</ol>
-  <div class="ctarow"><a class="btn xl" href="/engines/#waitlist">Join the waitlist {ARROW}</a><a class="btn alt" href="#styles">See the styles</a></div>
+  <div class="ctarow"><a class="btn xl" href="/content-engine/">Get the Content Engine {ARROW}</a><a class="btn alt" href="#styles">See the styles</a></div>
 </section>
 
 <section class="blk wrap" data-b="tools">
@@ -277,7 +276,7 @@ home = f"""
 
 <section class="wrap" data-b="close" style="padding-bottom:120px">
   <div class="closer"><h2>You built something <span class="serif">worth posting about</span>.</h2><p class="lead">Let Claude make the reels. You run the business.</p>
-  <div class="ctarow"><a class="btn xl" href="/engines/#waitlist">Join the Content Engine waitlist {ARROW}</a><a class="btn alt" href="/free/">Start with the free playbooks</a></div></div>
+  <div class="ctarow"><a class="btn xl" href="/content-engine/">Get the Content Engine {ARROW}</a><a class="btn alt" href="/free/">Start with the free playbooks</a></div></div>
 </section>
 """
 page('build/index.html', 'titoro · watch the agents build it', 'Recording mode.', home)
@@ -321,7 +320,7 @@ for p in POSTS:
 ''', 'free')
 
 # ---------- packs ----------
-pcs = ''.join(f'''<div class="pk{" main" if i == 0 else ""}"><span class="mono soon">Coming soon</span><h3>{n}</h3><p>{d}</p>''' + (f'<ul>{"".join(f"<li>{x}</li>" for x in items)}</ul>' if items else '') + (f'<p class="bonus">{b}</p>' if b else '') + f'<div class="price">{pr}</div></div>' for i, (n, pr, d, items, b) in enumerate(PACKS))
+pcs = ''.join(f'''<div class="pk{" main" if i == 0 else ""}"><span class="mono soon">{"Available now" if i == 0 else "Coming soon"}</span><h3>{n}</h3><p>{d}</p>''' + ('<a class="btn" href="/content-engine/" style="margin:12px 0">Get it →</a>' if i == 0 else '') + (f'<ul>{"".join(f"<li>{x}</li>" for x in items)}</ul>' if items else '') + (f'<p class="bonus">{b}</p>' if b else '') + f'<div class="price">{pr}</div></div>' for i, (n, pr, d, items, b) in enumerate(PACKS))
 page('engines/index.html', 'Engines · titoro', 'My most-used AI playbooks, installed in Claude as skills. Content Engine and Ops Engine.', f'''
 <header class="wrap phead" data-b="header"><p class="mono eyebrow"><b>Engines</b> Works with Claude</p><h1>Playbooks teach you how. Engines <span class="serif">run it for you</span>.</h1><p class="lead">My most-used playbooks, installed in Claude as skills, so you just ask and it runs them your way. Every skill is one I use myself, tested before it goes on sale.</p></header>
 <section class="wrap" data-b="packs"><div class="packs" style="margin-top:20px">{pcs}</div></section>
@@ -381,7 +380,7 @@ page('fable/index.html', 'Fable 5.2 + Higgsfield: free 3-day setup · titoro', '
 ''')
 
 # ---------- short links ----------
-for k, u in {'manychat': 'https://manychat.com', 'buffer': 'https://join.buffer.com/jing', 'elevenlabs': 'https://elevenlabs.io', 'higgsfield': 'https://higgsfield.ai?fpr=jing-45bb72', 'apify': 'https://www.apify.com?fpr=syzhiz', 'opus': 'https://opus.pro/?via=orca', 'invideo': 'https://invideo.io', 'elev8or': 'https://engage.elev8or.io/signup?ref=E8-FA19EF'}.items():
+for k, u in {'manychat': 'https://manychat.com', 'buffer': 'https://join.buffer.com/jing', 'elevenlabs': 'https://elevenlabs.io', 'higgsfield': 'https://higgsfield.ai?fpr=jing-45bb72', 'apify': 'https://www.apify.com?fpr=syzhiz', 'opus': 'https://opus.pro/?via=orca', 'elev8or': 'https://engage.elev8or.io/signup?ref=E8-FA19EF'}.items():
     os.makedirs(f'go/{k}', exist_ok=True)
     open(f'go/{k}/index.html', 'w').write(f'<!DOCTYPE html><meta charset="utf-8"><title>Redirecting</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={u}"><a href="{u}">Continue to {k}</a>')
 os.makedirs('freeskills', exist_ok=True)

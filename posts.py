@@ -6,7 +6,7 @@ dict(kw='GTA', cat='content', mins=8, plan='Free to start', reel=None,
   title='How to make money clipping GTA 6 with AI (step by step)',
   desc='GTA 6 launches 19 November 2026. How to get paid clipping it: the 3 ways clips pay, the rules that get videos taken down, and the exact AI tool steps.',
   get=['The 3 ways GTA 6 clips actually pay', 'Step-by-step setup with the AI tools', 'The rules that get clips removed or demonetised'],
-  tools=['opus', 'higgsfield', 'invideo', 'buffer', 'elev8or'], related='TELLS', pack='Content Engine',
+  tools=['opus', 'higgsfield', 'buffer', 'elev8or'], related='TELLS', pack='Content Engine',
   body='''GTA 6 comes out on **19 November 2026** on PS5 and Xbox Series X|S. Launch week is the biggest clipping window of the year: streamers will be live for hours, and almost none of it gets cut into short clips. A clipper turns those long streams into 30-to-60-second vertical clips and gets paid for the views.
 
 This guide is the whole setup, step by step. You don't need followers, a camera or editing skills to start.
@@ -66,7 +66,7 @@ The free plan gives 60 processing minutes a month, adds a watermark, and only cl
 ![Higgsfield](/media/gta/higgsfield.jpg)
 
 ## Step 6: Add your own voice (invideo)
-1. Create an account on [invideo](/go/invideo/).
+1. Create an account on [invideo](https://invideo.io).
 2. Add a short voiceover or text reaction on top of the clip: one line of setup at the start, one line of payoff at the end.
 3. Your own commentary makes the clip yours, and channels that add something get further than straight re-uploads.
 
