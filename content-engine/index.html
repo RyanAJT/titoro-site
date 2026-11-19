@@ -10,7 +10,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--G);overflow-x:clip}
-body::before{content:"";position:fixed;inset:-80px;z-index:-1;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;animation:grid 30s linear infinite;mask-image:radial-gradient(ellipse 80% 60% at 50% 15%,#000 25%,transparent 80%)}
+body::before{content:"";position:fixed;inset:-80px;background-position:0 calc(var(--sy,0) * -0.25px)!important;z-index:-1;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;animation:grid 30s linear infinite;mask-image:radial-gradient(ellipse 80% 60% at 50% 15%,#000 25%,transparent 80%)}
 @keyframes grid{to{transform:translate(80px,80px)}}
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .wrap{max-width:1200px;margin:0 auto;padding-inline:24px}
@@ -45,6 +45,12 @@ section{padding:110px 0}
 .hero .ph{width:min(330px,78vw);margin-inline:auto;rotate:3deg;animation:bob 6s ease-in-out infinite;box-shadow:0 0 0 1px #ffffff1f,0 40px 80px #000a,0 0 140px #3dd6e822}
 .hero .ph .tag{position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);white-space:nowrap;padding:8px 14px;border-radius:12px;background:var(--card2);border:1px solid var(--line);font:700 13px var(--G)}
 @keyframes bob{50%{transform:translateY(-10px)}}
+[data-speed]{will-change:transform}
+.pwrap{position:relative}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:-1}
+.fchip{position:absolute;z-index:2;padding:10px 14px;border-radius:14px;background:#1b1c22e6;border:1px solid var(--line);backdrop-filter:blur(8px);font:700 14px var(--G);white-space:nowrap;box-shadow:0 20px 40px #0008}
+.fchip i{font-style:normal;color:var(--ok);margin-right:6px}
+section{position:relative}
 /* stepper */
 .tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:56px}
 .tab{text-align:left;padding-top:16px;position:relative;font:700 19px var(--G);color:var(--ink2);letter-spacing:-.02em;transition:color .3s}
@@ -156,7 +162,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .grid6{grid-template-columns:repeat(3,1fr)}
   .cmp div{grid-template-columns:1fr 1fr}.cmp div>:first-child{grid-column:1/-1;padding-bottom:0}
 }
-@media (max-width:560px){.app .bar{font-size:13px;gap:2px}.app .bar span{padding:4px 7px}.rc{width:120px;height:190px}.rcard{grid-template-columns:110px 1fr}.grid6{grid-template-columns:repeat(2,1fr)}.stage h3{font-size:36px}.amt{font-size:64px}}
+@media (max-width:560px){.fchip{font-size:12px;padding:8px 10px}.fchip[style*="right"]{right:0!important}.fchip[style*="left"]{left:0!important}.hero{overflow-x:clip}.app .bar{font-size:13px;gap:2px}.app .bar span{padding:4px 7px}.rc{width:120px;height:190px}.rcard{grid-template-columns:110px 1fr}.grid6{grid-template-columns:repeat(2,1fr)}.stage h3{font-size:36px}.amt{font-size:64px}}
 @media (prefers-reduced-motion:reduce){body::before,.hero .ph{animation:none}.rv{opacity:1;transform:none}}
 </style></head>
 <body>
@@ -169,17 +175,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <p class="lead">One prompt gives you a finished 1080×1920 reel: script, voice, motion graphics, captions and sound. Made for business owners, not editors.</p>
     <div style="margin-top:34px"><a class="btn xl" href="#price">Get the Content Engine · $19 →</a>
       <div class="small"><span><b>7-day</b> money-back guarantee</span><span>One-time payment</span><span>Works in Claude</span></div></div>
-    <div class="proof">
+    <div class="proof" data-speed="-.05">
       <div class="stat"><b>16.4K</b><span>views on one reel</span></div>
       <div class="stat"><b>392</b><span>shares on that reel</span></div>
       <div class="stat"><b>2,000</b><span>subscribers in 3 months (Animas)</span></div>
     </div>
   </div>
-  <div class="ph"><video muted loop playsinline autoplay preload="metadata" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3KjFE77zHvs65uDD9jyLqGF0S7v/a3f1ea96-0572-4c20-bb7d-3520f823f568.mp4"></video><span class="tag">▶ Made with the Engine · 16.4K views</span></div>
+  <div class="pwrap">
+    <div class="orb" data-speed="-.25" style="width:420px;height:420px;left:-40px;top:40px;background:#3dd6e830"></div>
+    <div class="orb" data-speed=".35" style="width:260px;height:260px;right:-30px;top:-40px;background:#5b7cff2a"></div>
+    <div data-speed=".12"><div class="ph"><video muted loop playsinline autoplay preload="metadata" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3KjFE77zHvs65uDD9jyLqGF0S7v/a3f1ea96-0572-4c20-bb7d-3520f823f568.mp4"></video><span class="tag">▶ Made with the Engine · 16.4K views</span></div></div>
+    <div class="fchip" data-speed="-.3" style="left:-10px;top:12%"><i>✓</i>Script in your voice</div>
+    <div class="fchip" data-speed=".32" style="right:-14px;top:42%"><i>✓</i>Voice + captions</div>
+    <div class="fchip" data-speed="-.18" style="left:2%;bottom:14%"><i>✓</i>reel.mp4 · 1080×1920</div>
+  </div>
 </div></section>
 
 <section id="how"><div class="wrap rv">
-  <div class="c"><span class="badge"><i>⟳</i> How it works</span><h2 style="margin-top:20px">Posting daily is <em>simple.</em></h2><p class="lead">Everything you need to go from "what do I post?" to a reel that brings in DMs, inside Claude.</p></div>
+  <div class="c" data-speed=".06"><span class="badge"><i>⟳</i> How it works</span><h2 style="margin-top:20px">Posting daily is <em>simple.</em></h2><p class="lead">Everything you need to go from "what do I post?" to a reel that brings in DMs, inside Claude.</p></div>
   <div class="tabs" id="tabs"></div>
   <div class="stage" id="stage"></div>
   <div class="ctrl"><button id="prev" aria-label="Previous">‹</button><button id="play" aria-label="Pause">❚❚</button><button id="next" aria-label="Next">›</button></div>
@@ -187,18 +200,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </div></section>
 
 <section><div class="wrap rv">
-  <div class="c"><span class="badge"><i>▶</i> Real reels</span><h2 style="margin-top:20px">Pick a style <em>→</em> Claude makes the reel.</h2><p class="lead">Real reels made with the same system, with their reach where we have it.</p></div>
+  <div class="c" data-speed=".06"><span class="badge"><i>▶</i> Real reels</span><h2 style="margin-top:20px">Pick a style <em>→</em> Claude makes the reel.</h2><p class="lead">Real reels made with the same system, with their reach where we have it.</p></div>
   <div class="car"><div class="track" id="track"></div></div>
   <div class="pager"><button id="cp" aria-label="Previous">‹</button><span id="cn">1 / 1</span><button id="cx" aria-label="Next">›</button></div>
 </div></section>
 
 <section style="padding-top:20px"><div class="wrap rv">
-  <div class="c"><span class="badge"><i>▦</i> Styles</span><h2 style="margin-top:20px">Crank out <em>winners.</em></h2><p class="lead">Motion-graphic styles built to stop the scroll, explain fast and earn trust.</p></div>
+  <div class="c" data-speed=".06"><span class="badge"><i>▦</i> Styles</span><h2 style="margin-top:20px">Crank out <em>winners.</em></h2><p class="lead">Motion-graphic styles built to stop the scroll, explain fast and earn trust.</p></div>
   <div class="grid6" id="grid6"></div>
 </div></section>
 
 <section><div class="wrap rv">
-  <div class="c"><span class="badge"><i>⚡</i> Why not just use Claude?</span><h2 style="margin-top:20px">Claude can write. <em>The Engine ships.</em></h2></div>
+  <div class="c" data-speed=".06"><span class="badge"><i>⚡</i> Why not just use Claude?</span><h2 style="margin-top:20px">Claude can write. <em>The Engine ships.</em></h2></div>
   <div class="cmp">
     <div><span></span><span class="h">Claude alone</span><span class="h us">Claude + Content Engine</span></div>
     <div><b>Ideas</b><span class="no">Guesses what might work</span><span class="yes">Weekly scout of what's winning in your niche</span></div>
@@ -210,9 +223,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </div></section>
 
 <section id="price"><div class="wrap rv">
-  <div class="c"><span class="badge"><i>$</i> Pricing</span><h2 style="margin-top:20px">One price. <em>Yours to keep.</em></h2></div>
+  <div class="c" data-speed=".06"><span class="badge"><i>$</i> Pricing</span><h2 style="margin-top:20px">One price. <em>Yours to keep.</em></h2></div>
   <div class="plans">
-    <div class="plan main">
+    <div class="plan main" data-speed="-.04">
       <div class="hd"><b>Content Engine</b><span class="pill">7-day money-back</span></div>
       <p class="d">Claude makes your reels, start to finish.</p>
       <div class="amt">$19<small>one-time</small></div>
@@ -229,7 +242,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <p class="after">One-time $19. Full refund within 7 days if it's not for you.</p>
       <p class="note" style="text-align:center">Checkout opens shortly. DM "ENGINE" on Instagram and I'll send it to you first.</p>
     </div>
-    <div class="plan dfy">
+    <div class="plan dfy" data-speed=".06">
       <div class="top2">◎ For established businesses</div>
       <b style="font:800 24px var(--G)">Done-For-You</b>
       <p class="d">We make and post the reels for you.</p>
@@ -246,7 +259,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </div></section>
 
 <section><div class="wrap rv">
-  <div class="c"><span class="badge"><i>?</i> FAQ</span><h2 style="margin-top:20px">Questions, <em>answered.</em></h2></div>
+  <div class="c" data-speed=".06"><span class="badge"><i>?</i> FAQ</span><h2 style="margin-top:20px">Questions, <em>answered.</em></h2></div>
   <div class="faq">
     <details><summary>Do I need to know code or video editing?</summary><p>No. You talk to Claude in plain words and the Engine does the steps: script, voice, visuals, captions and the final mp4.</p></details>
     <details><summary>Which Claude plan do I need?</summary><p>A paid Claude plan (Pro or above). The Engine runs as a skill pack inside Claude.</p></details>
@@ -322,7 +335,14 @@ document.getElementById('cp').onclick = () => cgo(ci - 1); document.getElementBy
 
 // ---- style grid
 const GRID = [['News Desk', '/media/animas-rules.mp4'], ['Clean UI', '166b5c3a-b664-4404-8b71-04e2e2bd9c23'], ['Hook & List', '8bb31b77-9632-44da-a05a-b2612f45b22b'], ['Editorial', '2f01177a-605d-4b5c-9717-ab5a354720dd'], ['Paper-craft', '3fddc3ee-c551-4d05-904d-f3ec3b82f4a1'], ['Pixel · Showcase', '6e8db33d-e523-4cbe-b923-b9b9528718ca']];
-document.getElementById('grid6').innerHTML = GRID.map(([n, id]) => `<figure>${vid(id)}<figcaption>${n}</figcaption></figure>`).join('');
+document.getElementById('grid6').innerHTML = GRID.map(([n, id], i) => `<figure data-speed="${[.04, -.06, .08, -.04, .06, -.08][i]}">${vid(id)}<figcaption>${n}</figcaption></figure>`).join('');
+
+// ---- parallax: each [data-speed] drifts by its distance from the viewport centre × speed (off for reduced motion)
+const PX = [...document.querySelectorAll('[data-speed]')], still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let pend = false;
+function para() { pend = false; const vh = innerHeight, k = innerWidth < 700 ? .5 : 1; document.body.style.setProperty('--sy', scrollY);
+  PX.forEach(e => { const r = e.parentElement.getBoundingClientRect(), d = (r.top + r.height / 2 - vh / 2); e.style.transform = `translate3d(0,${(d * +e.dataset.speed * k).toFixed(1)}px,0)`; }); }
+if (!still) { addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(para); } }, { passive: true }); addEventListener('resize', para); para(); }
 
 // ---- reveal, and play videos only while on screen
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
