@@ -26,7 +26,7 @@ TOOLS = {
     'opus': ('OpusClip', 'Clipping', 'Turns long streams into captioned vertical clips.', 'Free plan', '/go/opus/', True, '#000000', '<b>O</b>'),
     'elev8or': ('Elev8or', 'DMs', 'Comment-to-DM automation for Instagram.', 'Free plan', '/go/elev8or/', True, '#e8244f', '<b>E</b>'),
 }
-GET = ['The Content Engine skill pack for your Claude, plus a setup guide', 'Weekly scout of winning reels in your niche', 'Hooks and scripts written in your voice', 'Motion-graphic reel styles that render to a finished 1080×1920 mp4', 'Voiceover, captions, sound effects and music', 'Comment-to-DM guide that turns views into leads', 'Bonus: 10 animation prompts']
+GET = ['The Content Engine skill pack for your Claude, plus a setup guide', 'Weekly scout of winning reels in your niche', 'Hooks and scripts written in your voice', 'Motion-graphic reel styles that render to a finished 1080×1920 mp4', 'Captions, music and sound effects, plus your voiceover if you add one', 'Comment-to-DM guide that turns views into leads', 'Bonus: 10 animation prompts']
 SALE = '<span data-after="$29"><s class="was">$190</s> $19</span>'
 PACKS = [
     ('Content Engine', SALE, 'Claude makes your reels, start to finish.', GET[:-1], GET[-1]),

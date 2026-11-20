@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Welcome to the Content Engine · titoro</title><meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
+<style>
+body{background:#0a0c0d}
+.w{max-width:820px;margin:0 auto;padding:56px 24px 120px}
+.w h1{font-size:clamp(36px,6vw,58px);line-height:1.02;letter-spacing:-.04em;margin:14px 0 14px}
+.w h2{font-size:28px;letter-spacing:-.02em;margin:56px 0 14px}
+.w p,.w li{color:#c9ccc9;font-size:17px;line-height:1.6}
+.w b{color:var(--ink)}
+.tag{display:inline-block;padding:6px 12px;border-radius:999px;background:#14242a;color:var(--mist);font:600 13px ui-monospace,monospace;letter-spacing:.06em}
+.dl{display:grid;gap:12px;margin-top:18px}
+.dl a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;border-radius:16px;background:#111416;border:1px solid #23292c;color:var(--ink);text-decoration:none}
+.dl a:hover{border-color:var(--mist)}
+.dl a span{color:#9aa0a0;font-size:14px}
+.dl a.all{background:var(--mist);color:#0a0c0d}.dl a.all b{color:#0a0c0d}.dl a.all span{color:#20363b}.dl a b{white-space:nowrap}
+@media (max-width:600px){.dl a{flex-direction:column;align-items:flex-start;gap:4px}}
+ol.steps{padding-left:22px}ol.steps li{margin:10px 0}
+code,.pr{font:14px/1.5 ui-monospace,monospace;background:#14191b;border:1px solid #23292c;border-radius:8px;padding:2px 7px;color:#dfe7e8}
+.pr{display:block;padding:12px 14px;margin:8px 0;white-space:pre-wrap}
+.note{padding:16px 18px;border-radius:14px;background:#14242a;color:#cfe9ee;font-size:15px;line-height:1.55}
+video{width:260px;border-radius:22px;border:1px solid #23292c;display:block;margin-top:14px}
+</style></head><body>
+<div class="w">
+<a class="logo" href="/" style="color:var(--ink);font-weight:800;text-decoration:none">titoro</a>
+<p style="margin-top:36px"><span class="tag">PAYMENT RECEIVED · THANK YOU</span></p>
+<h1>Welcome to the Content Engine.</h1>
+<p>Everything you bought is on this page. <b>Bookmark it</b>: it's your download link, and updates land here too. Setup takes about 10 minutes.</p>
+
+<h2>1. Download your files</h2>
+<div class="dl">
+<a class="all" href="content-engine-all.zip" download><b>Everything in one zip</b><span>4 skills + bonus · 0.6 MB</span></a>
+<a href="reel-scout.zip" download><b>reel-scout.zip</b><span>Weekly scout of winning reels in your niche</span></a>
+<a href="reel-writer.zip" download><b>reel-writer.zip</b><span>Hooks, scripts and captions in your voice</span></a>
+<a href="reel-maker.zip" download><b>reel-maker.zip</b><span>4 motion-graphic styles → finished mp4 with captions, music, SFX</span></a>
+<a href="comment-to-dm.zip" download><b>comment-to-dm.zip</b><span>Keyword, auto-DM, free guide and ManyChat steps</span></a>
+<a href="10-animation-prompts.md" download><b>Bonus: 10 animation prompts</b><span>Paste into Claude for b-roll</span></a>
+</div>
+<p class="note" style="margin-top:14px">If you downloaded "Everything in one zip", open it first. Inside are the 4 skill zips. Upload those 4 zips to Claude <b>as they are</b>: don't unzip them.</p>
+
+<h2>2. Turn on two settings in Claude</h2>
+<ol class="steps">
+<li>Open <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> (paid plan: Pro or above) and go to <b>Settings → Capabilities</b>.</li>
+<li>Turn on <b>Code execution and file creation</b> (in newer layouts it's called <b>Create and edit files</b>). The reel-maker needs it to render video.</li>
+<li>Make sure <b>web search</b> is on in your chat (the tools button in the message box). The scout needs it.</li>
+</ol>
+
+<h2>3. Upload the 4 skills</h2>
+<ol class="steps">
+<li>In Claude, go to <b>Customize → Skills</b>.</li>
+<li>Click <b>+</b> (or <b>Add</b>) → <b>Upload a skill</b>, and pick <code>reel-scout.zip</code>.</li>
+<li>Do the same for <code>reel-writer.zip</code>, <code>reel-maker.zip</code> and <code>comment-to-dm.zip</code>.</li>
+<li>Check all 4 are switched <b>on</b>.</li>
+</ol>
+
+<h2>4. Set up your voice (once)</h2>
+<p>Create a Claude Project called <b>Content Engine</b> and start a chat in it:</p>
+<span class="pr">Set up my voice card for the Content Engine.</span>
+<p>Claude asks about your business and for 3-5 captions you wrote. Save the voice card it gives you in the Project's instructions, so every chat sounds like you.</p>
+
+<h2>5. Your weekly routine</h2>
+<p>In the Content Engine Project, every week:</p>
+<span class="pr">Run my weekly scout.</span>
+<span class="pr">Write the top 3 as reels.</span>
+<span class="pr">Render reel 1 in the data style.</span>
+<span class="pr">Set up the comment-to-DM for this reel.</span>
+<p>Styles: <b>paper</b> (cream, tutorials), <b>data</b> (dark, numbers), <b>neon</b> (black and pink, hype), <b>pop</b> (yellow, bold tips). Want your voice on it? Record a voice memo of the script on your phone (or use ElevenLabs) and upload it with "use this voiceover". Without one you get a captions-and-music reel.</p>
+<p>Here's a reel the Engine made from one script, untouched:</p>
+<video src="example-reel.mp4" controls playsinline preload="metadata"></video>
+
+<h2>If something doesn't work</h2>
+<ul>
+<li><b>Claude doesn't use the skill:</b> name it in your message, e.g. "use reel-maker to render this".</li>
+<li><b>"Upload failed":</b> upload the 4 separate skill zips, not the all-in-one zip, and don't unzip them first.</li>
+<li><b>The video won't render:</b> check step 2 is on. If your Claude still can't make the mp4, ask it to give you the reel.json and run the same command in Claude Code or on your computer (the skill explains how).</li>
+</ul>
+<p>Stuck, or want your money back? DM <a href="https://ig.me/m/titoro.ai" target="_blank" rel="noopener">@titoro.ai</a> on Instagram. Full refund within 7 days, no questions.</p>
+<p style="margin-top:40px;font-size:13px;color:#7d8484">Not affiliated with Anthropic. Claude is a trademark of Anthropic, PBC. Fonts: Inter and Instrument Serif (SIL Open Font License).</p>
+</div>
+</body></html>
