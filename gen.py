@@ -189,7 +189,7 @@ MOTION = """<div class="motion">
 </div>"""
 home = f"""
 <header class="wrap hero ctr" data-b="hero">
-  <p class="mono pill2"><span class="dot"></span>Content Engine · waitlist open</p>
+  <p class="mono pill2"><span class="dot"></span>Content Engine · now live</p>
   <h1>Turn Claude into your <span class="serif">content team</span>.</h1>
   <p class="sub">The Content Engine gives Claude my exact reel system: winning topics, hooks, scripts, motion-graphic styles, voiceover and captions. Pick a style. Claude makes the reel.</p>
   <div class="ctarow" style="justify-content:center;margin-top:0"><a class="btn xl" href="/content-engine/">Get the Content Engine {ARROW}</a><a class="btn alt" href="/free/">Get the free playbooks</a></div>

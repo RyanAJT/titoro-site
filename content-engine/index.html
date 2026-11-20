@@ -33,7 +33,7 @@ section{padding:110px 0}
 .btn.sm{padding:10px 18px;font-size:15px;box-shadow:0 4px 0 var(--acd)}
 .btn.xl{padding:20px 34px;font-size:20px}
 .small{font-size:14px;color:var(--ink2);margin-top:14px;display:flex;gap:16px;flex-wrap:wrap}.small b{color:var(--ink);font-weight:600}
-.note{display:none;margin-top:10px;font-size:14px;color:var(--ac2)}.nocheck .note{display:block}
+.note{display:block;margin-top:10px;font-size:14px;color:var(--ac2)}.nocheck .note{display:block}
 /* hero */
 .hero{padding:80px 0 90px}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
@@ -240,7 +240,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <div class="req">✦ <b>Requires Claude</b><span>(paid plan)</span></div>
       <a class="btn xl buy" href="#">Get the Content Engine →</a>
       <p class="after">One-time $19. Full refund within 7 days if it's not for you.</p>
-      <p class="note" style="text-align:center">Checkout opens shortly. DM "ENGINE" on Instagram and I'll send it to you first.</p>
+      <p class="note" style="text-align:center">One-time $19. Secure checkout by Stripe. 7-day money-back guarantee.</p>
     </div>
     <div class="plan dfy">
       <div class="top2">◎ For established businesses</div>
@@ -272,14 +272,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <section class="c"><div class="wrap rv">
   <h2>Your first reel can be up <em>tonight.</em></h2>
   <p class="lead">$19 once. 7-day money-back guarantee.</p>
-  <div style="margin-top:32px"><a class="btn xl buy" href="#">Get the Content Engine →</a><p class="note">Checkout opens shortly. DM "ENGINE" on Instagram and I'll send it to you first.</p></div>
+  <div style="margin-top:32px"><a class="btn xl buy" href="#">Get the Content Engine →</a><p class="note">One-time $19. Secure checkout by Stripe. 7-day money-back guarantee.</p></div>
 </div></section>
 
 <footer><div class="wrap"><span>© 2026 titoro · <a href="/">titoro.xyz</a> · <a href="/disclosure/">Disclosure</a></span><span>Questions? DM <a href="https://instagram.com/titoro.ai" target="_blank" rel="noopener">@titoro.ai</a></span></div></footer>
 
 <script>
 // ponytail: set the Stripe link here. Empty = buy buttons open the Instagram DM and the "opens shortly" note shows.
-const CHECKOUT = '';
+const CHECKOUT = 'https://buy.stripe.com/5kQ5kv2V9e970hC4tfg3600';
 document.querySelectorAll('.buy').forEach(a => { a.href = CHECKOUT || 'https://ig.me/m/titoro.ai'; if (!CHECKOUT) { a.target = '_blank'; a.rel = 'noopener'; } });
 if (!CHECKOUT) document.body.classList.add('nocheck');
 const V = id => id.startsWith('/') ? id : `https://d2ol7oe51mr4n9.cloudfront.net/user_3KjFE77zHvs65uDD9jyLqGF0S7v/${id}.mp4`;
