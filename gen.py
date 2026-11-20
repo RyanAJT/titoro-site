@@ -24,6 +24,7 @@ TOOLS = {
                svg('0 0 24 24', 'M1.371 5.476L11.943 0l10.686 5.476-10.686 5.495zm3.36 4.81l7.212 3.547 7.288-3.547 3.398 1.655-10.686 5.202L1.371 11.94zm0 6.171l7.212 3.911 7.288-3.91 3.398 1.815L11.943 24 1.371 18.273z')),
     'apify': ('Apify', 'Research', 'Ready-made scrapers for comments, prices and more.', 'Free plan', '/go/apify/', True, '#1d6f7f', '<b>A</b>'),
     'opus': ('OpusClip', 'Clipping', 'Turns long streams into captioned vertical clips.', 'Free plan', '/go/opus/', True, '#000000', '<b>O</b>'),
+    'gemini': ('Gemini', 'Images and business tools', 'Google’s AI app, now with saved brand style for small businesses.', 'Free to try', 'https://gemini.google.com', False, '#1a73e8', '<b>G</b>'),
     'elev8or': ('Elev8or', 'DMs', 'Comment-to-DM automation for Instagram.', 'Free plan', '/go/elev8or/', True, '#e8244f', '<b>E</b>'),
 }
 GET = ['The Content Engine skill pack for your Claude, plus a setup guide', 'Weekly scout of winning reels in your niche', 'Hooks and scripts written in your voice', 'Motion-graphic reel styles that render to a finished 1080×1920 mp4', 'Captions, music and sound effects, plus your voiceover if you add one', 'Comment-to-DM guide that turns views into leads', 'Bonus: 10 animation prompts']

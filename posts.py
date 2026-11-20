@@ -621,6 +621,132 @@ Write the recap email to send after the call: what we agreed, who does what, by 
 - Read the proposal before you send it. Claude drafts, you decide.
 - Keep client calls private: only connect the tools Claude actually needs.'''),
 
+dict(kw='HOST', cat='content', mins=4, plan='Higgsfield paid plan (Plus or above)', reel=None,
+  title='One AI host for every product video (no model, no studio)',
+  desc='Higgsfield Shorts Studio lets you build one AI presenter and reuse it on every product video. Here is the setup and 5 video ideas.',
+  get=['How to build your host once', '5 product video ideas with prompts', 'What a clip costs'],
+  tools=['higgsfield'], related='AGENT', pack='Content Engine',
+  body='''Higgsfield launched **Shorts Studio** on 4 Nov 2026. You build one AI presenter, then reuse that same host on every vertical video you post. Same face every time, so your page looks like a brand channel, not a pile of random ads.
+
+## Before you start
+- **Plan:** use a paid plan. The Free plan doesn't include commercial use, and these are videos for your business.
+- **Cost:** about $4.41 for a 15-second clip on the Plus plan (Nov 2026). Check the pricing page before you start, prices change.
+- Have 3–5 clean product photos ready: plain background, good light, the label readable.
+
+## 1. Build your host once
+Open Shorts Studio in Higgsfield and pick a preset host, or build your own. Describe them like this:
+```
+A friendly skincare presenter in her late 20s, natural make-up, clean white studio, soft daylight, talks straight to camera, warm and calm.
+```
+Save the host. You'll pick the same one for every video from now on.
+
+## 2. Make a product video
+Pick your host, drop in your product photos, and write what the host should say. Keep it under 15 seconds.
+
+## 3. Five product video ideas
+```
+Host holds the serum and says the one problem it fixes, then shows the texture on the back of her hand.
+```
+```
+"3 things I'd never skip in a morning routine": host shows each product in order.
+```
+```
+Host answers one real customer question from your comments, with the product in hand.
+```
+```
+Before and after in words: how skin feels on day 1 and on day 14, with the product on screen.
+```
+```
+Host unboxes your bestseller and reads the one ingredient that matters.
+```
+
+## Tips
+- Same host, same background, every post. Consistency is the whole point.
+- Don't make medical claims. Say how it feels, not what it cures.
+- Post the best one, then make 4 more variations of it.'''),
+
+dict(kw='BRAND', cat='business', mins=4, plan='Gemini app (check what your plan includes)', reel=None,
+  title='Make AI posters that actually look like your brand',
+  desc='Gemini can now save your brand style, so every image it makes uses your logo, fonts and colours. Here is what to upload and 5 poster prompts.',
+  get=['What to upload for your brand style', '5 café poster prompts', 'Turn receipts into charts'],
+  tools=['gemini'], related='MEET', pack='Content Engine',
+  body='''On 20 Oct 2026 Google added small business tools to the **Gemini app**. The useful one is **saved brand style**: upload your brand once, and the images Gemini makes after that use your style.
+
+## Before you start
+- Open the Gemini app and look for the small business tools. Google is rolling them out, so check they're live in your country and what your plan includes.
+- Gather your brand files: your website link, your logo (PNG), your font names and your colour codes.
+
+## 1. Save your brand style
+Upload any of these once:
+- Your website
+- Your logo
+- Your fonts
+- Your colour palette
+
+The more you give it, the closer the posters get.
+
+## 2. Five poster prompts
+```
+A poster for our latte special this week, using our brand style. Big headline, price, and a photo of the latte on our counter.
+```
+```
+A "new menu from Monday" poster in our brand style, with 3 dishes and a QR code space at the bottom.
+```
+```
+An Instagram story announcing we're open late on Friday and Saturday, in our brand style.
+```
+```
+A loyalty card design: buy 9 coffees, get the 10th free, in our brand style.
+```
+```
+A sign for the counter: "Ask about our oat milk", in our brand style, simple and readable from 2 metres.
+```
+
+## 3. Connect your apps
+Gemini connects to ten apps, including Google Business Profile, Canva, Shopify, Wix and Xero. Connect only the ones you use.
+
+## 4. Receipts and spreadsheets into charts
+```
+Here are this month's receipts and my sales sheet. Make a simple chart of sales by day and tell me my busiest day.
+```
+
+## Tips
+- Always check prices, dates and spelling on a poster before you print it.
+- If a poster looks off-brand, re-upload a cleaner logo or add your exact colour codes.'''),
+
+dict(kw='AGENT', cat='content', mins=4, plan='Agent Opus free plan to start, Pro $29/mo', reel=None,
+  title='Post a video every day without filming (Agent Opus)',
+  desc='Agent Opus turns an idea, a link, a script or an audio file into a finished video. Here is the setup, how to use it from Claude, and my 3 prompts.',
+  get=['How to set up Agent Opus', 'How to use it from Claude', 'My 3 prompts for coaches'],
+  tools=['opus', 'claude'], related='HOST', pack='Content Engine',
+  body='''**Agent Opus** is from the team behind OpusClip. You give it an idea, a link, a script or an audio file. It researches the topic, writes the script, builds the visuals, adds a voiceover and edits the video. You review it.
+
+## Before you start
+- **Plans:** there's a free plan to start. Pro is $29 a month (Nov 2026). Check the pricing page for the current limits.
+- Pick your best newsletter or blog post. That's your first batch of videos.
+
+## 1. Set up Agent Opus
+Sign up with the OpusClip link on this page, open Agent Opus, and set your brand: logo, colours, and the voice you want.
+
+## 2. Use it from Claude
+Agent Opus has an MCP server, so Claude can ask it to make videos for you. Get the connection details from Agent Opus, then in Claude go to Settings → Connectors → Add custom connector and paste them in.
+
+## 3. My 3 prompts
+```
+Here's my newsletter. Turn it into 5 short vertical videos, one idea each, in my own words. Under 40 seconds each.
+```
+```
+Make a 30-second video answering the question my clients ask most: [question]. Hook in the first line, one clear tip, end with "Follow for more".
+```
+```
+Take this blog post link and make one video for each of its main points. Keep my phrasing, don't add claims I didn't make.
+```
+
+## Tips
+- Review every video before you post it. Check facts and names.
+- One piece of content, five videos. Repurpose before you write anything new.
+- Post daily for 30 days, then double down on the format that got the most watch time.'''),
+
 dict(kw='CLEAR', cat='business', mins=2, plan='Free Claude plan', reel='a1b4e0cf-c9ea-4935-9a47-da1d97116402',
   title='Write SOPs nobody can misread (the aircraft-manual trick)',
   desc='Aircraft manuals use Simplified Technical English so nobody misreads a step. One prompt rewrites your SOPs the same way.',
