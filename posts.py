@@ -583,6 +583,44 @@ dict(kw='PRIVACY', cat='basics', mins=3, plan='Any Claude plan', reel=None,
 - Change any password, key or code that appeared in the chat.
 - Once the link is dead, ask Google to refresh the result with its "Remove outdated content" tool.'''),
 
+dict(kw='MEET', cat='business', mins=4, plan='Claude Team or Enterprise (beta)', reel=None,
+  title='Claude Meetings: get the proposal written before the call ends',
+  desc='Claude can now join your Google Meet as a visible guest. Here is the setup and the 5 prompts worth asking mid-call.',
+  get=['How to add Claude to a Google Meet call', '5 prompts to ask during the call', 'What it can and can’t do yet'],
+  tools=['claude'], related='CLEAR', pack='Ops Engine',
+  body='''Claude Meetings is in beta. Claude joins your video call as a **visible participant**, so everyone on the call can see it's there. It follows the conversation and can start work during the meeting.
+
+## Before you start
+- **Plans:** Team and Enterprise only for now.
+- **Calls:** Google Meet only at launch. Zoom and Teams aren't supported yet.
+- If you're on a Team or Enterprise plan and don't see Meetings, ask whoever manages your Claude workspace to turn it on.
+- Tell the people on the call that Claude is there to take notes and help. It shows up as a guest anyway, but say it out loud.
+
+## 1. Add Claude to the call
+Open Meetings in Claude, pick the call, and let Claude join. You can ask it things out loud or in the chat. By default it answers in writing, and it can use your connected tools only with your permission.
+
+## 2. The 5 prompts worth asking mid-call
+```
+Draft the proposal from what we just agreed: scope, budget, deadline and next steps.
+```
+```
+List everything we've agreed is in scope, and anything that sounds out of scope.
+```
+```
+Turn the deadline and the steps we discussed into a simple timeline.
+```
+```
+Note every concern or objection the client raised, and how we answered it.
+```
+```
+Write the recap email to send after the call: what we agreed, who does what, by when.
+```
+
+## Tips
+- Say the numbers clearly (budget, dates, quantities). Claude can only use what it hears.
+- Read the proposal before you send it. Claude drafts, you decide.
+- Keep client calls private: only connect the tools Claude actually needs.'''),
+
 dict(kw='CLEAR', cat='business', mins=2, plan='Free Claude plan', reel='a1b4e0cf-c9ea-4935-9a47-da1d97116402',
   title='Write SOPs nobody can misread (the aircraft-manual trick)',
   desc='Aircraft manuals use Simplified Technical English so nobody misreads a step. One prompt rewrites your SOPs the same way.',
