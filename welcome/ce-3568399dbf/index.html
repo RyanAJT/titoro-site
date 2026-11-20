@@ -79,10 +79,10 @@ section{padding-block:96px}
 .bonus a{font:700 15px var(--G);color:var(--ac);white-space:nowrap}
 
 /* styles */
-.styles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.st img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:18px;border:1px solid var(--line);display:block;transition:transform .5s var(--ease)}
-.st:hover img{transform:translateY(-6px) rotate(-1deg)}
-.st b{display:block;margin-top:12px;font:700 17px var(--G)}.st span{font-size:14px;color:var(--ink2)}
+.styles{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 16px}
+.st video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:16px;border:1px solid var(--line);display:block;background:#000;transition:transform .5s var(--ease)}
+.st:hover video{transform:translateY(-6px) rotate(-1deg)}
+.st b{display:block;margin-top:10px;font:700 16px var(--M)}.st span{font-size:13.5px;line-height:1.4;color:var(--ink2);display:block}
 
 /* setup */
 .steps{display:grid;gap:16px}
@@ -151,7 +151,7 @@ footer{padding:40px 0 70px;color:#6d717c;font-size:13px}
       <a class="btn" href="content-engine-all.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download the kit</a>
       <small>content-engine-all.zip · 0.6 MB<br>Bookmark this page. Updates land here.</small>
     </div>
-    <div class="facts"><div><b>4</b><span>skills</span></div><div><b>4</b><span>video styles</span></div><div><b>10 min</b><span>setup</span></div></div>
+    <div class="facts"><div><b>4</b><span>skills</span></div><div><b>16</b><span>video styles</span></div><div><b>10 min</b><span>setup</span></div></div>
   </div>
   <div class="phone">
     <div class="ph"><video src="example-reel.mp4" autoplay muted loop playsinline></video></div>
@@ -170,7 +170,7 @@ footer{padding:40px 0 70px;color:#6d717c;font-size:13px}
       <div><span class="mono">02 · Write</span><h3>reel-writer</h3><p>Learns your voice, then writes 10 hooks, the script, the caption and the comment keyword.</p><span class="say">"Write the top 3 as reels"</span></div>
       <a class="get" href="reel-writer.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 4v11M7 10l5 5 5-5"/></svg>.zip</a></div>
     <div class="sk"><div class="art mini"><div><i style="height:30%"></i><i style="height:52%"></i><i class="t" style="height:88%"></i><i style="height:40%"></i></div></div>
-      <div><span class="mono">03 · Make</span><h3>reel-maker</h3><p>Turns the script into a finished 1080×1920 mp4 with motion graphics, captions, music and sound effects.</p><span class="say">"Render it in the data style"</span></div>
+      <div><span class="mono">03 · Make</span><h3>reel-maker</h3><p>Turns the script into a finished 1080×1920 mp4 in 16 styles, with motion graphics, captions, music and sound effects.</p><span class="say">"Render it in the data style"</span></div>
       <a class="get" href="reel-maker.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 4v11M7 10l5 5 5-5"/></svg>.zip</a></div>
     <div class="sk"><div class="art dm"><span class="u">CAKE</span><span class="m">Here's your guide</span><span class="u" style="opacity:.6">thank you!!</span></div>
       <div><span class="mono">04 · Convert</span><h3>comment-to-dm</h3><p>The keyword, the auto-DM, the free guide they receive and the ManyChat setup.</p><span class="say">"Set up the DM for this reel"</span></div>
@@ -180,12 +180,8 @@ footer{padding:40px 0 70px;color:#6d717c;font-size:13px}
 </section>
 
 <section class="wrap">
-  <div class="head"><div><p class="mono">Your styles</p><h2 style="margin-top:12px">Pick a look. <em>Say the name.</em></h2></div><p>Real frames from reel-maker. Add your brand colours and it uses those instead.</p></div>
-  <div class="styles">
-    <div class="st"><img src="style-paper.jpg" alt="Paper style frame" loading="lazy"><b>paper</b><span>Cream and blue. Tutorials.</span></div>
-    <div class="st"><img src="style-data.jpg" alt="Data style frame" loading="lazy"><b>data</b><span>Dark and cyan. Numbers.</span></div>
-    <div class="st"><img src="style-neon.jpg" alt="Neon style frame" loading="lazy"><b>neon</b><span>Black and pink. Hype.</span></div>
-    <div class="st"><img src="style-pop.jpg" alt="Pop style frame" loading="lazy"><b>pop</b><span>Yellow and red. Bold tips.</span></div>
+  <div class="head"><div><p class="mono">Your styles</p><h2 style="margin-top:12px">16 looks. <em>Say the name.</em></h2></div><p>Made by reel-maker from one script. Say "render it in the deco style", or add your brand colours and it uses those.</p></div>
+  <div class="styles"><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/paper.jpg" src="/media/styles/paper.mp4"></video><b>paper</b><span>Cream, black and blue. Tutorials.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/data.jpg" src="/media/styles/data.mp4"></video><b>data</b><span>Dark navy and cyan. Numbers and results.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/neon.jpg" src="/media/styles/neon.mp4"></video><b>neon</b><span>Black with pink glow. Hype and tools.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/pop.jpg" src="/media/styles/pop.mp4"></video><b>pop</b><span>Yellow and red. Bold tips.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/swiss.jpg" src="/media/styles/swiss.mp4"></video><b>swiss</b><span>Grid, one red, huge type. Clean authority.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/riso.jpg" src="/media/styles/riso.mp4"></video><b>riso</b><span>Risograph print: blue and fluoro pink. Friendly, crafty.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/dossier.jpg" src="/media/styles/dossier.mp4"></video><b>dossier</b><span>Manila case file, halftone, red. Exposes and myths.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/blueprint.jpg" src="/media/styles/blueprint.mp4"></video><b>blueprint</b><span>Technical drawing. Systems and how-tos.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/chalk.jpg" src="/media/styles/chalk.mp4"></video><b>chalk</b><span>Chalkboard lesson. Teaching and breakdowns.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/bauhaus.jpg" src="/media/styles/bauhaus.mp4"></video><b>bauhaus</b><span>Primary shapes, blue, yellow, pink. Modern and playful.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/spy.jpg" src="/media/styles/spy.mp4"></video><b>spy</b><span>60s title sequence: black, cream, red, mustard. Stories.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/deco.jpg" src="/media/styles/deco.mp4"></video><b>deco</b><span>Art deco gold on black. Luxury and premium.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/news.jpg" src="/media/styles/news.mp4"></video><b>news</b><span>News desk: ink and lemon. Updates and announcements.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/terminal.jpg" src="/media/styles/terminal.mp4"></video><b>terminal</b><span>Amber terminal. Tech, AI and hacks.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/memphis.jpg" src="/media/styles/memphis.mp4"></video><b>memphis</b><span>Memphis confetti: pastel and bright. Fun and lifestyle.</span></div><div class="st"><video muted loop playsinline autoplay preload="none" poster="/media/styles/flash.jpg" src="/media/styles/flash.mp4"></video><b>flash</b><span>Red, black, white flash cards. Drama and big claims.</span></div>
   </div>
 </section>
 

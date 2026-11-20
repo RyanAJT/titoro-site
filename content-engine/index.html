@@ -112,9 +112,9 @@ section{position:relative}
 .rcard>div:last-child{display:flex;flex-direction:column}
 .pager{display:flex;justify-content:center;align-items:center;gap:20px;margin-top:28px;font:700 18px var(--G);color:var(--ink2)}
 .pager button{width:60px;height:60px;border-radius:50%;background:#ffffff0d;border:1px solid var(--line);font-size:20px}
-.grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:56px}
+.grid6{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:56px}
 .grid6 figure{text-align:center}.grid6 .ph{border-radius:20px;padding:5px}.grid6 .ph video{border-radius:16px}
-.grid6 figcaption{margin-top:14px;font:700 17px var(--G)}
+.grid6 figcaption{margin-top:12px;font:700 16px var(--G)}.grid6 figcaption small{display:block;font:500 13px/1.35 var(--G);color:var(--ink2);margin-top:3px}
 /* compare */
 .cmp{margin-top:50px;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
 .cmp div{display:grid;grid-template-columns:.7fr 1fr 1.3fr;border-top:1px solid var(--line)}
@@ -159,7 +159,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .stage{grid-template-columns:1fr;padding:24px}
   .app .body{grid-template-columns:1fr}
   .rcard{flex-basis:100%}
-  .grid6{grid-template-columns:repeat(3,1fr)}
+  .grid6{grid-template-columns:repeat(4,1fr)}
   .cmp div{grid-template-columns:1fr 1fr}.cmp div>:first-child{grid-column:1/-1;padding-bottom:0}
 }
 @media (max-width:560px){.fchip{font-size:12px;padding:8px 10px}.fchip[style*="right"]{right:0!important}.fchip[style*="left"]{left:0!important}.hero{overflow-x:clip}.app .bar{font-size:13px;gap:2px}.app .bar span{padding:4px 7px}.rc{width:120px;height:190px}.rcard{grid-template-columns:110px 1fr}.grid6{grid-template-columns:repeat(2,1fr)}.stage h3{font-size:36px}.amt{font-size:64px}}
@@ -208,7 +208,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </div></section>
 
 <section style="padding-top:20px"><div class="wrap rv">
-  <div class="c"><span class="badge"><i>▦</i> Styles</span><h2 style="margin-top:20px">Crank out <em>winners.</em></h2><p class="lead">Motion-graphic styles built to stop the scroll, explain fast and earn trust.</p></div>
+  <div class="c"><span class="badge"><i>▦</i> Styles</span><h2 style="margin-top:20px">16 styles. <em>Say the name.</em></h2><p class="lead">Every style is included. These previews were made by the Engine itself, from the same script. Add your brand colours and it uses those instead.</p></div>
   <div class="grid6" id="grid6"></div>
 </div></section>
 
@@ -236,7 +236,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <li>The Content Engine skill pack for your Claude, plus a setup guide</li>
         <li>Weekly scout of winning reels in your niche</li>
         <li>Hooks and scripts written in your voice</li>
-        <li>Motion-graphic reel styles that render to a finished 1080×1920 mp4</li>
+        <li>16 motion-graphic reel styles that render to a finished 1080×1920 mp4</li>
         <li>Captions, music and sound effects, plus your voiceover if you add one</li>
         <li>Comment-to-DM guide that turns views into leads</li>
         <li class="bonus">Bonus: 10 animation prompts</li>
@@ -357,8 +357,8 @@ const cgo = i => { ci = (i + pages()) % pages(); tr.style.transform = `translate
 document.getElementById('cp').onclick = () => cgo(ci - 1); document.getElementById('cx').onclick = () => cgo(ci + 1); addEventListener('resize', () => cgo(0)); cgo(0);
 
 // ---- style grid
-const GRID = [['News Desk', '/media/animas-rules.mp4'], ['Clean UI', '166b5c3a-b664-4404-8b71-04e2e2bd9c23'], ['Hook & List', '8bb31b77-9632-44da-a05a-b2612f45b22b'], ['Editorial', '2f01177a-605d-4b5c-9717-ab5a354720dd'], ['Paper-craft', '3fddc3ee-c551-4d05-904d-f3ec3b82f4a1'], ['Pixel · Showcase', '6e8db33d-e523-4cbe-b923-b9b9528718ca']];
-document.getElementById('grid6').innerHTML = GRID.map(([n, id], i) => `<figure data-speed="${[.04, -.06, .08, -.04, .06, -.08][i]}">${vid(id)}<figcaption>${n}</figcaption></figure>`).join('');
+const GRID = [["Paper", "paper", "Tutorials"], ["Data", "data", "Numbers and results"], ["Neon", "neon", "Hype and tools"], ["Pop", "pop", "Bold tips"], ["Swiss", "swiss", "Clean authority"], ["Risograph", "riso", "Friendly, crafty"], ["Dossier", "dossier", "Exposes and myths"], ["Blueprint", "blueprint", "Systems and how-tos"], ["Chalk", "chalk", "Teaching and breakdowns"], ["Bauhaus", "bauhaus", "Modern and playful"], ["Spy", "spy", "Stories"], ["Deco", "deco", "Luxury and premium"], ["News", "news", "Updates and announcements"], ["Terminal", "terminal", "Tech, AI and hacks"], ["Memphis", "memphis", "Fun and lifestyle"], ["Flash", "flash", "Drama and big claims"]];
+document.getElementById('grid6').innerHTML = GRID.map(([n, k, use]) => `<figure><div class="ph"><video muted loop playsinline preload="none" poster="/media/styles/${k}.jpg" data-src="/media/styles/${k}.mp4"></video></div><figcaption>${n}<small>${use}</small></figcaption></figure>`).join('');
 
 // ---- parallax: each [data-speed] drifts by its distance from the viewport centre × speed (off for reduced motion)
 const PX = [...document.querySelectorAll('.hero [data-speed]')], still = matchMedia('(prefers-reduced-motion: reduce)').matches;
