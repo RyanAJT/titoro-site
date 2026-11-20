@@ -48,7 +48,7 @@ def page(path, title, desc, body, on=''):
 <meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
 <script src="/build.js"></script></head>
 <body>
-<a class="ann" href="/content-engine/">Black Friday · Content Engine · <b>90% off: <s>$190</s> $19</b> →</a>
+<a class="ann" href="/content-engine/">Black Friday · Content Engine · <b>90% off: <s>$190</s> $19</b> · <span class="cd" data-cd>Ends Sat 28 Nov</span> →</a>
 <nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/content-engine/">Get the Content Engine</a></nav>
 {body}
 <div class="wrap"><footer data-b="footer">
@@ -174,7 +174,7 @@ FAQ = [('Who is this for?', 'Business owners and creators who want to post reels
        ('Can someone just run it for me?', 'Yes. My agency, orca.agentics, builds and runs the whole system for your business. Packages from $1,200 USD.'),
        ('Is this official Anthropic stuff?', 'No. This is my own system. Not affiliated with or endorsed by Anthropic.')]
 TIERS = [('Free playbooks', '$0', 'Learn the system piece by piece', ['Every playbook from my reels', 'Copy-paste prompts and steps', 'New ones every week'], 'Get the free playbooks', '/free/', ''),
-         ('Content Engine', SALE, 'Black Friday · 90% off', GET, 'Get the Content Engine', '/content-engine/', 'One-time payment · 7-day money-back guarantee · needs a paid Claude plan'),
+         ('Content Engine', SALE, 'Black Friday · 90% off', GET, 'Get the Content Engine', '/content-engine/', '<span data-cd>Ends Sat 28 Nov</span> · One-time payment · 7-day money-back guarantee'),
          ('Done-For-You', 'from $1,200', 'For established businesses', ['Your content system built for you', 'Reels, DMs and admin running on AI', 'Set up and run by orca.agentics', 'Priced in USD'], 'Apply at orca.agentics', 'https://orcaagentics.xyz', 'orcaagentics.xyz')]
 PRICING = ''.join(f"""<div class="tier{' main' if i == 1 else ''}"><span class="mono">{n}</span><div class="price">{pr}</div><p class="tsub">{sub}</p><ul>{''.join(f'<li>{x}</li>' for x in items)}</ul><a class="btn{'' if i == 1 else ' alt'}" href="{u}"{' target="_blank" rel="noopener"' if u.startswith('http') else ''}>{cta} {ARROW}</a>""" + (f'<span class="mono small">{note}</span>' if note else '') + '</div>' for i, (n, pr, sub, items, cta, u, note) in enumerate(TIERS))
 BUILDER = f"""<div class="builder"><div class="bcol">
@@ -192,7 +192,7 @@ MOTION = """<div class="motion">
 home = f"""
 <div class="bfpop" id="bfpop" hidden role="dialog" aria-modal="true" aria-labelledby="bft"><div class="bfbox">
 <button class="bfx" aria-label="Close">×</button>
-<span class="mono bftag">Black Friday · 90% off</span>
+<span class="mono bftag">Black Friday · 90% off · <span class="cd" data-cd>Ends Sat 28 Nov</span></span>
 <h3 id="bft">The Content Engine</h3>
 <p class="bfp"><s>$190</s> <b>$19</b> <small>one-time</small></p>
 <ul>{"".join(f"<li>{x}</li>" for x in GET)}</ul>

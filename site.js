@@ -177,3 +177,16 @@ $('[data-replay]').forEach(b => b.addEventListener('click', () => { location.hre
   p.addEventListener('click', e => { if (e.target === p || e.target.closest('.bfx')) close(); });
   addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
+
+// sale countdown to the real end date (28 Nov 2026, 23:59 MYT)
+(() => {
+  const end = Date.parse('2026-11-28T23:59:59+08:00'), els = document.querySelectorAll('[data-cd]');
+  if (!els.length) return;
+  const p = n => String(n).padStart(2, '0');
+  const tick = () => {
+    const s = Math.max(0, (end - Date.now()) / 1000 | 0), d = s / 86400 | 0;
+    const t = s ? `Ends in ${d ? d + 'd ' : ''}${p(s / 3600 % 24 | 0)}:${p(s / 60 % 60 | 0)}:${p(s % 60)}` : 'Sale ended';
+    els.forEach(e => e.textContent = t);
+  };
+  tick(); setInterval(tick, 1000);
+})();

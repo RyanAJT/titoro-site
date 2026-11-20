@@ -165,13 +165,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 @media (max-width:560px){.fchip{font-size:12px;padding:8px 10px}.fchip[style*="right"]{right:0!important}.fchip[style*="left"]{left:0!important}.hero{overflow-x:clip}.app .bar{font-size:13px;gap:2px}.app .bar span{padding:4px 7px}.rc{width:120px;height:190px}.rcard{grid-template-columns:110px 1fr}.grid6{grid-template-columns:repeat(2,1fr)}.stage h3{font-size:36px}.amt{font-size:64px}}
 @media (prefers-reduced-motion:reduce){body::before,.hero .ph{animation:none}.rv{opacity:1;transform:none}}
 .was,s{color:var(--ink2);opacity:.7;text-decoration-thickness:2px}.amt .was{font-size:.45em;margin-right:14px;vertical-align:middle}
+.amt small{white-space:nowrap}@media (max-width:560px){.amt .was{margin-right:8px}.amt small{font-size:16px;margin-left:4px}}.cdbox{margin:6px 0 14px;font:700 16px var(--G);color:var(--ac2)}.cd{font-variant-numeric:tabular-nums}
 </style></head>
 <body>
 <header class="top"><div><a class="logo" href="/"><svg viewBox="0 0 120 120"><g fill="currentColor"><path d="M12 50A32 32 0 0 1 44 18H59V50Z"/><path d="M61 18H108V50H92A32 32 0 0 0 61 18Z"/><path d="M44 58H76V106H60A16 16 0 0 1 44 90Z"/><circle cx="94" cy="98" r="9"/></g></svg>titoro</a><a class="btn sm" href="#price">Get it · <s>$190</s> $19</a></div></header>
 
 <section class="hero"><div class="wrap">
   <div>
-    <span class="badge"><i>✦</i> Black Friday · 90% off · <s>$190</s> $19</span>
+    <span class="badge"><i>✦</i> Black Friday · 90% off · <s>$190</s> $19 · <span class="cd" data-cd>Ends Sat 28 Nov</span></span>
     <h1 style="margin-top:22px">Turn Claude into your <em>reel editor.</em></h1>
     <p class="lead">One prompt gives you a finished 1080×1920 reel: script, voice, motion graphics, captions and sound. Made for business owners, not editors.</p>
     <div style="margin-top:34px"><a class="btn xl" href="#price">Get it for $19 <s>$190</s> →</a>
@@ -230,6 +231,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <div class="hd"><b>Content Engine</b><span class="pill">Black Friday · −90%</span></div>
       <p class="d">Claude makes your reels, start to finish.</p>
       <div class="amt"><s class="was">$190</s>$19<small>one-time</small></div>
+      <p class="cdbox">⏱ <span class="cd" data-cd>Ends Sat 28 Nov</span></p>
       <ul class="ticks">
         <li>The Content Engine skill pack for your Claude, plus a setup guide</li>
         <li>Weekly scout of winning reels in your niche</li>
@@ -280,6 +282,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 <script>
 // ponytail: set the Stripe link here. Empty = buy buttons open the Instagram DM and the "opens shortly" note shows.
+// sale countdown to the real end date (28 Nov 2026, 23:59 MYT)
+(() => {
+  const end = Date.parse('2026-11-28T23:59:59+08:00'), els = document.querySelectorAll('[data-cd]');
+  if (!els.length) return;
+  const p = n => String(n).padStart(2, '0');
+  const tick = () => {
+    const s = Math.max(0, (end - Date.now()) / 1000 | 0), d = s / 86400 | 0;
+    const t = s ? `Ends in ${d ? d + 'd ' : ''}${p(s / 3600 % 24 | 0)}:${p(s / 60 % 60 | 0)}:${p(s % 60)}` : 'Sale ended';
+    els.forEach(e => e.textContent = t);
+  };
+  tick(); setInterval(tick, 1000);
+})();
 const CHECKOUT = 'https://buy.stripe.com/5kQ5kv2V9e970hC4tfg3600';
 document.querySelectorAll('.buy').forEach(a => { a.href = CHECKOUT || 'https://ig.me/m/titoro.ai'; if (!CHECKOUT) { a.target = '_blank'; a.rel = 'noopener'; } });
 if (!CHECKOUT) document.body.classList.add('nocheck');
