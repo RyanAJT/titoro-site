@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to make your vibe-coded app stop looking AI-made (unslop) · titoro</title><meta name="description" content="Unslop is a free Claude Code skill that finds the signs your app was made by AI and redesigns it with its own character. Install steps, the exact commands and prompts.">
+<meta property="og:title" content="How to make your vibe-coded app stop looking AI-made (unslop) · titoro"><meta property="og:description" content="Unslop is a free Claude Code skill that finds the signs your app was made by AI and redesigns it with its own character. Install steps, the exact commands and prompts.">
+<meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
+<script src="/build.js"></script><style>.pbody pre{background:var(--paper2);border-radius:12px;padding:16px 18px;overflow-x:auto;margin:14px 0}.pbody pre code{background:none;padding:0;white-space:pre;display:block;line-height:1.7}</style></head>
+<body>
+<a class="ann" href="/content-engine/">The Content Engine is here · <b>$19, 7-day guarantee</b> →</a>
+<nav class="top"><a class="logo" href="/"><svg viewBox="0 0 120 120"><g fill="currentColor"><path d="M12 50A32 32 0 0 1 44 18H59V50Z"/><path d="M61 18H108V50H92A32 32 0 0 0 61 18Z"/><path d="M44 58H76V106H60A16 16 0 0 1 44 90Z"/><circle cx="94" cy="98" r="9"/></g></svg>titoro</a><a class="l" href="/#how">How it works</a><a class="l on" href="/free/">Free playbooks</a><a class="l" href="/#styles">Styles</a><a class="l" href="/#pricing">Pricing</a><a class="l" href="https://orcaagentics.xyz" target=_blank rel=noopener>Done-For-You</a><a class="l" href="/#faq">FAQ</a><a class="cta" href="/content-engine/">Get the Content Engine</a></nav>
+
+<header class="wrap posthd" data-b="header">
+  <div><p class="mono crumbs"><a href="/free/">Free playbooks</a> / UNSLOP</p>
+  <p class="mono eyebrow"><b>Comment UNSLOP</b> 4-minute read · Free</p>
+  <h1>How to make your vibe-coded app stop looking AI-made (unslop)</h1>
+  <div class="get"><span class="mono">What you'll get</span><ul><li>The install command for Claude Code</li><li>The exact /unslop commands to run</li><li>4 prompts to steer the redesign</li></ul></div></div>
+  <div class="pmedia" data-speed="-.08"><div class="kwcard"><span class="mono">Comment</span><b>UNSLOP</b></div></div>
+</header>
+<section class="wrap postwrap" data-b="post">
+  <article class="pbody"><p>Most apps built with AI end up with the same look: purple-to-pink gradients, emoji used as icons, glowing buttons and the same three rounded cards. People have seen it hundreds of times, and it makes a product look rushed.</p>
+<p><b>Unslop</b> is a free, open-source skill for Claude Code by <a href="https://github.com/heydamir/unslop" target="_blank" rel="noopener">heydamir</a>. You point it at a screen and it does three things:</p>
+<ol>
+<li><b>Audits it.</b> It lists the signs of "slop" and where each one appears.</li>
+<li><b>Proposes a direction.</b> Before editing anything, it suggests a design direction based on your product.</li>
+<li><b>Fixes it in passes:</b> spacing, colour, icons, copy, type, layout, details, visuals and motion.</li>
+</ol>
+<p>It can also make a short square video of the before and after for you to post.</p>
+<h2>Step 1: Install it in Claude Code</h2>
+<p>Open your terminal and run:</p>
+<pre><code>claude plugin install unslop --marketplace heydamir/unslop</code></pre>
+<p>On older versions of Claude Code, run these two lines instead:</p>
+<pre><code>claude plugin marketplace add heydamir/unslop
+claude plugin install unslop@heydamir</code></pre>
+<p>Then start a new Claude Code session, or type <code>/reload-plugins</code>.</p>
+<ul>
+<li><b>Just one project:</b> run the install from the project's folder and add <code>--scope local</code>.</li>
+<li><b>Whole team:</b> after adding the marketplace, run <code>claude plugin install unslop@heydamir --scope project</code> and commit <code>.claude/settings.json</code>.</li>
+</ul>
+<h2>Step 2 (optional): Let it see live sites</h2>
+<p>To redesign a live website or make the before-and-after video, it needs Playwright. In your project folder run:</p>
+<pre><code>npm install -D playwright
+npx playwright install chromium</code></pre>
+<p>The video also needs ffmpeg installed on your computer.</p>
+<h2>Step 3: Run it</h2>
+<p>Inside Claude Code, type one of these:</p>
+<pre><code>/unslop this dashboard
+/unslop the hero of https://yoursite.com
+/unslop my landing page and make the story video so I can post it</code></pre>
+<p>If another skill already uses the name, type <code>/unslop:unslop</code> instead. You can also just describe what you want in plain words.</p>
+<h2>4 prompts to steer the redesign</h2>
+<p>Add these after the command to get a result that fits your business:</p>
+<ol>
+<li><b>Pick the direction yourself:</b> <code>Before you change anything, give me 3 design directions for a [your business] aimed at [your customers]. Wait for me to pick one.</code></li>
+<li><b>Keep your brand:</b> <code>Keep my logo and my brand colour [#hex]. Remove everything else that looks AI-made.</code></li>
+<li><b>Fix the worst first:</b> <code>List every AI tell you found, ranked by how much it hurts trust. Fix only the top 5 and show me.</code></li>
+<li><b>Write like a person:</b> <code>Rewrite the headline and buttons in plain words a customer would say. No "supercharge", "seamless" or "unlock".</code></li>
+</ol>
+<h2>Good to know</h2>
+<ul>
+<li>It's free and open source. It can also add images through an image service, and it asks before each paid generation.</li>
+<li>It works in Codex and Google Antigravity too. The install steps for those are on the <a href="https://github.com/heydamir/unslop" target="_blank" rel="noopener">GitHub page</a>.</li>
+<li>Check the result on your phone before you ship. A redesign can move buttons your customers already know.</li>
+</ul>
+  <p class="small">Unslop is made by heydamir, not by titoro. Not affiliated with Anthropic.</p></article>
+  <aside class="side"><a class="sbox rel" href="/free/tells/"><span class="mono">Next playbook</span><b>TELLS</b><p>15 signs customers can tell AI made your contractor website</p></a>
+<a class="sbox packbox" href="/engines/"><span class="mono">Let Claude run it</span><b>Content Engine</b><p>Claude makes your reels, start to finish. $19.</p><span class="lnk">See the Engine <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></aside>
+</section>
+<section class="wrap" data-b="email" style="padding-block:40px 120px"><div class="endc"><div><p class="mono" style="color:var(--mist)">Daily</p><h2>One useful AI trick a day.</h2><p class="lead">A new one every day on Instagram. Comment the keyword, get the playbook.</p></div><div class="igc"><a class="btn" href="https://www.instagram.com/titoro.ai" target="_blank" rel="noopener">Follow @titoro.ai on Instagram <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="lnk" href="https://www.tiktok.com/@titoro.ai" target="_blank" rel="noopener">Or on TikTok <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div></div></section>
+
+<div class="wrap"><footer data-b="footer">
+<div><b style="color:var(--ink)">titoro</b><br>Give Claude the boring half of your business.<br><br><span class="small">Not affiliated with Anthropic. Claude is a trademark of Anthropic, PBC. Some links are affiliate links: I may earn a commission at no cost to you.</span>
+<p class="built"><span class="mono">This site was built by 12 AI agents.</span> <button class="lnk" data-replay>Watch them build it <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></p></div>
+<div class="fl"><span class="mono">Site</span><a href="/free/">Free playbooks</a><a href="/engines/">Engines</a><a href="https://orcaagentics.xyz" target="_blank" rel="noopener">Done for you</a><a href="/tools/">Tools</a><a href="/disclosure/">Disclosure</a></div>
+<div class="fl"><span class="mono">Follow</span><a href="https://www.instagram.com/titoro.ai">Instagram</a><a href="https://www.tiktok.com/@titoro.ai">TikTok</a><a href="https://www.youtube.com/@TitoroAI">YouTube</a><span>created by orca.agentics</span></div>
+<div class="big">titoro.</div>
+</footer></div>
+<script src="/vendor/gsap.min.js"></script><script src="/vendor/ScrollTrigger.min.js"></script><script src="/vendor/lenis.min.js"></script><script src="/site.js"></script>
+</body></html>
