@@ -27,9 +27,9 @@ TOOLS = {
     'elev8or': ('Elev8or', 'DMs', 'Comment-to-DM automation for Instagram.', 'Free plan', '/go/elev8or/', True, '#e8244f', '<b>E</b>'),
 }
 GET = ['The Content Engine skill pack for your Claude, plus a setup guide', 'Weekly scout of winning reels in your niche', 'Hooks and scripts written in your voice', 'Motion-graphic reel styles that render to a finished 1080×1920 mp4', 'Voiceover, captions, sound effects and music', 'Comment-to-DM guide that turns views into leads', 'Bonus: 10 animation prompts']
-SALE = '<s class="was">$190</s> $19'
+SALE = '<span data-after="$29"><s class="was">$190</s> $19</span>'
 PACKS = [
-    ('Content Engine', SALE, 'Claude makes your reels, start to finish. Black Friday: 90% off.', GET[:-1], GET[-1]),
+    ('Content Engine', SALE, 'Claude makes your reels, start to finish.', GET[:-1], GET[-1]),
     ('Ops Engine', 'Soon', 'The boring admin, handled.', ['SOP rewriter: one action per step', 'Quote and invoice drafter', 'Staff training game builder'], ''),
     ('Both Engines', 'Soon', 'Everything above, plus every future update.', [], ''),
 ]
@@ -48,7 +48,7 @@ def page(path, title, desc, body, on=''):
 <meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
 <script src="/build.js"></script></head>
 <body>
-<a class="ann" href="/content-engine/">Black Friday · Content Engine · <b>90% off: <s>$190</s> $19</b> · <span class="cd" data-cd>Ends Sat 28 Nov</span> →</a>
+<a class="ann" href="/content-engine/"><span data-after="The Content Engine · &lt;b&gt;$29 one-time, 7-day guarantee&lt;/b&gt;">Black Friday · Content Engine · <b>90% off: <s>$190</s> $19</b> · <span class="cd" data-cd>Ends Sat 28 Nov</span></span> →</a>
 <nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/content-engine/">Get the Content Engine</a></nav>
 {body}
 <div class="wrap"><footer data-b="footer">
@@ -174,7 +174,7 @@ FAQ = [('Who is this for?', 'Business owners and creators who want to post reels
        ('Can someone just run it for me?', 'Yes. My agency, orca.agentics, builds and runs the whole system for your business. Packages from $1,200 USD.'),
        ('Is this official Anthropic stuff?', 'No. This is my own system. Not affiliated with or endorsed by Anthropic.')]
 TIERS = [('Free playbooks', '$0', 'Learn the system piece by piece', ['Every playbook from my reels', 'Copy-paste prompts and steps', 'New ones every week'], 'Get the free playbooks', '/free/', ''),
-         ('Content Engine', SALE, 'Black Friday · 90% off', GET, 'Get the Content Engine', '/content-engine/', '<span data-cd>Ends Sat 28 Nov</span> · One-time payment · 7-day money-back guarantee'),
+         ('Content Engine', SALE, '<span data-after="Claude makes your reels">Black Friday · 90% off</span>', GET, 'Get the Content Engine', '/content-engine/', '<span data-cd data-after="">Ends Sat 28 Nov</span> One-time payment · 7-day money-back guarantee'),
          ('Done-For-You', 'from $1,200', 'For established businesses', ['Your content system built for you', 'Reels, DMs and admin running on AI', 'Set up and run by orca.agentics', 'Priced in USD'], 'Apply at orca.agentics', 'https://orcaagentics.xyz', 'orcaagentics.xyz')]
 PRICING = ''.join(f"""<div class="tier{' main' if i == 1 else ''}"><span class="mono">{n}</span><div class="price">{pr}</div><p class="tsub">{sub}</p><ul>{''.join(f'<li>{x}</li>' for x in items)}</ul><a class="btn{'' if i == 1 else ' alt'}" href="{u}"{' target="_blank" rel="noopener"' if u.startswith('http') else ''}>{cta} {ARROW}</a>""" + (f'<span class="mono small">{note}</span>' if note else '') + '</div>' for i, (n, pr, sub, items, cta, u, note) in enumerate(TIERS))
 BUILDER = f"""<div class="builder"><div class="bcol">
@@ -199,11 +199,11 @@ home = f"""
 <div class="bfc"><a class="btn" href="https://buy.stripe.com/5kQ5kv2V9e970hC4tfg3600">Get the Content Engine {ARROW}</a><a class="btn alt" href="/content-engine/">Find out more</a></div>
 <p class="small">7-day money-back guarantee · Needs a paid Claude plan</p></div></div>
 <header class="wrap hero ctr" data-b="hero">
-  <p class="mono pill2"><span class="dot"></span>Black Friday · Content Engine 90% off</p>
+  <p class="mono pill2"><span class="dot"></span><span data-after="Content Engine · now live">Black Friday · Content Engine 90% off</span></p>
   <h1>Turn Claude into your <span class="serif">content team</span>.</h1>
   <p class="sub">The Content Engine gives Claude my exact reel system: winning topics, hooks, scripts, motion-graphic styles, voiceover and captions. Pick a style. Claude makes the reel.</p>
   <div class="ctarow" style="justify-content:center;margin-top:0"><a class="btn xl" href="/content-engine/">Get the Content Engine {ARROW}</a><a class="btn alt" href="/free/">Get the free playbooks</a></div>
-  <p class="mono note">Runs on your own Claude · <s>$190</s> $19 for Black Friday</p>
+  <p class="mono note">Runs on your own Claude · <span data-after="$29 one-time"><s>$190</s> $19 for Black Friday</span></p>
   <div class="show">
     <div class="laptop"><div class="lscreen"><iframe data-src="/build/?embed" title="12 AI agents building titoro.xyz" loading="lazy" tabindex="-1"></iframe><span class="lcap mono">● Live · 12 agents building this site</span></div><div class="lbase"></div></div>
     <div class="sw sp1">{sphone(STYLES[0][2])}<span class="bt mono">orca.agentics</span></div><div class="sw sp2">{sphone(STYLES[1][2])}<span class="bt mono">Animas</span></div>

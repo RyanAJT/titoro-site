@@ -171,7 +171,7 @@ $('[data-replay]').forEach(b => b.addEventListener('click', () => { location.hre
 // black friday popup: home only, once per session
 (() => {
   const p = document.getElementById('bfpop');
-  if (!p || window.top !== window || sessionStorage.bfSeen) return;
+  if (!p || window.top !== window || sessionStorage.bfSeen || Date.now() > Date.parse('2026-11-28T23:59:59+08:00')) return;
   const close = () => { p.classList.remove('in'); setTimeout(() => p.hidden = true, 300); };
   setTimeout(() => { sessionStorage.bfSeen = 1; p.hidden = false; requestAnimationFrame(() => p.classList.add('in')); }, window.BUILD ? 9000 : 3500);
   p.addEventListener('click', e => { if (e.target === p || e.target.closest('.bfx')) close(); });
@@ -181,12 +181,19 @@ $('[data-replay]').forEach(b => b.addEventListener('click', () => { location.hre
 // sale countdown to the real end date (28 Nov 2026, 23:59 MYT)
 (() => {
   const end = Date.parse('2026-11-28T23:59:59+08:00'), els = document.querySelectorAll('[data-cd]');
-  if (!els.length) return;
+  if (!els.length && !document.querySelector('[data-after]')) return;
   const p = n => String(n).padStart(2, '0');
   const tick = () => {
     const s = Math.max(0, (end - Date.now()) / 1000 | 0), d = s / 86400 | 0;
-    const t = s ? `Ends in ${d ? d + 'd ' : ''}${p(s / 3600 % 24 | 0)}:${p(s / 60 % 60 | 0)}:${p(s % 60)}` : 'Sale ended';
+    if (!s) return over();
+    const t = `Ends in ${d ? d + 'd ' : ''}${p(s / 3600 % 24 | 0)}:${p(s / 60 % 60 | 0)}:${p(s % 60)}`;
     els.forEach(e => e.textContent = t);
   };
-  tick(); setInterval(tick, 1000);
+  // after the sale: swap every sale label for its $29 version and point checkout at the $29 link
+  const over = () => {
+    clearInterval(iv);
+    document.querySelectorAll('[data-after]').forEach(e => e.innerHTML = e.dataset.after);
+    document.querySelectorAll('a[href*="5kQ5kv2V9e970hC4tfg3600"]').forEach(a => a.href = 'https://buy.stripe.com/8x27sD0N15CB1lG1h3g3601');
+  };
+  const iv = setInterval(tick, 1000); tick();
 })();
