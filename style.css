@@ -601,3 +601,15 @@ nav.top{top:46px}
 #pill .dot{width:8px;height:8px;border-radius:50%;background:#46d38c;animation:breathe 1s infinite}
 #pill button{background:#ffffff1a;color:#e7eef0;border:0;border-radius:999px;padding:6px 12px;cursor:pointer}
 @keyframes breathe{50%{opacity:.35}}
+/* black friday */
+s,.was{opacity:.6;text-decoration-thickness:2px}.price .was{font-size:.5em;margin-right:6px}
+.bfpop{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:#000b;backdrop-filter:blur(6px);opacity:0;transition:opacity .3s}
+.bfpop.in{opacity:1}.bfpop[hidden]{display:none}
+.bfbox{position:relative;width:min(460px,100%);max-height:90vh;overflow:auto;padding:30px 26px 22px;border-radius:22px;background:var(--card);border:1px solid #2a4a52;box-shadow:0 30px 80px #000a;translate:0 16px;transition:translate .3s}
+.bfpop.in .bfbox{translate:0 0}
+.bfx{position:absolute;top:10px;right:14px;background:none;border:0;color:var(--ink);font-size:28px;cursor:pointer;line-height:1}
+.bftag{color:var(--mist)}.bfbox h3{font-size:30px;margin:8px 0 4px}
+.bfp{font-size:20px;margin:0 0 12px}.bfp b{font-size:44px;font-weight:800;letter-spacing:-.04em}.bfp small{opacity:.6}
+.bfbox ul{margin:0 0 18px;padding-left:18px;font-size:14.5px;line-height:1.55}.bfbox li::marker{color:var(--mist)}
+.bfc{display:flex;flex-direction:column;gap:10px}.bfc .btn{justify-content:center;text-align:center}
+.bfbox .small{text-align:center;margin-top:12px;opacity:.6}

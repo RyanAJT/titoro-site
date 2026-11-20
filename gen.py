@@ -26,10 +26,12 @@ TOOLS = {
     'opus': ('OpusClip', 'Clipping', 'Turns long streams into captioned vertical clips.', 'Free plan', '/go/opus/', True, '#000000', '<b>O</b>'),
     'elev8or': ('Elev8or', 'DMs', 'Comment-to-DM automation for Instagram.', 'Free plan', '/go/elev8or/', True, '#e8244f', '<b>E</b>'),
 }
+GET = ['The Content Engine skill pack for your Claude, plus a setup guide', 'Weekly scout of winning reels in your niche', 'Hooks and scripts written in your voice', 'Motion-graphic reel styles that render to a finished 1080×1920 mp4', 'Voiceover, captions, sound effects and music', 'Comment-to-DM guide that turns views into leads', 'Bonus: 10 animation prompts']
+SALE = '<s class="was">$190</s> $19'
 PACKS = [
-    ('Content Engine', '$19', 'Claude makes your reels, start to finish.', ['Weekly scout: winning reels in your niche', 'Hooks and scripts in your voice', 'Motion-graphic reel styles', 'Voiceover, captions and a comment-to-DM guide'], 'Bonus: the 10 animation prompts'),
-    ('Ops Engine', '$15', 'The boring admin, handled.', ['SOP rewriter: one action per step', 'Quote and invoice drafter', 'Staff training game builder'], ''),
-    ('Both Engines', '$25', 'Everything above, plus every future update.', [], ''),
+    ('Content Engine', SALE, 'Claude makes your reels, start to finish. Black Friday: 90% off.', GET[:-1], GET[-1]),
+    ('Ops Engine', 'Soon', 'The boring admin, handled.', ['SOP rewriter: one action per step', 'Quote and invoice drafter', 'Staff training game builder'], ''),
+    ('Both Engines', 'Soon', 'Everything above, plus every future update.', [], ''),
 ]
 MAIL = '''<form class="mail" novalidate><label for="em{n}">Your email</label><div class="row"><input id="em{n}" type="email" placeholder="you@yourbusiness.com" required><button class="btn">{cta}</button></div><small>{help}</small></form>'''
 IG = f'''<div class="endc"><div><p class="mono" style="color:var(--mist)">Daily</p><h2>One useful AI trick a day.</h2><p class="lead">A new one every day on Instagram. Comment the keyword, get the playbook.</p></div><div class="igc"><a class="btn" href="https://www.instagram.com/titoro.ai" target="_blank" rel="noopener">Follow @titoro.ai on Instagram {ARROW}</a><a class="lnk" href="https://www.tiktok.com/@titoro.ai" target="_blank" rel="noopener">Or on TikTok {ARROW}</a></div></div>'''
@@ -46,7 +48,7 @@ def page(path, title, desc, body, on=''):
 <meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
 <script src="/build.js"></script></head>
 <body>
-<a class="ann" href="/content-engine/">The Content Engine is here · <b>$19, 7-day guarantee</b> →</a>
+<a class="ann" href="/content-engine/">Black Friday · Content Engine · <b>90% off: <s>$190</s> $19</b> →</a>
 <nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/content-engine/">Get the Content Engine</a></nav>
 {body}
 <div class="wrap"><footer data-b="footer">
@@ -168,11 +170,11 @@ PAINS = ['You know you should post every day. You post twice a month.', 'One ree
 FAQ = [('Who is this for?', 'Business owners and creators who want to post reels consistently without filming, editing or hiring an editor.'),
        ('Can\'t I just use Claude on its own?', 'Claude can write a script. The Content Engine gives it the whole system: what\'s working this week, proven hook patterns, ready-made motion styles, sound and captions, so you get a finished reel, not a paragraph.'),
        ('Do I need to be on camera or know editing?', 'No. Every style is motion graphics. You pick a style and approve the script.'),
-       ('Which Claude plan do I need?', 'The Engine lists exactly what it needs before you buy. The free playbooks mostly work on the free plan.'),
+       ('Which Claude plan do I need?', 'The Content Engine needs a paid Claude plan (Pro or above). The free playbooks mostly work on the free plan.'),
        ('Can someone just run it for me?', 'Yes. My agency, orca.agentics, builds and runs the whole system for your business. Packages from $1,200 USD.'),
        ('Is this official Anthropic stuff?', 'No. This is my own system. Not affiliated with or endorsed by Anthropic.')]
 TIERS = [('Free playbooks', '$0', 'Learn the system piece by piece', ['Every playbook from my reels', 'Copy-paste prompts and steps', 'New ones every week'], 'Get the free playbooks', '/free/', ''),
-         ('Content Engine', '$19', 'Claude makes your reels', ['Weekly scout of winning reels', 'Hooks and scripts in your voice', f'{len(STYLES)} motion-graphic styles', 'Voiceover, music and SFX setup', 'Captions for IG, TikTok and YouTube', 'Comment-to-DM guide writer'], 'Get the Content Engine', '/content-engine/', 'One-time $19 · 7-day money-back guarantee'),
+         ('Content Engine', SALE, 'Black Friday · 90% off', GET, 'Get the Content Engine', '/content-engine/', 'One-time payment · 7-day money-back guarantee · needs a paid Claude plan'),
          ('Done-For-You', 'from $1,200', 'For established businesses', ['Your content system built for you', 'Reels, DMs and admin running on AI', 'Set up and run by orca.agentics', 'Priced in USD'], 'Apply at orca.agentics', 'https://orcaagentics.xyz', 'orcaagentics.xyz')]
 PRICING = ''.join(f"""<div class="tier{' main' if i == 1 else ''}"><span class="mono">{n}</span><div class="price">{pr}</div><p class="tsub">{sub}</p><ul>{''.join(f'<li>{x}</li>' for x in items)}</ul><a class="btn{'' if i == 1 else ' alt'}" href="{u}"{' target="_blank" rel="noopener"' if u.startswith('http') else ''}>{cta} {ARROW}</a>""" + (f'<span class="mono small">{note}</span>' if note else '') + '</div>' for i, (n, pr, sub, items, cta, u, note) in enumerate(TIERS))
 BUILDER = f"""<div class="builder"><div class="bcol">
@@ -188,12 +190,20 @@ MOTION = """<div class="motion">
 <div class="mk"><div class="mkv dm"><span class="cmt">Add a comment… <b>PYRAMID</b></span><span class="toast">📩 Guide sent</span></div><b>Comment-to-DM ending</b><p>The keyword types itself, then the DM lands.</p></div>
 </div>"""
 home = f"""
+<div class="bfpop" id="bfpop" hidden role="dialog" aria-modal="true" aria-labelledby="bft"><div class="bfbox">
+<button class="bfx" aria-label="Close">×</button>
+<span class="mono bftag">Black Friday · 90% off</span>
+<h3 id="bft">The Content Engine</h3>
+<p class="bfp"><s>$190</s> <b>$19</b> <small>one-time</small></p>
+<ul>{"".join(f"<li>{x}</li>" for x in GET)}</ul>
+<div class="bfc"><a class="btn" href="https://buy.stripe.com/5kQ5kv2V9e970hC4tfg3600">Get the Content Engine {ARROW}</a><a class="btn alt" href="/content-engine/">Find out more</a></div>
+<p class="small">7-day money-back guarantee · Needs a paid Claude plan</p></div></div>
 <header class="wrap hero ctr" data-b="hero">
-  <p class="mono pill2"><span class="dot"></span>Content Engine · now live</p>
+  <p class="mono pill2"><span class="dot"></span>Black Friday · Content Engine 90% off</p>
   <h1>Turn Claude into your <span class="serif">content team</span>.</h1>
   <p class="sub">The Content Engine gives Claude my exact reel system: winning topics, hooks, scripts, motion-graphic styles, voiceover and captions. Pick a style. Claude makes the reel.</p>
   <div class="ctarow" style="justify-content:center;margin-top:0"><a class="btn xl" href="/content-engine/">Get the Content Engine {ARROW}</a><a class="btn alt" href="/free/">Get the free playbooks</a></div>
-  <p class="mono note">Runs on your own Claude · launching soon</p>
+  <p class="mono note">Runs on your own Claude · <s>$190</s> $19 for Black Friday</p>
   <div class="show">
     <div class="laptop"><div class="lscreen"><iframe data-src="/build/?embed" title="12 AI agents building titoro.xyz" loading="lazy" tabindex="-1"></iframe><span class="lcap mono">● Live · 12 agents building this site</span></div><div class="lbase"></div></div>
     <div class="sw sp1">{sphone(STYLES[0][2])}<span class="bt mono">orca.agentics</span></div><div class="sw sp2">{sphone(STYLES[1][2])}<span class="bt mono">Animas</span></div>
@@ -320,7 +330,7 @@ for p in POSTS:
 ''', 'free')
 
 # ---------- packs ----------
-pcs = ''.join(f'''<div class="pk{" main" if i == 0 else ""}"><span class="mono soon">{"Available now" if i == 0 else "Coming soon"}</span><h3>{n}</h3><p>{d}</p>''' + ('<a class="btn" href="/content-engine/" style="margin:12px 0">Get it →</a>' if i == 0 else '') + (f'<ul>{"".join(f"<li>{x}</li>" for x in items)}</ul>' if items else '') + (f'<p class="bonus">{b}</p>' if b else '') + f'<div class="price">{pr}</div></div>' for i, (n, pr, d, items, b) in enumerate(PACKS))
+pcs = ''.join(f'''<div class="pk{" main" if i == 0 else ""}"><span class="mono soon">{"Available now" if i == 0 else "Coming soon"}</span><h3>{n}</h3><p>{d}</p>''' + ('<a class="btn" href="/content-engine/" style="margin:12px 0">Get it · 90% off →</a>' if i == 0 else '') + (f'<ul>{"".join(f"<li>{x}</li>" for x in items)}</ul>' if items else '') + (f'<p class="bonus">{b}</p>' if b else '') + f'<div class="price">{pr}</div></div>' for i, (n, pr, d, items, b) in enumerate(PACKS))
 page('engines/index.html', 'Engines · titoro', 'My most-used AI playbooks, installed in Claude as skills. Content Engine and Ops Engine.', f'''
 <header class="wrap phead" data-b="header"><p class="mono eyebrow"><b>Engines</b> Works with Claude</p><h1>Playbooks teach you how. Engines <span class="serif">run it for you</span>.</h1><p class="lead">My most-used playbooks, installed in Claude as skills, so you just ask and it runs them your way. Every skill is one I use myself, tested before it goes on sale.</p></header>
 <section class="wrap" data-b="packs"><div class="packs" style="margin-top:20px">{pcs}</div></section>

@@ -167,3 +167,13 @@ $('[data-replay]').forEach(b => b.addEventListener('click', () => { location.hre
   requestAnimationFrame(draw);
   document.addEventListener('visibilitychange', () => { if (!document.hidden && !reduce) requestAnimationFrame(draw); });
 })();
+
+// black friday popup: home only, once per session
+(() => {
+  const p = document.getElementById('bfpop');
+  if (!p || window.top !== window || sessionStorage.bfSeen) return;
+  const close = () => { p.classList.remove('in'); setTimeout(() => p.hidden = true, 300); };
+  setTimeout(() => { sessionStorage.bfSeen = 1; p.hidden = false; requestAnimationFrame(() => p.classList.add('in')); }, window.BUILD ? 9000 : 3500);
+  p.addEventListener('click', e => { if (e.target === p || e.target.closest('.bfx')) close(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
