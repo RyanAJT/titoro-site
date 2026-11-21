@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The 100 AI Customers Kit · Titoro AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..900&family=Instrument+Serif:ital@1&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Geist,system-ui,sans-serif;background:#f6f5f2;color:#17181c;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:56px 40px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+.handle{font:800 22px Geist;padding:6px 14px;border-radius:10px;background:#17181c;color:#fff}
+.free{font:800 15px Geist;letter-spacing:.14em;color:#ff6a1a}
+h1{font:900 64px/1 Geist;letter-spacing:-.045em}
+h1 em{font-family:'Instrument Serif';font-weight:400;font-style:normal;color:#ff6a1a;font-size:1.1em}
+.lead{margin-top:18px;font-size:21px;color:#4a4d57;max-width:720px}
+.how{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+.how span{font:700 16px Geist;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid #e3e0d8}
+.warn{margin-top:30px;padding:20px 24px;border-radius:16px;background:#fff1e8;border:1px solid #ffd2b5;font-size:18px}
+.warn b{color:#c2440a}
+.p{margin-top:34px;background:#fff;border-radius:20px;border:1px solid #e3e0d8;box-shadow:0 10px 30px rgba(0,0,0,.05);overflow:hidden}
+.ph{display:flex;align-items:center;gap:14px;padding:22px 26px 0}
+.n{font:900 15px Geist;letter-spacing:.1em;padding:6px 12px;border-radius:8px;background:#ff6a1a;color:#fff}
+.ph h2{font:800 28px Geist;letter-spacing:-.02em}
+.copy{margin-left:auto;font:800 15px Geist;padding:9px 16px;border-radius:10px;background:#17181c;color:#fff;border:0;cursor:pointer}
+.p p.d{padding:8px 26px 0;color:#5b5f6b;font-size:17px}
+pre{margin:16px 26px 26px;padding:20px 22px;border-radius:14px;background:#f3f1ec;font:500 16px/1.55 ui-monospace,Consolas,monospace;white-space:pre-wrap;color:#24262d}
+pre i{font-style:normal;background:#ffe2cf;color:#a33a06;border-radius:4px;padding:0 3px}
+.ck{margin-top:34px;background:#17181c;color:#f4f5f8;border-radius:20px;padding:28px 30px}
+.ck h2{font:800 28px Geist}.ck h2 em{font-family:'Instrument Serif';font-weight:400;font-style:normal;color:#ff8a3d;font-size:1.1em}
+.ck ul{list-style:none;margin-top:16px}
+.ck li{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-top:1px solid #2e3038;font-size:18px}
+.ck li:first-child{border-top:0}
+.ck .bx{flex:none;width:26px;height:26px;border-radius:7px;border:2px solid #ff8a3d;margin-top:2px}
+.ck li b{color:#fff}
+.note{margin-top:30px;font-size:15px;color:#6b6f7a}
+.note a{color:#c2440a}
+</style></head><body><div class="wrap">
+<div class="top"><span class="handle">@titoro.ai</span><span class="free">FREE · VALIDATE</span></div>
+<h1>The 100 AI Customers <em>Kit</em></h1>
+<p class="lead">Test your next salon service on 100 AI customers in Claude before you spend a dollar on flyers, equipment or training. Three copy-paste prompts and one checklist.</p>
+<div class="how"><span>1 · Build your 100 customers</span><span>2 · The head-to-head test</span><span>3 · The tally</span><span>✓ 10 real clients</span></div>
+<div class="warn"><b>The trap:</b> AI customers are people-pleasers. Ask "would you buy this?" and they say yes to almost anything. So never test one idea: make them choose between three, and answer in words, not scores.</div>
+
+<div class="p"><div class="ph"><span class="n">PROMPT 1</span><h2>Build your 100 customers</h2><button class="copy">COPY</button></div>
+<p class="d">Paste into a new Claude chat. Swap the orange parts for your salon.</p>
+<pre>I own <i>[a mid-priced neighbourhood hair salon in a US suburb]</i>. Before I spend money launching a new service, I want to test it on 100 realistic local customers.
+
+Create 100 customer personas who could realistically walk into my salon. Make them as varied as real clients: different ages, incomes, jobs, hair types and habits. Include budget clients, loyal regulars, people who only come twice a year, and people who never pay for extras.
+
+Write them in 4 batches of 25 so every person stays distinct. Output a table with these columns:
+# | Name | Age | Job | Monthly hair budget | How often they book | What they pay now per visit | What annoys them about salons</pre></div>
+
+<div class="p"><div class="ph"><span class="n">PROMPT 2</span><h2>The head-to-head test</h2><button class="copy">COPY</button></div>
+<p class="d">Same chat. Put in your three ideas with real prices.</p>
+<pre>Now every one of the 100 customers sees these three offers:
+A) <i>[Blowout Membership: $79/month for 4 blowouts]</i>
+B) <i>[Bridal Package: $350 for a trial run + wedding-day styling]</i>
+C) <i>[Scalp Treatment: $35 add-on to any appointment]</i>
+
+Rules:
+- Shuffle the order of A, B and C for every customer, so no offer is always shown first.
+- Stay in character. Use each customer's age, budget and habits.
+- Each customer picks the ONE offer they would actually pay for.
+- In their own words (1–2 sentences), they say why they'd walk away from the other two.
+- No scores, no 1–10 ratings, no "would you buy this?". Real customers say no to most things, so be honest.
+
+Work in 4 batches of 25. Output a table:
+# | Name | Order shown | Pick | Why they'd walk away from the other two</pre></div>
+
+<div class="p"><div class="ph"><span class="n">PROMPT 3</span><h2>The tally</h2><button class="copy">COPY</button></div>
+<p class="d">Same chat. Claude builds a real .xlsx you can download (file creation is on paid Claude plans).</p>
+<pre>Tally all 100 answers into a spreadsheet (.xlsx) with 3 tabs:
+1. "Results": each offer, number of picks, % of picks. Highlight the winner.
+2. "Walk-away reasons": group the reasons into the top 5 reasons people said no, with a count and one real quote each.
+3. "Fix before launch": for the winning offer, what to change before launch, based on what people said.</pre></div>
+
+<div class="ck"><h2>Before you print a <em>flyer</em></h2><ul>
+<li><span class="bx"></span><span><b>Test the winner on 10 real clients before you print a flyer.</b></span></li>
+<li><span class="bx"></span><span>Ask them in the chair. Show the offer and the price, then ask what would stop them booking it.</span></li>
+<li><span class="bx"></span><span>Write down their words, not a score, and compare them with the AI walk-away reasons.</span></li>
+<li><span class="bx"></span><span>Fix what they flag first. AI customers are for early testing; real clients have the final say.</span></li>
+</ul></div>
+<p class="note">The offers and prices above are examples. Swap in your own. AI customers are a fast first filter, not a replacement for real clients. Research on AI survey answers: <a href="https://www.nngroup.com/articles/synthetic-users/">NN/g on synthetic users</a> · <a href="https://arxiv.org/abs/2510.08338">Maier et al. 2025 (arXiv preprint)</a>.</p>
+</div></body></html>
