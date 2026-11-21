@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ENGINE · Claude plans a month of posts that learns from your results · titoro.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..900&family=Instrument+Serif:ital@1&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(ellipse 120% 60% at 50% 0%,#24262d 0%,#16171c 55%,#101115 100%) fixed;color:#e6e8ee;font:500 17px/1.6 Geist,system-ui,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:36px 22px 80px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.pill{display:inline-block;padding:5px 14px;border-radius:10px;background:#2b2d36;font:800 15px Geist;color:#fff;box-shadow:0 4px 0 #111216}
+.k{font:800 13px Geist;letter-spacing:.16em;color:#ff8a3d;text-transform:uppercase}
+h1{font:900 46px/1.02 Geist;letter-spacing:-.04em;color:#f6f7fa;margin:26px 0 12px}
+h1 em,h2 em{font-family:'Instrument Serif';font-weight:400;font-style:normal;color:#ff8a3d;letter-spacing:-.01em}
+.lead{color:#b9bcc8;font-size:18px}
+.steps{display:flex;gap:10px;margin:22px 0 6px;flex-wrap:wrap}
+.steps span{padding:8px 14px;border-radius:12px;background:#2b2d36;font:800 15px Geist;color:#fff;box-shadow:0 4px 0 #111216}
+.steps b{color:#ff8a3d}
+.card{margin-top:30px;border-radius:22px;background:linear-gradient(180deg,#2b2d36,#21232a);padding:24px 24px 22px;box-shadow:inset 0 2px 0 rgba(255,255,255,.08),0 6px 0 #15161b,0 12px 0 #111216,0 30px 50px rgba(0,0,0,.5)}
+.lab{display:inline-block;padding:6px 12px;border-radius:9px;background:#ff6a1a;color:#fff;font:900 14px Geist;letter-spacing:.08em}
+h2{font:900 30px/1.1 Geist;letter-spacing:-.03em;color:#fff;margin:14px 0 6px}
+.card p{color:#c3c6d1;margin:6px 0}
+pre{margin-top:14px;padding:16px 18px;border-radius:14px;background:rgba(0,0,0,.3);color:#d6d8e0;font:500 14.5px/1.55 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap}
+.copy{display:inline-block;margin-top:12px;padding:9px 16px;border-radius:11px;background:#ff6a1a;color:#fff;font:900 14px Geist;letter-spacing:.06em;box-shadow:0 4px 0 #b8400a}
+.need{margin-top:12px;font-size:14.5px;color:#9a9eac}
+.need b{color:#e6e8ee}
+.note{margin-top:30px;padding:18px 20px;border-radius:16px;border:2px dashed #3a3d48;color:#b9bcc8;font-size:15px}
+.note b{color:#fff}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.cols div{border-radius:12px;padding:10px 12px;background:rgba(0,0,0,.25);font:800 15px Geist}
+.w{color:#ff8a3d}.f{color:#e5484d}
+a{color:#ff8a3d}
+.foot{margin-top:40px;color:#7d8190;font-size:14px}
+</style></head><body><div class="wrap">
+<div class="top"><span class="pill">@titoro.ai</span><span class="k">FREE · ENGINE</span></div>
+<h1>Claude plans your month of posts. <em>This file makes it learn.</em></h1>
+<p class="lead">Claude doesn't learn from your posts on its own. A plain chat never sees which post got watched. Wire up three things and it writes each new week from your own results. Example business: a barbershop.</p>
+<div class="steps"><span><b>01</b> Connect Buffer</span><span><b>02</b> Playbook doc</span><span><b>03</b> Monday loop</span></div>
+
+<div class="card">
+<span class="lab">PROMPT 1 · MONTH PLAN</span>
+<h2>Plan 30 days, <em>add week one to Buffer</em></h2>
+<p>First connect Buffer: in Claude go to <b>Settings → Connectors → Buffer → Connect</b> and log in to Buffer. No API key needed.</p>
+<pre>Plan 30 days of posts for my barbershop, [SHOP NAME] in [CITY].
+Mix these post types across the month:
+- fresh fades and cuts (show the finished cut)
+- before and after transformations
+- chair talk (a client story or a barber tip)
+- booking reminders (slots this week, how to book)
+For each day give me: the post type, a hook for the first second,
+the caption (under 60 words, in a friendly local tone),
+3 hashtags, and a short shot list I can film in under 2 minutes.
+Then use the Buffer connector to add only week one (days 1 to 7)
+to my Buffer [INSTAGRAM / TIKTOK] channel as DRAFTS.
+Do not schedule or publish anything.
+Finish with a table of all 30 days: day, post type, hook.</pre>
+<span class="copy">COPY</span>
+<p class="need"><b>You still film the cuts.</b> Claude plans all 30 days and writes the captions; only week one goes into Buffer for you to review. Buffer's Free plan caps how many posts can sit scheduled at once (the free account we tested shows a limit of 10), so add one week at a time.</p>
+</div>
+
+<div class="card">
+<span class="lab">PROMPT 2 · PLAYBOOK</span>
+<h2>One Google Doc: <em>the memory</em></h2>
+<p>This doc is what Claude learns from. Not the model. Make it once.</p>
+<pre>Create a Google Doc called "[SHOP NAME] Playbook" with this layout:
+
+PLAYBOOK · [SHOP NAME]
+Last updated: [date]
+
+WORKS (do more of this)
+- [post type] · [hook] · why it worked: [views / saves / watch time]
+
+FLOPPED (stop doing this)
+- [post type] · [hook] · why it flopped: [views / saves / watch time]
+
+RULES FOR NEXT WEEK
+- 3 short rules written from the lists above
+
+Keep it plain text so it is easy to update every week.</pre>
+<div class="cols"><div class="w">WORKS</div><div class="f">FLOPPED</div></div>
+<span class="copy">COPY</span>
+<p class="need">Needs the <b>Google Drive</b> connector in Claude so it can create and edit the doc.</p>
+</div>
+
+<div class="card">
+<span class="lab">PROMPT 3 · MONDAY LOOP</span>
+<h2>Run one task, <em>every Monday</em></h2>
+<p>Once a week, on Monday, open Claude and run this prompt:</p>
+<pre>Run my weekly review:
+1. Use the Buffer connector to pull last week's sent posts for
+   [CHANNEL] with their metrics (views, reach, saves, average
+   watch time).
+2. Rank them. Move the top 3 into WORKS and the bottom 3 into
+   FLOPPED in my "[SHOP NAME] Playbook" Google Doc, each with
+   one line on why. Update the RULES FOR NEXT WEEK.
+3. Draft next week's 7 posts using only what the Playbook says
+   works. Avoid anything in FLOPPED.
+4. Add them to Buffer as DRAFTS. Do not publish.
+5. Send me a 5-line summary of what changed.</pre>
+<span class="copy">COPY</span>
+<p class="need">Buffer's connector returns per-post metrics such as views, reach, saves and average watch time. Week one, Claude is guessing; by week four the drafts are written from your own results.</p>
+<p class="need"><b>What we tested:</b> one manual run that pulled real Buffer stats and updated the Playbook doc. Step 4 (adding drafts to Buffer) was not part of that run, so check your drafts after it.</p>
+<p class="need"><b>Optional, something to try:</b> on a paid Claude plan you could save this prompt as a weekly scheduled task. We have not tested the automatic trigger, so check the first few runs yourself.</p>
+</div>
+
+<div class="note"><b>Tools.</b> Buffer (free plan works for step 1): <a href="https://join.buffer.com/jing">join.buffer.com/jing</a> (affiliate link). Claude with the Buffer and Google Drive connectors. These prompts ask Claude for drafts only, so you check and schedule each post yourself.</div>
+<p class="foot">Made by @titoro.ai · comment ENGINE on the reel to get this page in your DMs.</p>
+</div></body></html>
