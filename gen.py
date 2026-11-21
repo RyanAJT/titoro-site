@@ -391,7 +391,7 @@ page('fable/index.html', 'Fable 5.2 + Higgsfield: free 3-day setup · titoro', '
 ''')
 
 # ---------- short links ----------
-for k, u in {'manychat': 'https://manychat.com', 'buffer': 'https://join.buffer.com/jing', 'elevenlabs': 'https://elevenlabs.io', 'higgsfield': 'https://higgsfield.ai?fpr=jing-45bb72', 'apify': 'https://www.apify.com?fpr=syzhiz', 'opus': 'https://opus.pro/?via=orca', 'elev8or': 'https://engage.elev8or.io/signup?ref=E8-FA19EF'}.items():
+for k, u in {'manychat': 'https://manychat.com', 'buffer': 'https://join.buffer.com/jing', 'elevenlabs': 'https://elevenlabs.io', 'higgsfield': 'https://higgsfield.ai?fpr=jing-45bb72', 'apify': 'https://www.apify.com?fpr=syzhiz', 'opus': 'https://opus.pro/?via=orca', 'elev8or': 'https://collabs.elev8or.io?ref=orca'}.items():
     os.makedirs(f'go/{k}', exist_ok=True)
     open(f'go/{k}/index.html', 'w').write(f'<!DOCTYPE html><meta charset="utf-8"><title>Redirecting</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={u}"><a href="{u}">Continue to {k}</a>')
 os.makedirs('freeskills', exist_ok=True)
