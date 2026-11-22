@@ -747,6 +747,95 @@ Take this blog post link and make one video for each of its main points. Keep my
 - One piece of content, five videos. Repurpose before you write anything new.
 - Post daily for 30 days, then double down on the format that got the most watch time.'''),
 
+dict(kw='LLM', cat='business', mins=5, plan='Free (you need free API keys from the providers)', reel=None,
+  title='Run Claude Code on free models (FreeLLMAPI)',
+  desc='FreeLLMAPI pools the free tiers of 34 AI providers behind one local server, and Claude Code can point at it. Here is the setup and the honest limits.',
+  get=['The setup, step by step', 'How to point Claude Code at it', 'The limits nobody mentions'],
+  tools=['claude'], related='ROOM', pack='Content Engine',
+  body='''**FreeLLMAPI** is a free, open-source tool. It runs a small server on your own computer and pools the free tiers of 34 AI providers (Google, Groq, Mistral, NVIDIA and more). The project says that adds up to about 7.4 billion tokens a month.
+
+Claude Code can talk to that server instead of Anthropic. So the Claude Code app keeps working, but the answers come from free models.
+
+## Be clear on what you get
+- You get the **Claude Code app** for free. You do **not** get Claude itself. The answers come from free models, so quality is lower and it varies.
+- Free tiers have rate limits. The project says it is for trying things out, not for serious production work.
+- Stacking free tiers may not fit every provider's terms. Read them before you rely on it.
+
+## What you need
+- Node.js on your computer
+- Claude Code installed
+- Free API keys from a few providers (Google AI Studio, Groq and Mistral are quick to get)
+
+## 1. Install it
+```
+git clone https://github.com/tashfeenahmed/freellmapi
+cd freellmapi && npm install
+cp .env.example .env && npm run dev
+```
+
+## 2. Add your free keys
+Open the dashboard it prints (localhost), paste in your provider keys, and copy the one **unified key** it gives you.
+
+## 3. Point Claude Code at it
+```
+npx freellmapi setup-claude --url http://localhost:3001 --api-key YOUR-UNIFIED-KEY
+```
+Add `--dry-run` first if you want to see what it will change.
+
+## 4. Use it
+Open Claude Code as normal. Requests now go to your free pool.
+
+## Tips
+- Use it for simple jobs: renaming files, small edits, first drafts.
+- Keep real Claude for the work that matters.
+- Repo: github.com/tashfeenahmed/freellmapi'''),
+
+dict(kw='ROOM', cat='business', mins=4, plan='Free (works with any Claude Code plan)', reel=None,
+  title='Keep one Claude Code chat going for weeks (billion-context)',
+  desc='billion-context folds old messages away a little at a time, so a long Claude Code chat keeps its details. Here is the setup message and how to use it.',
+  get=['The 2-line setup', 'How folding works, in plain words', 'When to use it'],
+  tools=['claude'], related='LLM', pack='Content Engine',
+  body='''When a Claude Code chat fills up, Claude squashes the whole thing into one summary. Small details get lost: a colour code, a deadline, a rule you set an hour ago.
+
+**billion-context** is a free, open-source plugin that fixes this. It folds old messages away a little at a time, and Claude can unfold them again when you ask about something old. The project says it uses about 5x fewer tokens and can keep one session going for a month.
+
+## 1. Install it inside Claude Code
+Paste these two lines into Claude Code, one at a time:
+```
+/plugin marketplace add ranxianglei/billion-context
+```
+```
+/plugin install billion-context@billion-context
+```
+
+## Or install it from the terminal
+```
+npm install -g billion-context
+```
+Then start Claude Code through it:
+```
+bili claude
+```
+
+## 2. Work as normal
+You don't need to do anything else. Keep chatting. Old parts of the chat get folded into short notes on their own.
+
+## 3. Ask about old things
+```
+What did we decide about the button colour earlier?
+```
+It looks back through the folded notes and pulls up the exact answer.
+
+## When it helps most
+- One long project in a single chat
+- Lots of small rules and decisions you don't want to repeat
+- You keep hitting "conversation compacted"
+
+## Tips
+- It is a new, fast-changing project. Review it before using it on client work.
+- It also works with Codex and other coding agents.
+- Repo: github.com/ranxianglei/billion-context'''),
+
 dict(kw='CLEAR', cat='business', mins=2, plan='Free Claude plan', reel='a1b4e0cf-c9ea-4935-9a47-da1d97116402',
   title='Write SOPs nobody can misread (the aircraft-manual trick)',
   desc='Aircraft manuals use Simplified Technical English so nobody misreads a step. One prompt rewrites your SOPs the same way.',
