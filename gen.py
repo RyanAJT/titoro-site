@@ -50,7 +50,7 @@ def page(path, title, desc, body, on=''):
 <script src="/build.js"></script></head>
 <body>
 <a class="ann" href="/content-engine/"><span data-after="The Content Engine · &lt;b&gt;$29 one-time, 7-day guarantee&lt;/b&gt;">Black Friday · Content Engine · <b>90% off: <s>$190</s> $19</b> · <span class="cd" data-cd>Ends Sat 28 Nov</span></span> →</a>
-<nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/content-engine/">Get the Content Engine</a></nav>
+<nav class="top"><a class="logo" href="/">{LOGO}titoro</a>{nav}<a class="cta" href="/content-engine/">Get the Content Engine</a><details class="menu"><summary aria-label="Menu"><i></i><i></i><i></i></summary><div><a href="/">Home</a><a href="/content-engine/">Content Engine</a><a href="/free/">Free playbooks</a><a href="/engines/">Engines</a><a href="/tools/">Tools I use</a><a href="/fable/">Fable 5.2 setup</a><a href="https://orcaagentics.xyz" target="_blank" rel="noopener">Done-For-You</a><a href="/disclosure/">Disclosure</a></div></details></nav>
 {body}
 <div class="wrap"><footer data-b="footer">
 <div><b style="color:var(--ink)">titoro</b><br>Give Claude the boring half of your business.<br><br><span class="small">Not affiliated with Anthropic. Claude is a trademark of Anthropic, PBC. Some links are affiliate links: I may earn a commission at no cost to you.</span>

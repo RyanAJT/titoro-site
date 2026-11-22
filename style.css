@@ -614,3 +614,12 @@ s,.was{opacity:.6;text-decoration-thickness:2px}.price .was{font-size:.5em;margi
 .bfc{display:flex;flex-direction:column;gap:10px}.bfc .btn{justify-content:center;text-align:center}
 .bfbox .small{text-align:center;margin-top:12px;opacity:.6}
 .cd{font-variant-numeric:tabular-nums}
+
+/* menu: native details, no JS */
+.menu{position:relative;margin-left:4px}
+.menu summary{list-style:none;cursor:pointer;width:38px;height:38px;border-radius:50%;display:grid;place-content:center;gap:4px;border:1px solid #8884}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary i{display:block;width:16px;height:2px;border-radius:2px;background:currentColor}
+.menu>div{position:absolute;right:0;top:calc(100% + 14px);min-width:220px;padding:8px;border-radius:18px;background:var(--card);border:1px solid #8883;box-shadow:0 24px 50px -20px #000a;display:grid}
+.menu>div a{padding:11px 14px;border-radius:12px;font-weight:600;font-size:15px;white-space:nowrap;color:inherit}
+.menu>div a:hover{background:#8882}
