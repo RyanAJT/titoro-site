@@ -208,7 +208,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </div></section>
 
 <section style="padding-top:20px"><div class="wrap rv">
-  <div class="c"><span class="badge"><i>▦</i> Styles</span><h2 style="margin-top:20px">16 styles. <em>Say the name.</em></h2><p class="lead">Every style is included. These previews were made by the Engine itself, from the same script. Add your brand colours and it uses those instead.</p></div>
+  <div class="c"><span class="badge"><i>▦</i> Styles</span><h2 style="margin-top:20px">11 styles. <em>Say the name.</em></h2><p class="lead">Every style is included. Each preview is a finished example reel from the kit. Say the name and Claude redraws the scenes for your script in that look.</p></div>
   <div class="grid6" id="grid6"></div>
 </div></section>
 
@@ -236,7 +236,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <li>The Content Engine skill pack for your Claude, plus a setup guide</li>
         <li>Weekly scout of winning reels in your niche</li>
         <li>Hooks and scripts written in your voice</li>
-        <li>16 motion-graphic reel styles that render to a finished 1080×1920 mp4</li>
+        <li>11 designed reel styles that render to a finished 1080×1920 mp4</li>
         <li>Captions, music and sound effects, plus your voiceover if you add one</li>
         <li>Comment-to-DM guide that turns views into leads</li>
         <li class="bonus">Bonus: 10 animation prompts</li>
@@ -357,7 +357,7 @@ const cgo = i => { ci = (i + pages()) % pages(); tr.style.transform = `translate
 document.getElementById('cp').onclick = () => cgo(ci - 1); document.getElementById('cx').onclick = () => cgo(ci + 1); addEventListener('resize', () => cgo(0)); cgo(0);
 
 // ---- style grid
-const GRID = [["Paper", "paper", "Tutorials"], ["Data", "data", "Numbers and results"], ["Neon", "neon", "Hype and tools"], ["Pop", "pop", "Bold tips"], ["Swiss", "swiss", "Clean authority"], ["Risograph", "riso", "Friendly, crafty"], ["Dossier", "dossier", "Exposes and myths"], ["Blueprint", "blueprint", "Systems and how-tos"], ["Chalk", "chalk", "Teaching and breakdowns"], ["Bauhaus", "bauhaus", "Modern and playful"], ["Spy", "spy", "Stories"], ["Deco", "deco", "Luxury and premium"], ["News", "news", "Updates and announcements"], ["Terminal", "terminal", "Tech, AI and hacks"], ["Memphis", "memphis", "Fun and lifestyle"], ["Flash", "flash", "Drama and big claims"]];
+const GRID = [["Glow", "glow", "Workflows and tools"], ["Red Documentary", "reddoc", "Exposes and hard truths"], ["Archive", "archive", "Case studies"], ["Ghost Portrait", "ghost", "Owner stories"], ["Glow Symbols", "symbols", "Lists and simple ideas"], ["Pixel Avatar", "pixel", "Demos and DMs"], ["Explainer", "explainer", "Why it works, data"], ["Paper Cutout", "paper", "Little stories"], ["Night Cartoon", "cartoon", "Friendly explainers"], ["Ransom Note", "ransom", "Bold claims and hooks"], ["Isometric", "iso", "Systems and flows"]];
 document.getElementById('grid6').innerHTML = GRID.map(([n, k, use]) => `<figure><div class="ph"><video muted loop playsinline preload="none" poster="/media/styles/${k}.jpg" data-src="/media/styles/${k}.mp4"></video></div><figcaption>${n}<small>${use}</small></figcaption></figure>`).join('');
 
 // ---- parallax: each [data-speed] drifts by its distance from the viewport centre × speed (off for reduced motion)

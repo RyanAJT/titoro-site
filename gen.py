@@ -27,7 +27,7 @@ TOOLS = {
     'gemini': ('Gemini', 'Images and business tools', 'Google’s AI app, now with saved brand style for small businesses.', 'Free to try', 'https://gemini.google.com', False, '#1a73e8', '<b>G</b>'),
     'elev8or': ('Elev8or', 'DMs', 'Comment-to-DM automation for Instagram.', 'Free plan', '/go/elev8or/', True, '#e8244f', '<b>E</b>'),
 }
-GET = ['The Content Engine skill pack for your Claude, plus a setup guide', 'Weekly scout of winning reels in your niche', 'Hooks and scripts written in your voice', '16 motion-graphic reel styles that render to a finished 1080×1920 mp4', 'Captions, music and sound effects, plus your voiceover if you add one', 'Comment-to-DM guide that turns views into leads', 'Bonus: 10 animation prompts']
+GET = ['The Content Engine skill pack for your Claude, plus a setup guide', 'Weekly scout of winning reels in your niche', 'Hooks and scripts written in your voice', '11 designed reel styles that render to a finished 1080×1920 mp4', 'Captions, music and sound effects, plus your voiceover if you add one', 'Comment-to-DM guide that turns views into leads', 'Bonus: 10 animation prompts']
 SALE = '<span data-after="$29"><s class="was">$190</s> $19</span>'
 PACKS = [
     ('Content Engine', SALE, 'Claude makes your reels, start to finish.', GET[:-1], GET[-1]),
