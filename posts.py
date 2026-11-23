@@ -836,6 +836,87 @@ It looks back through the folded notes and pulls up the exact answer.
 - It also works with Codex and other coding agents.
 - Repo: github.com/ranxianglei/billion-context'''),
 
+dict(kw='CERT', cat='business', mins=6, plan='Free to study, the exams are paid', reel=None,
+  title='5 AI certificates an employer can check (prep guide for each)',
+  desc='Claude, NVIDIA, AWS, Google and Microsoft each run an official AI exam. Here is what each one proves, who it is for, and how to prepare for free.',
+  get=['What each of the 5 certificates proves', 'Exam facts and the official page for each', 'Free study material and a study-plan prompt'],
+  tools=['claude'], related='PROJECT', pack=None,
+  body='''Anyone can type "AI skills" on a resume. A certificate is different: it comes from the company that built the tool, and an employer can verify it.
+
+A certificate will not get you a job by itself. It gives an employer something to check. Pick **one** that matches the job you want.
+
+## Which one should you pick?
+- **Not technical** (owner, manager, marketing, sales): Google Generative AI Leader or AWS AI Practitioner.
+- **You build with Claude**: Claude Certified Architect.
+- **You want to know how AI models work inside**: NVIDIA Generative AI LLMs.
+- **You are a developer who builds agents**: Microsoft Azure AI Apps and Agents Developer.
+
+## 1. Claude Certified Architect (Anthropic)
+**Proves:** you can design systems built on Claude.
+**For:** people who already build with Claude. This one is technical.
+- Full name: Claude Certified Architect, Foundations.
+- 60 questions, 120 minutes. You need 720 out of 1,000 to pass.
+- The questions are scenarios, not definitions. The biggest topic is agents and how they are organised.
+- Taken through Pearson VUE. Price is reported as $125 (it was $99 before 30 June 2026).
+- Before you study, check on the official page who can register. Some Claude certificates have a prerequisite.
+
+**Free prep:** the Anthropic Academy courses at anthropic.skilljar.com, plus the official exam guide.
+
+## 2. NVIDIA Generative AI LLMs
+**Proves:** you know how AI models work inside.
+**For:** beginners who want the technical basics.
+- Exam code: NCA-GENL. Associate (entry) level.
+- 50 to 60 multiple-choice questions, 1 hour, $125. Taken online with a proctor.
+
+**Free prep:** the official page lists every topic, how much each one counts, and reading for each.
+Official page: nvidia.com/en-us/learn/certification/generative-ai-llm-associate
+
+## 3. AWS Certified AI Practitioner
+**Proves:** you can talk about AI at work. No code needed.
+**For:** anyone, in any role.
+- Exam code: AIF-C01. Foundational level.
+- 65 questions, 90 minutes, $100.
+
+**Free prep:** the exam prep plan on AWS Skill Builder and the official practice question set.
+Official page: aws.amazon.com/certification/certified-ai-practitioner
+
+## 4. Google Generative AI Leader
+**Proves:** you can lead an AI project.
+**For:** any job role, with or without technical experience. No prerequisites.
+- 50 to 60 multiple-choice questions, 90 minutes, $99.
+- Four topics: AI basics, Google's AI tools, getting better output, and business strategy.
+
+**Free prep:** Google's Generative AI Leader learning path, study guide and sample questions.
+Official page: cloud.google.com/learn/certification/generative-ai-leader
+
+## 5. Microsoft Azure AI Apps and Agents Developer
+**Proves:** you can build AI agents.
+**For:** developers who use Python.
+- Full name: Microsoft Certified: Azure AI Apps and Agents Developer Associate.
+- Exam code: AI-103. You need 700 to pass.
+- Taken through Pearson VUE. The price depends on your country.
+
+**Free prep:** the AI-103 study guide and learning paths on Microsoft Learn.
+Official page: learn.microsoft.com/credentials/certifications/azure-ai-apps-and-agents-developer-associate
+
+## Study plan prompt
+Open the official exam guide for your certificate, copy the topic list, and paste it into this prompt.
+```
+I want to pass this exam: [certificate name].
+Here is the official topic list: [paste it here].
+I can study [number] hours a week. My background: [one line].
+
+1. Build me a week-by-week study plan that covers every topic.
+2. Give more time to the topics that count for more of the score.
+3. At the end of each week, quiz me with 10 exam-style questions and explain what I got wrong.
+Only use the topic list I gave you. Tell me when you are not sure about something.
+```
+
+## Tips
+- Study from the official exam guide first. It tells you exactly what is tested.
+- Do the official practice questions before you book.
+- Exam details were checked on 23 November 2026. Prices and rules change, so confirm on the official page before you pay.'''),
+
 dict(kw='CLEAR', cat='business', mins=2, plan='Free Claude plan', reel='a1b4e0cf-c9ea-4935-9a47-da1d97116402',
   title='Write SOPs nobody can misread (the aircraft-manual trick)',
   desc='Aircraft manuals use Simplified Technical English so nobody misreads a step. One prompt rewrites your SOPs the same way.',
