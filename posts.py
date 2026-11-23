@@ -836,6 +836,65 @@ It looks back through the folded notes and pulls up the exact answer.
 - It also works with Codex and other coding agents.
 - Repo: github.com/ranxianglei/billion-context'''),
 
+dict(kw='PHONE', cat='business', mins=5, plan='Free tool. Needs a Mac and Claude Code', reel=None,
+  title='Let Claude Code use your iPhone for you (Mirroir setup)',
+  desc='Mirroir is a free, open-source tool that lets Claude Code see and tap your real iPhone through iPhone Mirroring on a Mac. Here is the setup and how to keep it safe.',
+  get=['The install command', 'How to connect it to Claude Code', 'How to keep it out of Wallet and your bank'],
+  tools=['claude'], related='ROOM', pack=None,
+  body='''**Mirroir** (mirroir-mcp) is a free, open-source tool. It lets a coding agent like Claude Code see your real iPhone screen and tap, swipe and type on it. It works through Apple's own iPhone Mirroring, so there is no jailbreak and no extra hardware.
+
+## What you need
+- A Mac on macOS 15 or later.
+- An iPhone that already connects to that Mac with iPhone Mirroring.
+- Claude Code (or another agent such as Codex or Cursor).
+
+No Mac, no Mirroir. It does not work on Windows, and it does not control Android phones.
+
+## 1. Check iPhone Mirroring works first
+Open the **iPhone Mirroring** app on your Mac and make sure you can see your phone. If that does not work, fix it before you install anything.
+
+## 2. Install it
+Run this in the Terminal on your Mac:
+```
+npx -y mirroir-mcp install
+```
+Then check that nothing is missing:
+```
+npx -y mirroir-mcp doctor
+```
+
+## 3. Connect it to Claude Code
+```
+claude mcp add --transport stdio mirroir -- npx -y mirroir-mcp
+```
+The first time it takes a screenshot, macOS asks for **Screen Recording** and **Accessibility** permission. Allow both.
+
+## Or let Claude Code set it up
+Paste this into Claude Code and it walks through the steps for you:
+```
+Set up mirroir-mcp so you can drive my iPhone: follow https://github.com/jfarcand/mirroir-mcp/blob/main/docs/onboarding.md step by step, and finish by reading back what my iPhone screen shows.
+```
+
+## 4. Try something small
+```
+Open the Notes app on my iPhone and read me the title of my newest note.
+```
+
+## Keep it safe
+- **It starts in read-only mode.** With no settings file, Claude can only look at the screen. Tapping and typing stay off until you allow them in a file called permissions.json.
+- **Block private apps.** In the same file, the blockedApps setting keeps Claude out of apps you list, such as Wallet and your banking apps. Set this before you allow any tapping. The exact file format is in the project's docs.
+- **Kill switch.** Unlocking your iPhone, or locking your Mac's screen, stops all input.
+- Watch it work on your Mac the first few times.
+
+## Good first jobs
+- Testing your own app on a real phone.
+- Boring, repeated taps: clearing notifications, changing the same setting, checking the same screen every day.
+
+## Tips
+- It is a new project and it changes fast. Read the README before you use it on a phone with client data.
+- While it works, the mirror window may jump to the front of your Mac for a moment.
+- Repo: github.com/jfarcand/mirroir-mcp'''),
+
 dict(kw='CERT', cat='business', mins=6, plan='Free to study, the exams are paid', reel=None,
   title='5 AI certificates an employer can check (prep guide for each)',
   desc='Claude, NVIDIA, AWS, Google and Microsoft each run an official AI exam. Here is what each one proves, who it is for, and how to prepare for free.',
