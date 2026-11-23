@@ -46,7 +46,7 @@ def page(path, title, desc, body, on=''):
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}">
 <meta property="og:title" content="{title}"><meta property="og:description" content="{desc}">
-<meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css?v=1122">
+<meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg?v=2"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/style.css?v=1122">
 <script src="/build.js"></script></head>
 <body>
 <a class="ann" href="/content-engine/"><span data-after="The Content Engine · &lt;b&gt;$29 one-time, 7-day guarantee&lt;/b&gt;">Black Friday · Content Engine · <b>90% off: <s>$190</s> $19</b> · <span class="cd" data-cd>Ends Sat 28 Nov</span></span> →</a>
