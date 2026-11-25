@@ -840,7 +840,7 @@ dict(kw='SKILLS', cat='business', mins=5, plan='All five are free. Made for Clau
   title='5 Claude skills to install first (beginner list)',
   desc='Founder Skill, Napkin, Ponytail, Claude Mem and Awesome Design MD: what each one does and the exact way to install it.',
   get=['What each of the 5 skills does, in one line', 'The install step for each', 'Which one to start with'],
-  tools=['claude'], related='SKILL', pack=None,
+  tools=['claude'], related='PHONE', pack=None,
   body='''A skill is a small set of instructions you add to Claude once. After that, Claude follows them every time. These five are free and open source.
 
 Most of them are made for **Claude Code** (the version of Claude that works inside your project folder). The commands that start with a slash are typed inside Claude Code.
