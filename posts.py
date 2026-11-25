@@ -836,6 +836,79 @@ It looks back through the folded notes and pulls up the exact answer.
 - It also works with Codex and other coding agents.
 - Repo: github.com/ranxianglei/billion-context'''),
 
+dict(kw='SKILLS', cat='business', mins=5, plan='All five are free. Made for Claude Code', reel=None,
+  title='5 Claude skills to install first (beginner list)',
+  desc='Founder Skill, Napkin, Ponytail, Claude Mem and Awesome Design MD: what each one does and the exact way to install it.',
+  get=['What each of the 5 skills does, in one line', 'The install step for each', 'Which one to start with'],
+  tools=['claude'], related='SKILL', pack=None,
+  body='''A skill is a small set of instructions you add to Claude once. After that, Claude follows them every time. These five are free and open source.
+
+Most of them are made for **Claude Code** (the version of Claude that works inside your project folder). The commands that start with a slash are typed inside Claude Code.
+
+## Which one first?
+- **You have a business idea**: Founder Skill.
+- **Claude keeps repeating the same mistake**: Napkin.
+- **Claude writes far too much code**: Ponytail.
+- **Claude forgets yesterday's work**: Claude Mem.
+- **Your pages look plain**: Awesome Design MD.
+
+## 1. Founder Skill
+**Does:** puts your business idea in front of a board of three advisers. Each one reads it through a well-known business book: one on offers (Alex Hormozi), one on monopoly (Peter Thiel), one on product (Steve Jobs). They tell you what would kill the idea. It is built on their published ideas, not on the real people.
+
+**Install:** paste the link into Claude and say "install skill".
+```
+https://github.com/Jakeschincariol/founder-skill
+```
+Or in Claude Code:
+```
+/plugin marketplace add Jakeschincariol/founder-skill
+/plugin install founder-skill@founder-skill
+```
+
+## 2. Napkin
+**Does:** Claude keeps a small notebook file in your project. It writes down what went wrong and what to do instead, and reads it at the start of every session. So it stops repeating the same mistake.
+
+**Install (Mac or Linux terminal):**
+```
+git clone https://github.com/blader/napkin.git ~/.claude/skills/napkin
+```
+Nothing to switch on. It runs in every session.
+
+## 3. Ponytail
+**Does:** makes Claude write only the code the job needs. In the project's own example, a date picker went from 335 lines to 10. It keeps the safety checks.
+
+**Install (in Claude Code, one line at a time):**
+```
+/plugin marketplace add DietrichGebert/ponytail
+/plugin install ponytail@ponytail
+```
+
+## 4. Claude Mem
+**Does:** takes notes while Claude works and brings the useful parts back when you start a new session. Tomorrow, Claude picks up where you stopped.
+
+**Install (in Claude Code):**
+```
+/plugin marketplace add thedotmack/claude-mem
+/plugin install claude-mem
+```
+Then restart Claude Code.
+
+## 5. Awesome Design MD
+**Does:** a collection of design rule files, each one written from a well-known website such as Notion, Linear or Vercel. You give one to Claude and it builds your page in that style.
+
+**Use it:**
+- Open github.com/VoltAgent/awesome-design-md and pick a site.
+- Copy its DESIGN.md file into your project folder.
+- Then tell Claude:
+```
+Read DESIGN.md and build my landing page in this style.
+```
+
+## Tips
+- Install one, use it for a day, then add the next. Five at once makes it hard to tell what changed.
+- These are community projects, not made by Anthropic. Read the project page before you install.
+- Star counts in the reel were read from GitHub on 25 November 2026.'''),
+
 dict(kw='PHONE', cat='business', mins=5, plan='Free tool. Needs a Mac and Claude Code', reel=None,
   title='Let Claude Code use your iPhone for you (Mirroir setup)',
   desc='Mirroir is a free, open-source tool that lets Claude Code see and tap your real iPhone through iPhone Mirroring on a Mac. Here is the setup and how to keep it safe.',
