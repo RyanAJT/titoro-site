@@ -307,7 +307,10 @@ page('free/index.html', 'Free AI playbooks · titoro', f'{len(POSTS)} free step-
 # ---------- playbook posts ----------
 for p in POSTS:
     k = p['kw']
-    media = phone(p['reel'], 'post') if p['reel'] else f'<div class="kwcard"><span class="mono">Comment</span><b>{k}</b></div>'
+    cov = f'/media/covers/{k.lower()}.jpg'
+    media = (phone(p['reel'], 'post') if p['reel'] else
+             f'<img class="kwcard pcover" src="{cov}" alt="{p["title"]}" loading="lazy">' if os.path.exists(cov[1:]) else
+             f'<div class="kwcard"><span class="mono">Comment</span><b>{k}</b></div>')
     pack = next((x for x in PACKS if x[0] == p['pack']), None)
     rel = P[p['related']]
     side = f'''<div class="sbox"><span class="mono">Tools in this playbook</span>{"".join(tile(t, True) for t in p["tools"])}</div>
