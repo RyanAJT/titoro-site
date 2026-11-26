@@ -35,7 +35,7 @@ Most beginners start with 1, and grow 2 at the same time, because the views on c
 ## Step 2: Join a clipping marketplace
 1. Create an account on [Whop Content Rewards](https://whop.com/discover/) and search "GTA". The biggest marketplace, with hundreds of live campaigns.
 2. Create an account on [Vyro](https://vyro.com) (MrBeast's clipping marketplace). Pays per 1,000 views up to $1,000 per post, from 1,000 views. Listed campaigns have mostly paid $1 to $2 per 1,000.
-3. Create an account on [Elev8or Bounties](https://www.elev8or.io/bounty/clipping). Rates run $0.50 to $1.00 per 1,000 views and you can withdraw from $5.
+3. Create an account on [Elev8or Bounties](/go/elev8or/). Rates run $0.50 to $1.00 per 1,000 views and you can withdraw from $5.
 4. On each one, open a campaign and read the brief: which streams you can clip, where to post, and what the caption must say. Follow it exactly or the clip won't be approved.
 
 ![Vyro: get paid to post clips for creators and brands](/media/gta/vyro.jpg)
