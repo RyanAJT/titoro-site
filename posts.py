@@ -836,6 +836,60 @@ It looks back through the folded notes and pulls up the exact answer.
 - It also works with Codex and other coding agents.
 - Repo: github.com/ranxianglei/billion-context'''),
 
+dict(kw='HOOK', cat='business', mins=4, plan='Free. Works with any Claude plan', reel=None,
+  title='Content Principles: teach Claude why a video holds attention',
+  desc='A copy-paste skill that makes Claude write and audit short videos from the reasons hooks work, not just the steps.',
+  get=['The full SKILL.md to copy', 'How to add it to Claude', 'Two prompts: write a script, audit an old video'],
+  tools=['claude'], related='SKILLS', pack=None,
+  body='''Most people feed Claude a pile of viral hooks. Claude copies the steps (bold claim, numbered list, CTA) but not the reason each step works. So the scripts sound right and still bore people.
+
+This skill gives Claude the reasons. The idea comes from @aiwithremy. His own file isn't public, so this is my version, written from the same principles.
+
+## The 3 rules it teaches
+- **Open a curiosity loop.** Line one raises a question the viewer needs answered. Close it near the end, not straight away.
+- **Use real numbers, not vague words.** "45 days ago" beats "a while back". "3 steps" beats "a few steps".
+- **Make line one sell line two.** Every line earns the next one. If a line can be cut and nothing is lost, cut it.
+
+## The skill file
+Make a folder called `content-principles` and put this in a file named `SKILL.md`:
+```
+---
+name: content-principles
+description: Use when writing, editing or auditing a short-form video script, hook or caption (Reels, TikTok, Shorts).
+---
+# Content Principles
+
+Write for attention, not for completeness. Before you write, decide what the viewer will want to know after line one.
+
+## Rules
+1. Open a curiosity loop in the first line. Close it near the end.
+2. Use specific numbers, names and times. Replace vague words (some, a lot, recently, a while back).
+3. Each line must make the viewer want the next line. Cut any line that doesn't.
+4. One idea per video. One ask at the end.
+5. Say the payoff in plain words a 12-year-old understands.
+
+## When auditing a script
+For each line, say which rule it follows or breaks, then rewrite the weakest three lines.
+```
+
+## How to add it
+- **Claude Code:** put the folder at `~/.claude/skills/content-principles/`. It loads next session.
+- **Claude app:** zip the folder and upload it in the Skills section of your settings.
+
+## Two prompts to try
+Write a new script:
+```
+Use the content-principles skill. Write a 30-second reel script about [topic] for [who it's for].
+```
+Audit an old one:
+```
+Use the content-principles skill. Audit this script line by line and rewrite the weakest three lines: [paste script]
+```
+
+## Tips
+- Rules don't replace taste. Read the script out loud before you film it.
+- Credit for the idea: @aiwithremy on Instagram.'''),
+
 dict(kw='SKILLS', cat='business', mins=5, plan='All five are free. Made for Claude Code', reel=None,
   title='5 Claude skills to install first (beginner list)',
   desc='Founder Skill, Napkin, Ponytail, Claude Mem and Awesome Design MD: what each one does and the exact way to install it.',
