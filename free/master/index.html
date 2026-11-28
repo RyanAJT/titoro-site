@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prompt Master: a Claude Code mod that turns lazy lines into full prompts · titoro</title><meta name="description" content="Paste one prompt into Claude Code and it builds you a mod that adds role, task, audience and format to every prompt.">
+<meta property="og:title" content="Prompt Master: a Claude Code mod that turns lazy lines into full prompts · titoro"><meta property="og:description" content="Paste one prompt into Claude Code and it builds you a mod that adds role, task, audience and format to every prompt.">
+<meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0c0d"><link rel="icon" href="/favicon.svg?v=2"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/style.css?v=1122">
+<script src="/build.js"></script></head>
+<body>
+<a class="ann" href="/content-engine/"><span data-after="The Content Engine · &lt;b&gt;$29 one-time, 7-day guarantee&lt;/b&gt;">Black Friday · Content Engine · <b>90% off: <s>$190</s> $19</b> · <span class="cd" data-cd>Ends Sat 28 Nov</span></span> →</a>
+<nav class="top"><a class="logo" href="/"><svg viewBox="0 0 120 120"><g fill="currentColor"><path d="M12 50A32 32 0 0 1 44 18H59V50Z"/><path d="M61 18H108V50H92A32 32 0 0 0 61 18Z"/><path d="M44 58H76V106H60A16 16 0 0 1 44 90Z"/><circle cx="94" cy="98" r="9"/></g></svg>titoro</a><a class="l" href="/#how">How it works</a><a class="l on" href="/free/">Free playbooks</a><a class="l" href="/#styles">Styles</a><a class="l" href="/#pricing">Pricing</a><a class="l" href="https://orcaagentics.xyz" target=_blank rel=noopener>Done-For-You</a><a class="l" href="/#faq">FAQ</a><a class="cta" href="/content-engine/">Get the Content Engine</a><div class="menu"><style>.menu{position:relative;margin-left:4px}.menu button{-webkit-appearance:none;appearance:none;background:none;color:inherit;font:inherit;padding:0;cursor:pointer;width:40px;height:40px;border-radius:50%;border:1px solid #8884;display:block;line-height:0;touch-action:manipulation}.menu button svg{width:18px;height:18px;pointer-events:none}.menu>div{display:none;position:absolute;right:0;top:calc(100% + 14px);min-width:220px;padding:8px;border-radius:18px;background:var(--card);border:1px solid #8883;box-shadow:0 24px 50px -20px #000a;z-index:99}.menu.open>div{display:grid}.menu>div a{padding:11px 14px;border-radius:12px;font-weight:600;font-size:15px;white-space:nowrap;color:inherit;text-align:left}.menu>div a:hover{background:#8882}@media (max-width:860px){nav.top .logo{margin-right:2px}nav.top a.cta{padding:9px 11px;font-size:13px}.menu{margin-left:0}.menu button{width:36px;height:36px}}@media (max-width:374px){nav.top a.cta{padding:8px 9px;font-size:12px}nav.top{padding-left:12px}}</style><button type="button" aria-label="Menu" onclick="this.parentNode.classList.toggle('open')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 4h12M2 8h12M2 12h12"/></svg></button><div><a href="/">Home</a><a href="/content-engine/">Content Engine</a><a href="/free/">Free playbooks</a><a href="/engines/">Engines</a><a href="/tools/">Tools I use</a><a href="/fable/">Fable 5.2 setup</a><a href="https://orcaagentics.xyz" target="_blank" rel="noopener">Done-For-You</a><a href="/disclosure/">Disclosure</a></div><script>document.addEventListener("click",function(e){var m=document.querySelector(".menu");if(m&&!m.contains(e.target))m.classList.remove("open")})</script></div></nav>
+
+<header class="wrap posthd" data-b="header">
+  <div><p class="mono crumbs"><a href="/free/">Free playbooks</a> / MASTER</p>
+  <p class="mono eyebrow"><b>Comment MASTER</b> 4-minute read · Free. Needs Claude Code (CLI or desktop app)</p>
+  <h1>Prompt Master: a Claude Code mod that turns lazy lines into full prompts</h1>
+  <div class="get"><span class="mono">What you'll get</span><ul><li>What a Claude Code mod is</li><li>The prompt that builds Prompt Master for you</li><li>How to turn it on and off</li></ul></div></div>
+  <div class="pmedia" data-speed="-.08"><img class="kwcard pcover" src="/media/covers/master.jpg" alt="Prompt Master: a Claude Code mod that turns lazy lines into full prompts" loading="lazy"></div>
+</header>
+<section class="wrap postwrap" data-b="post">
+  <article class="pbody"><p>Mods are small add-ons that change how Claude Code works and looks. Anthropic says a mod can rewrite a prompt, add new UI or replace a built-in feature, and that you can ask Claude Code to write one for you. They work in the Claude Code CLI and desktop app. Source: <a href="https://claude.com/blog/claude-code-mods" target="_blank" rel="noopener">Customize Claude Code with mods</a>.</p>
+<p>Prompt Master is a mod that takes your lazy one-liner and turns it into a full prompt: a role, the task, who it's for, and the format.</p>
+<h2>The prompt</h2>
+<p>Open Claude Code (or the Code tab in the desktop app) and paste this:</p>
+<div class="prompt"><span class="mono">Copy-paste prompt</span><pre>Build me a Claude Code mod called Prompt Master, packaged as a plugin I can install with /plugin.
+
+What it does:
+1. Draw a small band above the prompt with one button: "Prompt Master: OFF". Clicking it switches between ON and OFF.
+2. When it's ON, rewrite every prompt I send before it reaches the model, like this:
+   "Turn my request below into a full prompt with four parts: Role (who you should act as), Task (exactly what to make), Who it's for, and Format (length, structure and tone). Show me that full prompt first, then answer it. My request: &lt;my original text&gt;"
+3. When it's OFF, leave my prompts alone.
+
+Keep it small and simple. When you're done, tell me how to install it and turn it on.</pre><button class="copy">Copy prompt</button></div>
+<h2>How to use it</h2>
+<ul>
+<li>Install the plugin Claude makes with <code>/plugin</code>.</li>
+<li>Click the band so it says ON.</li>
+<li>Type something lazy, like "write a post about my shop", and send it.</li>
+<li>Claude shows you the full prompt (Role, Task, Who it's for, Format), then answers it.</li>
+</ul>
+<h2>Tips</h2>
+<ul>
+<li>Turn it OFF for quick questions, ON when the answer matters.</li>
+<li>Mods run with the same access as Claude Code and aren't sandboxed. Only install mods from sources you trust.</li>
+</ul>
+  
+  <p class="small">Some links are affiliate links: I may earn a commission at no cost to you. Not affiliated with Anthropic.</p></article>
+  <aside class="side"><div class="sbox"><span class="mono">Tools in this playbook</span><a class="tile sm" href="https://claude.ai" target="_blank" rel="noopener"><span class="lg" style="--c:#D97757"><svg viewBox="0 0 24 24"><path fill="currentColor" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg></span><span class="tt"><b>Claude</b><span class="mono">The brain</span></span><p>Where every script, guide and skill starts.</p><span class="go">Free plan · Try it <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div>
+<a class="sbox rel" href="/free/hook/"><span class="mono">Next playbook</span><b>HOOK</b><p>Content Principles: teach Claude why a video holds attention</p></a></aside>
+</section>
+<section class="wrap" data-b="email" style="padding-block:40px 120px"><div class="endc"><div><p class="mono" style="color:var(--mist)">Daily</p><h2>One useful AI trick a day.</h2><p class="lead">A new one every day on Instagram. Comment the keyword, get the playbook.</p></div><div class="igc"><a class="btn" href="https://www.instagram.com/titoro.ai" target="_blank" rel="noopener">Follow @titoro.ai on Instagram <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="lnk" href="https://www.tiktok.com/@titoro.ai" target="_blank" rel="noopener">Or on TikTok <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div></div></section>
+
+<div class="wrap"><footer data-b="footer">
+<div><b style="color:var(--ink)">titoro</b><br>Give Claude the boring half of your business.<br><br><span class="small">Not affiliated with Anthropic. Claude is a trademark of Anthropic, PBC. Some links are affiliate links: I may earn a commission at no cost to you.</span>
+<p class="built"><span class="mono">This site was built by 12 AI agents.</span> <button class="lnk" data-replay>Watch them build it <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></p></div>
+<div class="fl"><span class="mono">Site</span><a href="/free/">Free playbooks</a><a href="/engines/">Engines</a><a href="https://orcaagentics.xyz" target="_blank" rel="noopener">Done for you</a><a href="/tools/">Tools</a><a href="/disclosure/">Disclosure</a></div>
+<div class="fl"><span class="mono">Follow</span><a href="https://www.instagram.com/titoro.ai">Instagram</a><a href="https://www.tiktok.com/@titoro.ai">TikTok</a><a href="https://www.youtube.com/@TitoroAI">YouTube</a><span>created by orca.agentics</span></div>
+<div class="big">titoro.</div>
+</footer></div>
+<script src="/vendor/gsap.min.js"></script><script src="/vendor/ScrollTrigger.min.js"></script><script src="/vendor/lenis.min.js"></script><script src="/site.js"></script>
+</body></html>

@@ -836,6 +836,117 @@ It looks back through the folded notes and pulls up the exact answer.
 - It also works with Codex and other coding agents.
 - Repo: github.com/ranxianglei/billion-context'''),
 
+dict(kw='PLUGINS', cat='business', mins=5, plan='All five are free and open source. Made for Claude Code', reel=None,
+  title='5 Claude plugins actually worth installing, sorted by job',
+  desc='Superpowers, Last 30 Days, Caveman, UI UX Pro Max and HyperFrames: what each one does and the exact install commands.',
+  get=['The 5 plugins, sorted by the job they do', 'The install commands for each', 'What to check before you install any plugin'],
+  tools=['claude'], related='SKILLS', pack=None,
+  body='''Stop installing every plugin you see. Pick the job you need done, add one plugin, and check what it can run.
+
+All five work in **Claude Code**. Type the commands that start with a slash inside Claude Code.
+
+## Code: Superpowers
+Makes Claude plan, test and debug before it writes code, instead of jumping straight in. [github.com/obra/superpowers](https://github.com/obra/superpowers)
+```
+/plugin install superpowers@claude-plugins-official
+```
+
+## Research: Last 30 Days
+Researches any topic across Reddit, X, YouTube, Hacker News and the web from the last 30 days, then writes a summary. Reddit, Hacker News and GitHub work with no setup. X and YouTube need extra keys (the README explains). [github.com/mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)
+```
+/plugin marketplace add mvanhorn/last30days-skill
+/plugin install last30days@last30days-skill
+```
+
+## Tokens: Caveman
+Makes Claude answer in short, filler-free lines so your usage limit lasts longer. Code and commands stay exact. Turn it off by saying "normal mode". [github.com/JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman)
+```
+/plugin marketplace add JuliusBrussee/caveman
+/plugin install caveman@caveman
+```
+
+## Design: UI UX Pro Max
+Gives Claude design know-how (styles, palettes, layout rules) for building pages and app screens that don't look generic. [github.com/nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
+```
+/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill
+/plugin install ui-ux-pro-max@ui-ux-pro-max-skill
+```
+
+## Video: HyperFrames
+HeyGen's open-source tool for making videos from HTML. Claude writes the scenes, HyperFrames renders the MP4. [github.com/heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)
+```
+/plugin marketplace add heygen-com/hyperframes
+/plugin install hyperframes@hyperframes
+```
+
+## Before you install any plugin
+- Read the README first.
+- Check what it can run on your computer. Plugins can run commands and scripts with Claude Code's access.
+- Only install plugins from sources you trust. One at a time beats ten at once.'''),
+
+dict(kw='APP', cat='business', mins=5, plan='Xcode is free. Claude in Xcode needs a paid Claude plan', reel=None,
+  title='Build your own iPhone app with Apple AI inside, using Claude',
+  desc='What Apple shipped in 2026 for small app makers, and how to start building with Claude inside Xcode.',
+  get=['The 3 things Apple shipped that matter for small businesses', 'Who gets Apple cloud AI with no cloud fees', 'How to start building in Xcode with Claude'],
+  tools=['claude'], related='CHART', pack=None,
+  body='''Apple looks quiet in the AI race. But this year it shipped three things that make it much easier for a small business to have its own app with AI inside.
+
+## 1. A 20 billion parameter AI on the phone
+Apple's AFM 3 Core Advanced is a 20-billion-parameter model that runs on the device itself. It only switches on 1 to 4 billion parameters at a time, which is how it fits on a phone. On iPhone it needs the A19 Pro chip (iPhone 17 Pro and Pro Max). Source: [Apple Machine Learning Research](https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models).
+
+## 2. Cloud AI with no cloud fees for small app makers
+Developers in the App Store Small Business Program with fewer than 2 million first-time App Store downloads can use Apple Foundation Models on Private Cloud Compute with no cloud API cost. You also need the Private Cloud Compute entitlement on your account. Source: [developer.apple.com/private-cloud-compute](https://developer.apple.com/private-cloud-compute).
+
+## 3. Claude inside Xcode
+Since Xcode 26.3, you can use Anthropic's Claude Agent directly inside Xcode, Apple's free app builder. It can plan the work, edit the project and check its own work. Source: [Apple Newsroom](https://www.apple.com/newsroom/2026/02/xcode-26-point-3-unlocks-the-power-of-agentic-coding/).
+
+## The setup
+- Get a Mac and install Xcode (free, from the Mac App Store). Use version 26.3 or newer.
+- In Xcode settings, turn on the Claude agent and sign in with your Claude account. A paid Claude plan is needed.
+- Join the Apple Developer Program to put your app on the App Store, then apply for the Small Business Program if you qualify.
+- Start with one prompt:
+```
+Build a simple iPhone app for my shop with three screens: Orders, Bookings and Ask the shop. Use Apple's on-device Foundation Models for the Ask the shop screen.
+```
+
+## Tips
+- Start with one useful screen, not ten.
+- Test on a real iPhone before you submit.
+- The 2 million download limit counts all your apps, not just one.'''),
+
+dict(kw='MASTER', cat='business', mins=4, plan='Free. Needs Claude Code (CLI or desktop app)', reel=None,
+  title='Prompt Master: a Claude Code mod that turns lazy lines into full prompts',
+  desc='Paste one prompt into Claude Code and it builds you a mod that adds role, task, audience and format to every prompt.',
+  get=['What a Claude Code mod is', 'The prompt that builds Prompt Master for you', 'How to turn it on and off'],
+  tools=['claude'], related='HOOK', pack=None,
+  body='''Mods are small add-ons that change how Claude Code works and looks. Anthropic says a mod can rewrite a prompt, add new UI or replace a built-in feature, and that you can ask Claude Code to write one for you. They work in the Claude Code CLI and desktop app. Source: [Customize Claude Code with mods](https://claude.com/blog/claude-code-mods).
+
+Prompt Master is a mod that takes your lazy one-liner and turns it into a full prompt: a role, the task, who it's for, and the format.
+
+## The prompt
+Open Claude Code (or the Code tab in the desktop app) and paste this:
+```
+Build me a Claude Code mod called Prompt Master, packaged as a plugin I can install with /plugin.
+
+What it does:
+1. Draw a small band above the prompt with one button: "Prompt Master: OFF". Clicking it switches between ON and OFF.
+2. When it's ON, rewrite every prompt I send before it reaches the model, like this:
+   "Turn my request below into a full prompt with four parts: Role (who you should act as), Task (exactly what to make), Who it's for, and Format (length, structure and tone). Show me that full prompt first, then answer it. My request: <my original text>"
+3. When it's OFF, leave my prompts alone.
+
+Keep it small and simple. When you're done, tell me how to install it and turn it on.
+```
+
+## How to use it
+- Install the plugin Claude makes with `/plugin`.
+- Click the band so it says ON.
+- Type something lazy, like "write a post about my shop", and send it.
+- Claude shows you the full prompt (Role, Task, Who it's for, Format), then answers it.
+
+## Tips
+- Turn it OFF for quick questions, ON when the answer matters.
+- Mods run with the same access as Claude Code and aren't sandboxed. Only install mods from sources you trust.'''),
+
 dict(kw='CHART', cat='business', mins=5, plan='Free. Works with any Claude plan', reel=None,
   title='Chart Story: turn any numbers into a Visual Capitalist-style chart',
   desc='A free Claude skill that finds the one surprising number in your data and builds a clean, shareable chart around it.',
