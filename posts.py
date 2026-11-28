@@ -836,6 +836,54 @@ It looks back through the folded notes and pulls up the exact answer.
 - It also works with Codex and other coding agents.
 - Repo: github.com/ranxianglei/billion-context'''),
 
+dict(kw='CHART', cat='business', mins=5, plan='Free. Works with any Claude plan', reel=None,
+  title='Chart Story: turn any numbers into a Visual Capitalist-style chart',
+  desc='A free Claude skill that finds the one surprising number in your data and builds a clean, shareable chart around it.',
+  get=['How Visual Capitalist makes money from charts', 'The free chart-story skill on GitHub', 'How to install it', 'Prompts to run on your sales, clients or ads'],
+  tools=['claude'], related='HOOK', pack=None,
+  body='''Visual Capitalist turned charts into a business. Their own licensing page lists **180 million site visitors a year**, **1.8 million social followers** and **5,000 graphics published**. Any company can license one of their charts with a **Single Licensing Credit for $345**. Each chart is made once and sold again and again.
+
+Every one of their charts follows the same rule: find the one number that makes a stranger say "wait, really?", then build the whole chart around it. This skill teaches Claude that rule.
+
+## What the skill does
+- Checks your data first and never invents a number.
+- Finds the story: the surprise, the gap, the flip, or the leader and the last.
+- Picks the right chart (ranked bars by default), with one highlight colour and everything else grey.
+- Writes the headline, 3 takeaways and a caption, with the source on the chart.
+
+## Get it
+The skill is free on GitHub: [github.com/RyanAJT/titoro-skills](https://github.com/RyanAJT/titoro-skills)
+
+**Claude Code:** type these two commands inside Claude Code:
+```
+/plugin marketplace add RyanAJT/titoro-skills
+/plugin install chart-story@titoro-skills
+```
+**Claude app:** download the `chart-story` folder from the repo (plugins/chart-story/skills/chart-story), zip it and upload it in the Skills section of your settings.
+
+## Prompts to try
+```
+Use the chart-story skill. Here are my monthly sales for this year: [paste numbers]. Find the story and make the chart.
+```
+```
+Use the chart-story skill. Compare these clients by revenue and repeat orders: [paste table].
+```
+```
+Use the chart-story skill. Here are my ad results by campaign: [paste spend, clicks, sales].
+```
+
+## The example from the reel
+I gave it the public stats of two faceless YouTube channels (from their channel pages, 28 Nov 2026):
+- **fern:** 5.73M subscribers, 150 videos, 759,509,686 views, so about **5.1M views per video**.
+- **The Infographics Show:** 15.5M subscribers, 6,412 videos, 7,058,148,443 views, so about **1.1M views per video**.
+
+Fern has about a third of the subscribers, but more than four times the views per video. Smaller channel, bigger hits.
+
+## Tips
+- Real numbers only. The skill will ask for a source if you don't give one.
+- One chart, one idea. If you have two stories, make two charts.
+- Sources: licensing.visualcapitalist.com (stats and the $345 credit), YouTube channel pages for fern and The Infographics Show.'''),
+
 dict(kw='HOOK', cat='business', mins=4, plan='Free. Works with any Claude plan', reel=None,
   title='Content Principles: teach Claude why a video holds attention',
   desc='A copy-paste skill that makes Claude write and audit short videos from the reasons hooks work, not just the steps.',
